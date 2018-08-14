@@ -1,0 +1,40 @@
+taca-le pau
+    ale msg_op1 = "Digite o primeiro operando";
+    ale msg_op2 = "Digite o segundo operando";
+    ale msg_op = "Escolha a operação:\n 1-Soma\n 2-Subtração\n 3-Multiplicação\n 4-Divisão";
+    ale msg_err = "Não é possível dividr por 0";
+    ipa op1, op2, result;
+    pilsen op;
+
+    conta pra gente(msg_op1);
+    qual a boa(op1);
+
+    conta pra gente(msg_op2);
+    qual a boa(op2);
+
+    conta pra gente(msg_op)
+    qual a boa(op) ;
+
+    cardapio(op) {
+        opcao(1):
+            result = op1 + op2;
+            quebrou o copo;
+        opcao(2):
+            result = op1 - op2;
+            quebrou o copo;
+        opcao(3):
+            result = op1 * op2;
+            quebrou o copo;
+        opcao(4):
+            to cagano de medo {
+                result = op1 / op2;
+            } lei seca (DivisionError){
+                conta pra gente(msg_err)
+            }
+            quebrou o copo;
+    }
+
+    ta gelada result? {
+        conta pra gente(result);
+    }
+fecha conta

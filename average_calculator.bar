@@ -1,0 +1,24 @@
+taca-le pau
+    porção<ipa> notas = new porção<ipa>();
+    ipa nota = 0;
+    ipa soma = 0;
+
+    conta pra gente("Programa para calcular as médias");
+    encher a cara (true) {
+        conta pra gente("Digite uma nota. Digite -1 para sair");
+        qual a boa(nota);
+        if (nota == -1) {
+            quebrou o copo;
+        }
+        notas.push(nota);
+    }
+
+    conta pra gente("Notas digitadas:")
+    tomar todas(nota in notas){
+       conta pra gente(nota + "\n");
+       soma += nota;
+    }
+
+    conta pra gente("Média das notas: ");
+    conta pra gente(soma/notas.len);
+fecha conta
