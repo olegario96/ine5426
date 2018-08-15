@@ -14,9 +14,9 @@ taca-le pau
     }
 
     conta pra gente("Notas digitadas:")
-    tomar todas(nota in notas){
-       conta pra gente(nota + "\n");
-       soma += nota;
+    tomar todas(nota_ de notas) {
+       conta pra gente(nota_ + "\n");
+       soma += nota_;
     }
 
     conta pra gente("Média das notas: ");
