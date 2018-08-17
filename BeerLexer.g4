@@ -93,6 +93,7 @@ HexIntegerLiteral:              '0' [xX] HexDigit+;
 Break:                          'quebrou o copo';
 Case:                           'opcao';
 Else:                           'ta nao patrao';
+ElseIf:                         'tem certeza';
 New:                            'nova no mercado';
 Catch:                          'lei seca';
 Return:                         'desce uma';
@@ -108,6 +109,16 @@ If:                             'ta gelada';
 Throw:                          'deu pt';
 In:                             'de';
 Try:                            'to cagano de medo';
+MainInit:                       'taca-le pau';
+MainFinish:                     'fecha conta';
+Int:                            'pilsen';
+Float:                          'ipa';
+Boolean:                        'bock';
+String:                         'ale';
+Array:                          'porção';
+Print:                          'conta pra gente';
+Read:                           'qual a boa';
+
 
 /// Future Reserved Words
 
