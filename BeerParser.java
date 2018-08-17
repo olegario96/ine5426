@@ -1,4 +1,4 @@
-// Generated from BeerParser.g4 by ANTLR 4.5
+// Generated from BeerParser.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class BeerParser extends BeerBaseParser {
-	static { RuntimeMetaData.checkVersion("4.5", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -110,8 +110,11 @@ public class BeerParser extends BeerBaseParser {
 	}
 	public static class ProgramContext extends ParserRuleContext {
 		public TerminalNode EOF() { return getToken(BeerParser.EOF, 0); }
-		public SourceElementsContext sourceElements() {
-			return getRuleContext(SourceElementsContext.class,0);
+		public List<SourceElementsContext> sourceElements() {
+			return getRuleContexts(SourceElementsContext.class);
+		}
+		public SourceElementsContext sourceElements(int i) {
+			return getRuleContext(SourceElementsContext.class,i);
 		}
 		public ProgramContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
@@ -134,16 +137,21 @@ public class BeerParser extends BeerBaseParser {
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(5);
+			setState(5); 
+			_errHandler.sync(this);
 			_la = _input.LA(1);
-			if (_la==OpenBracket) {
+			do {
+				{
 				{
 				setState(4);
 				sourceElements();
 				}
-			}
-
-			setState(7);
+				}
+				setState(7); 
+				_errHandler.sync(this);
+				_la = _input.LA(1);
+			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MultiLineComment) | (1L << SingleLineComment) | (1L << RegularExpressionLiteral) | (1L << OpenBracket) | (1L << CloseBracket) | (1L << OpenParen) | (1L << CloseParen) | (1L << OpenBrace) | (1L << CloseBrace) | (1L << SemiColon) | (1L << Comma) | (1L << Assign) | (1L << QuestionMark) | (1L << Colon) | (1L << Dot) | (1L << PlusPlus) | (1L << MinusMinus) | (1L << Plus) | (1L << Minus) | (1L << Not) | (1L << Multiply) | (1L << Divide) | (1L << Modulus) | (1L << LessThan) | (1L << MoreThan) | (1L << LessThanEquals) | (1L << GreaterThanEquals) | (1L << Equals_) | (1L << NotEquals) | (1L << And) | (1L << Or) | (1L << MultiplyAssign) | (1L << DivideAssign) | (1L << ModulusAssign) | (1L << PlusAssign) | (1L << MinusAssign) | (1L << NullLiteral) | (1L << BooleanLiteral) | (1L << DecimalLiteral) | (1L << HexIntegerLiteral) | (1L << Break) | (1L << Case) | (1L << Else) | (1L << New) | (1L << Catch) | (1L << Return) | (1L << Void) | (1L << Continue) | (1L << For) | (1L << Switch) | (1L << While) | (1L << Function) | (1L << This) | (1L << Default) | (1L << If) | (1L << Throw) | (1L << In) | (1L << Try) | (1L << Class) | (1L << Const) | (1L << Import) | (1L << Static))) != 0) || ((((_la - 66)) & ~0x3f) == 0 && ((1L << (_la - 66)) & ((1L << (WhiteSpaces - 66)) | (1L << (LineTerminator - 66)) | (1L << (UnexpectedCharacter - 66)))) != 0) );
+			setState(9);
 			match(EOF);
 			}
 		}
@@ -159,7 +167,71 @@ public class BeerParser extends BeerBaseParser {
 	}
 
 	public static class SourceElementsContext extends ParserRuleContext {
+		public TerminalNode MultiLineComment() { return getToken(BeerParser.MultiLineComment, 0); }
+		public TerminalNode SingleLineComment() { return getToken(BeerParser.SingleLineComment, 0); }
+		public TerminalNode RegularExpressionLiteral() { return getToken(BeerParser.RegularExpressionLiteral, 0); }
 		public TerminalNode OpenBracket() { return getToken(BeerParser.OpenBracket, 0); }
+		public TerminalNode CloseBracket() { return getToken(BeerParser.CloseBracket, 0); }
+		public TerminalNode OpenParen() { return getToken(BeerParser.OpenParen, 0); }
+		public TerminalNode CloseParen() { return getToken(BeerParser.CloseParen, 0); }
+		public TerminalNode OpenBrace() { return getToken(BeerParser.OpenBrace, 0); }
+		public TerminalNode CloseBrace() { return getToken(BeerParser.CloseBrace, 0); }
+		public TerminalNode SemiColon() { return getToken(BeerParser.SemiColon, 0); }
+		public TerminalNode Comma() { return getToken(BeerParser.Comma, 0); }
+		public TerminalNode Assign() { return getToken(BeerParser.Assign, 0); }
+		public TerminalNode QuestionMark() { return getToken(BeerParser.QuestionMark, 0); }
+		public TerminalNode Colon() { return getToken(BeerParser.Colon, 0); }
+		public TerminalNode Dot() { return getToken(BeerParser.Dot, 0); }
+		public TerminalNode PlusPlus() { return getToken(BeerParser.PlusPlus, 0); }
+		public TerminalNode MinusMinus() { return getToken(BeerParser.MinusMinus, 0); }
+		public TerminalNode Plus() { return getToken(BeerParser.Plus, 0); }
+		public TerminalNode Minus() { return getToken(BeerParser.Minus, 0); }
+		public TerminalNode Not() { return getToken(BeerParser.Not, 0); }
+		public TerminalNode Multiply() { return getToken(BeerParser.Multiply, 0); }
+		public TerminalNode Divide() { return getToken(BeerParser.Divide, 0); }
+		public TerminalNode Modulus() { return getToken(BeerParser.Modulus, 0); }
+		public TerminalNode LessThan() { return getToken(BeerParser.LessThan, 0); }
+		public TerminalNode MoreThan() { return getToken(BeerParser.MoreThan, 0); }
+		public TerminalNode LessThanEquals() { return getToken(BeerParser.LessThanEquals, 0); }
+		public TerminalNode GreaterThanEquals() { return getToken(BeerParser.GreaterThanEquals, 0); }
+		public TerminalNode Equals_() { return getToken(BeerParser.Equals_, 0); }
+		public TerminalNode NotEquals() { return getToken(BeerParser.NotEquals, 0); }
+		public TerminalNode And() { return getToken(BeerParser.And, 0); }
+		public TerminalNode Or() { return getToken(BeerParser.Or, 0); }
+		public TerminalNode MultiplyAssign() { return getToken(BeerParser.MultiplyAssign, 0); }
+		public TerminalNode DivideAssign() { return getToken(BeerParser.DivideAssign, 0); }
+		public TerminalNode ModulusAssign() { return getToken(BeerParser.ModulusAssign, 0); }
+		public TerminalNode PlusAssign() { return getToken(BeerParser.PlusAssign, 0); }
+		public TerminalNode MinusAssign() { return getToken(BeerParser.MinusAssign, 0); }
+		public TerminalNode NullLiteral() { return getToken(BeerParser.NullLiteral, 0); }
+		public TerminalNode BooleanLiteral() { return getToken(BeerParser.BooleanLiteral, 0); }
+		public TerminalNode DecimalLiteral() { return getToken(BeerParser.DecimalLiteral, 0); }
+		public TerminalNode HexIntegerLiteral() { return getToken(BeerParser.HexIntegerLiteral, 0); }
+		public TerminalNode Break() { return getToken(BeerParser.Break, 0); }
+		public TerminalNode Case() { return getToken(BeerParser.Case, 0); }
+		public TerminalNode Else() { return getToken(BeerParser.Else, 0); }
+		public TerminalNode New() { return getToken(BeerParser.New, 0); }
+		public TerminalNode Catch() { return getToken(BeerParser.Catch, 0); }
+		public TerminalNode Return() { return getToken(BeerParser.Return, 0); }
+		public TerminalNode Void() { return getToken(BeerParser.Void, 0); }
+		public TerminalNode Continue() { return getToken(BeerParser.Continue, 0); }
+		public TerminalNode For() { return getToken(BeerParser.For, 0); }
+		public TerminalNode Switch() { return getToken(BeerParser.Switch, 0); }
+		public TerminalNode While() { return getToken(BeerParser.While, 0); }
+		public TerminalNode Function() { return getToken(BeerParser.Function, 0); }
+		public TerminalNode This() { return getToken(BeerParser.This, 0); }
+		public TerminalNode Default() { return getToken(BeerParser.Default, 0); }
+		public TerminalNode If() { return getToken(BeerParser.If, 0); }
+		public TerminalNode Throw() { return getToken(BeerParser.Throw, 0); }
+		public TerminalNode In() { return getToken(BeerParser.In, 0); }
+		public TerminalNode Try() { return getToken(BeerParser.Try, 0); }
+		public TerminalNode Class() { return getToken(BeerParser.Class, 0); }
+		public TerminalNode Const() { return getToken(BeerParser.Const, 0); }
+		public TerminalNode Import() { return getToken(BeerParser.Import, 0); }
+		public TerminalNode Static() { return getToken(BeerParser.Static, 0); }
+		public TerminalNode WhiteSpaces() { return getToken(BeerParser.WhiteSpaces, 0); }
+		public TerminalNode LineTerminator() { return getToken(BeerParser.LineTerminator, 0); }
+		public TerminalNode UnexpectedCharacter() { return getToken(BeerParser.UnexpectedCharacter, 0); }
 		public SourceElementsContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
@@ -177,11 +249,20 @@ public class BeerParser extends BeerBaseParser {
 	public final SourceElementsContext sourceElements() throws RecognitionException {
 		SourceElementsContext _localctx = new SourceElementsContext(_ctx, getState());
 		enterRule(_localctx, 2, RULE_sourceElements);
+		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(9);
-			match(OpenBracket);
+			setState(11);
+			_la = _input.LA(1);
+			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MultiLineComment) | (1L << SingleLineComment) | (1L << RegularExpressionLiteral) | (1L << OpenBracket) | (1L << CloseBracket) | (1L << OpenParen) | (1L << CloseParen) | (1L << OpenBrace) | (1L << CloseBrace) | (1L << SemiColon) | (1L << Comma) | (1L << Assign) | (1L << QuestionMark) | (1L << Colon) | (1L << Dot) | (1L << PlusPlus) | (1L << MinusMinus) | (1L << Plus) | (1L << Minus) | (1L << Not) | (1L << Multiply) | (1L << Divide) | (1L << Modulus) | (1L << LessThan) | (1L << MoreThan) | (1L << LessThanEquals) | (1L << GreaterThanEquals) | (1L << Equals_) | (1L << NotEquals) | (1L << And) | (1L << Or) | (1L << MultiplyAssign) | (1L << DivideAssign) | (1L << ModulusAssign) | (1L << PlusAssign) | (1L << MinusAssign) | (1L << NullLiteral) | (1L << BooleanLiteral) | (1L << DecimalLiteral) | (1L << HexIntegerLiteral) | (1L << Break) | (1L << Case) | (1L << Else) | (1L << New) | (1L << Catch) | (1L << Return) | (1L << Void) | (1L << Continue) | (1L << For) | (1L << Switch) | (1L << While) | (1L << Function) | (1L << This) | (1L << Default) | (1L << If) | (1L << Throw) | (1L << In) | (1L << Try) | (1L << Class) | (1L << Const) | (1L << Import) | (1L << Static))) != 0) || ((((_la - 66)) & ~0x3f) == 0 && ((1L << (_la - 66)) & ((1L << (WhiteSpaces - 66)) | (1L << (LineTerminator - 66)) | (1L << (UnexpectedCharacter - 66)))) != 0)) ) {
+			_errHandler.recoverInline(this);
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
+				consume();
+			}
 			}
 		}
 		catch (RecognitionException re) {
@@ -196,10 +277,11 @@ public class BeerParser extends BeerBaseParser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3F\16\4\2\t\2\4\3\t"+
-		"\3\3\2\5\2\b\n\2\3\2\3\2\3\3\3\3\3\3\2\2\4\2\4\2\2\f\2\7\3\2\2\2\4\13"+
-		"\3\2\2\2\6\b\5\4\3\2\7\6\3\2\2\2\7\b\3\2\2\2\b\t\3\2\2\2\t\n\7\2\2\3\n"+
-		"\3\3\2\2\2\13\f\7\6\2\2\f\5\3\2\2\2\3\7";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3F\20\4\2\t\2\4\3\t"+
+		"\3\3\2\6\2\b\n\2\r\2\16\2\t\3\2\3\2\3\3\3\3\3\3\2\2\4\2\4\2\3\4\2\3@D"+
+		"F\2\16\2\7\3\2\2\2\4\r\3\2\2\2\6\b\5\4\3\2\7\6\3\2\2\2\b\t\3\2\2\2\t\7"+
+		"\3\2\2\2\t\n\3\2\2\2\n\13\3\2\2\2\13\f\7\2\2\3\f\3\3\2\2\2\r\16\t\2\2"+
+		"\2\16\5\3\2\2\2\3\t";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
