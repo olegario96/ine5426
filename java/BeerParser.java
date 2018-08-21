@@ -1,4 +1,4 @@
-// Generated from BeerParser.g4 by ANTLR 4.5
+// Generated from BeerParser.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings({"all", "warnings", "unchecked", "unused", "cast"})
 public class BeerParser extends BeerBaseParser {
-	static { RuntimeMetaData.checkVersion("4.5", RuntimeMetaData.VERSION); }
+	static { RuntimeMetaData.checkVersion("4.7.1", RuntimeMetaData.VERSION); }
 
 	protected static final DFA[] _decisionToDFA;
 	protected static final PredictionContextCache _sharedContextCache =
@@ -46,8 +46,8 @@ public class BeerParser extends BeerBaseParser {
 		"'tomar todas'", "'cardapio'", "'encher a cara'", "'traz pra nois aquela'", 
 		"'tu memo'", "'brahma'", "'ta gelada'", "'deu pt'", "'de'", "'to cagano de medo'", 
 		"'taca-le pau'", "'fecha conta'", "'pilsen'", "'ipa'", "'bock'", "'ale'", 
-		"'porção'", "'conta pra gente'", "'qual a boa'", "'cerva'", "'trincando'", 
-		"'chega ai queridao'", "'da galera'"
+		"'por\u00E7\u00E3o'", "'conta pra gente'", "'qual a boa'", "'cerva'", 
+		"'trincando'", "'chega ai queridao'", "'da galera'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "MultiLineComment", "SingleLineComment", "RegularExpressionLiteral", 
@@ -275,7 +275,10 @@ public class BeerParser extends BeerBaseParser {
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << MultiLineComment) | (1L << SingleLineComment) | (1L << RegularExpressionLiteral) | (1L << OpenBracket) | (1L << CloseBracket) | (1L << OpenParen) | (1L << CloseParen) | (1L << OpenBrace) | (1L << CloseBrace) | (1L << SemiColon) | (1L << Comma) | (1L << Assign) | (1L << QuestionMark) | (1L << Colon) | (1L << Dot) | (1L << PlusPlus) | (1L << MinusMinus) | (1L << Plus) | (1L << Minus) | (1L << Not) | (1L << Multiply) | (1L << Divide) | (1L << Modulus) | (1L << LessThan) | (1L << MoreThan) | (1L << LessThanEquals) | (1L << GreaterThanEquals) | (1L << Equals_) | (1L << NotEquals) | (1L << And) | (1L << Or) | (1L << MultiplyAssign) | (1L << DivideAssign) | (1L << ModulusAssign) | (1L << PlusAssign) | (1L << MinusAssign) | (1L << NullLiteral) | (1L << BooleanLiteral) | (1L << DecimalLiteral) | (1L << HexIntegerLiteral) | (1L << Break) | (1L << Case) | (1L << Else) | (1L << ElseIf) | (1L << New) | (1L << Catch) | (1L << Return) | (1L << Void) | (1L << Continue) | (1L << For) | (1L << Switch) | (1L << While) | (1L << Function) | (1L << This) | (1L << Default) | (1L << If) | (1L << Throw) | (1L << In) | (1L << Try) | (1L << MainInit) | (1L << MainFinish) | (1L << Int) | (1L << Float))) != 0) || ((((_la - 64)) & ~0x3f) == 0 && ((1L << (_la - 64)) & ((1L << (Boolean - 64)) | (1L << (String - 64)) | (1L << (Array - 64)) | (1L << (Print - 64)) | (1L << (Read - 64)) | (1L << (Class - 64)) | (1L << (Const - 64)) | (1L << (Import - 64)) | (1L << (Static - 64)) | (1L << (Identifier - 64)) | (1L << (StringLiteral - 64)) | (1L << (TemplateStringLiteral - 64)) | (1L << (WhiteSpaces - 64)) | (1L << (LineTerminator - 64)) | (1L << (UnexpectedCharacter - 64)))) != 0)) ) {
 			_errHandler.recoverInline(this);
-			} else {
+			}
+			else {
+				if ( _input.LA(1)==Token.EOF ) matchedEOF = true;
+				_errHandler.reportMatch(this);
 				consume();
 			}
 			}
@@ -292,11 +295,11 @@ public class BeerParser extends BeerBaseParser {
 	}
 
 	public static final String _serializedATN =
-		"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3P\20\4\2\t\2\4\3\t"+
-		"\3\3\2\6\2\b\n\2\r\2\16\2\t\3\2\3\2\3\3\3\3\3\3\2\2\4\2\4\2\3\3\2\3P\16"+
-		"\2\7\3\2\2\2\4\r\3\2\2\2\6\b\5\4\3\2\7\6\3\2\2\2\b\t\3\2\2\2\t\7\3\2\2"+
-		"\2\t\n\3\2\2\2\n\13\3\2\2\2\13\f\7\2\2\3\f\3\3\2\2\2\r\16\t\2\2\2\16\5"+
-		"\3\2\2\2\3\t";
+		"\3\u608b\ua72a\u8133\ub9ed\u417c\u3be7\u7786\u5964\3P\20\4\2\t\2\4\3\t"+
+		"\3\3\2\6\2\b\n\2\r\2\16\2\t\3\2\3\2\3\3\3\3\3\3\2\2\4\2\4\2\3\3\2\3P\2"+
+		"\16\2\7\3\2\2\2\4\r\3\2\2\2\6\b\5\4\3\2\7\6\3\2\2\2\b\t\3\2\2\2\t\7\3"+
+		"\2\2\2\t\n\3\2\2\2\n\13\3\2\2\2\13\f\7\2\2\3\f\3\3\2\2\2\r\16\t\2\2\2"+
+		"\16\5\3\2\2\2\3\t";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {
