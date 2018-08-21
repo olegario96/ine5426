@@ -10,10 +10,10 @@ program
     ;
 
 sourceElements
-    : MultiLineComment 
-    | SingleLineComment 
+    : MultiLineComment
+    | SingleLineComment
     | RegularExpressionLiteral
-    | OpenBracket 
+    | OpenBracket
     | CloseBracket
     | OpenParen
     | CloseParen
@@ -72,11 +72,11 @@ sourceElements
     | Const
     | Import
     | Static
-    /* |  Identifier 
-    | StringLiteral 
-    | TemplateStringLiteral */
-    | WhiteSpaces 
-    | LineTerminator 
+    | Identifier
+    | StringLiteral
+    | TemplateStringLiteral
+    | WhiteSpaces
+    | LineTerminator
     | MainInit
     | MainFinish
     | Int

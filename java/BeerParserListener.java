@@ -1,4 +1,5 @@
-// Generated from BeerParser.g4 by ANTLR 4.7.1
+// Generated from BeerParser.g4 by ANTLR 4.5
+import org.antlr.v4.runtime.misc.NotNull;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
