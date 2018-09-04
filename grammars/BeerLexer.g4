@@ -38,8 +38,8 @@ RegularExpressionLiteral:       '/' RegularExpressionChar+ /*{IsRegexPossible()}
 
 OpenBracket:                    '[';
 CloseBracket:                   ']';
-OpenParen:                      '(';
-CloseParen:                     ')';
+OpenParent:                      '(';
+CloseParent:                     ')';
 OpenBrace:                      '{' /*{ProcessOpenBrace();}*/;
 CloseBrace:                     '}' /*{ProcessCloseBrace();}*/;
 SemiColon:                      ';';
