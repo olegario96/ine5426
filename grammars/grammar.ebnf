@@ -1,0 +1,69 @@
+Grammar ::= Import* InitClass? | Begin*
+
+Import ::= 'chega ai queridao' Identifier '.bar'
+
+InitClass ::= 'breja' Identifier '{' Command* '}'
+
+Begin ::= 'taca-le pau' Command* 'fecha conta'
+
+Function ::= 'traz pra nois aquela' Identifier '(' Parameters ')' '{' Command* '}'
+
+Parameters ::= ((Declaration ',')*Declaration)?
+
+Declaration ::= Type (Identifier ',')* Identifier
+
+NewObjectDec ::= Identifier Identifier
+
+NewObjectInit::= Identifier '=' 'nova no mercado' Identifier '(' ((Identifier ',')*Identifier)? ')' 
+
+Inicialize ::= Declaration '=' Value ';'
+
+Identifier ::= [a-z]+[a-zA-Z0-9_]*
+
+Type ::= 'pilsen' | 'ale' | 'bar vazio' | 'bock' | 'ipa' | 'porcao' '<' Type '>'
+
+Number ::= [0-9]+ | [0-9]+ '.' [0-9]* | '.' [0-9]+
+
+StringLiteral ::= '"' (.-('"' | '\\' | '\r' | '\n') | '\\' ('"' | '\\' | 'n' | 'r' | 't'))* '"'
+
+Command ::= SimpleCommand ';' | NewObjectDec ';' | NewObjectInit ';' | While | If | For | Switch | Print | Read | Try | ('quebrou o copo' | 'desce uma' Expression | 'desce uma' Value) ';'
+
+SimpleCommand ::= Expression | Declaration '=' DecExpression | Declaration | Identifier '=' Expression
+
+Expression ::= Unary Expression | Expression Binary Expression | '('Expression')' | FunctionCall
+
+DecExpression ::= Value | Identifier | FunctionCall
+
+Unary ::= '!' | Signal
+
+Binary ::= Signal | '*' | '/' | '%' | '>' | '<' | '>=' | '<=' | '==' | '!=' | '&&' | '||'
+
+FunctionCall ::= Identifier '(' ((Identifier ',')*Identifier)? ')'
+
+Signal ::= '+' | '-'
+
+Value ::= Number | 'gelada' | 'quente' | StringLiteral
+
+While ::= 'encher a cara' '(' Expression ')' '{' Command* '}'
+
+For ::= 'tomar todas' '(' SimpleCommand? ';' Expression? ';' SimpleCommand? ')' '{' Command* '}'
+
+Switch ::= 'cardapio' '(' Identifier ')' '{' Case* Default Case* '}'
+
+Case ::= 'opcao' '(' Expression ')' '{' Command* '}'
+
+Default ::= 'brahma' '{' Command* '}'
+
+If ::= 'ta gelada' '(' Expression ')' '?' '{' Command* '}' ('tem certeza' '(' Expression ')' '?' '{' Command* '}')* ( 'ta nao patrao' '{' Command* '}')?
+
+Print ::= 'conta pra gente' '(' StringLiteral ')'
+
+Read ::= 'qual a boa' '(' Identifier ')'
+
+Try ::= 'to cagano de medo' '{' Command* '}' Catch?
+
+Catch ::= 'lei seca' '(' Identifier ')' '{' Command* Throw? '}'
+
+Throw ::= 'deu pt' Expression
+
+Comment  ::= 'fala pa nois' Value* '\n'

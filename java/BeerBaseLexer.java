@@ -107,7 +107,7 @@ public abstract class BeerBaseLexer extends Lexer
             case BeerLexer.BooleanLiteral:
             case BeerLexer.This:
             case BeerLexer.CloseBracket:
-            case BeerLexer.CloseParen:
+            case BeerLexer.CloseParent:
             case BeerLexer.DecimalLiteral:
             case BeerLexer.HexIntegerLiteral:
             case BeerLexer.StringLiteral:

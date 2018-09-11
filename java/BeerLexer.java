@@ -17,11 +17,11 @@ public class BeerLexer extends BeerBaseLexer {
 		new PredictionContextCache();
 	public static final int
 		MultiLineComment=1, SingleLineComment=2, RegularExpressionLiteral=3, OpenBracket=4, 
-		CloseBracket=5, OpenParen=6, CloseParen=7, OpenBrace=8, CloseBrace=9, 
+		CloseBracket=5, OpenParent=6, CloseParent=7, OpenBrace=8, CloseBrace=9, 
 		SemiColon=10, Comma=11, Assign=12, QuestionMark=13, Colon=14, Dot=15, 
 		PlusPlus=16, MinusMinus=17, Plus=18, Minus=19, Not=20, Multiply=21, Divide=22, 
 		Modulus=23, LessThan=24, MoreThan=25, LessThanEquals=26, GreaterThanEquals=27, 
-		Equals_=28, NotEquals=29, And=30, Or=31, MultiplyAssign=32, DivideAssign=33, 
+		EqualsSymbol=28, NotEquals=29, And=30, Or=31, MultiplyAssign=32, DivideAssign=33, 
 		ModulusAssign=34, PlusAssign=35, MinusAssign=36, NullLiteral=37, BooleanLiteral=38, 
 		DecimalLiteral=39, HexIntegerLiteral=40, Break=41, Case=42, Else=43, ElseIf=44, 
 		New=45, Catch=46, Return=47, Void=48, Continue=49, For=50, Switch=51, 
@@ -42,10 +42,10 @@ public class BeerLexer extends BeerBaseLexer {
 
 	public static final String[] ruleNames = {
 		"MultiLineComment", "SingleLineComment", "RegularExpressionLiteral", "OpenBracket", 
-		"CloseBracket", "OpenParen", "CloseParen", "OpenBrace", "CloseBrace", 
+		"CloseBracket", "OpenParent", "CloseParent", "OpenBrace", "CloseBrace", 
 		"SemiColon", "Comma", "Assign", "QuestionMark", "Colon", "Dot", "PlusPlus", 
 		"MinusMinus", "Plus", "Minus", "Not", "Multiply", "Divide", "Modulus", 
-		"LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals", "Equals_", 
+		"LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals", "EqualsSymbol", 
 		"NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign", "ModulusAssign", 
 		"PlusAssign", "MinusAssign", "NullLiteral", "BooleanLiteral", "DecimalLiteral", 
 		"HexIntegerLiteral", "Break", "Case", "Else", "ElseIf", "New", "Catch", 
@@ -77,11 +77,11 @@ public class BeerLexer extends BeerBaseLexer {
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
 		null, "MultiLineComment", "SingleLineComment", "RegularExpressionLiteral", 
-		"OpenBracket", "CloseBracket", "OpenParen", "CloseParen", "OpenBrace", 
+		"OpenBracket", "CloseBracket", "OpenParent", "CloseParent", "OpenBrace", 
 		"CloseBrace", "SemiColon", "Comma", "Assign", "QuestionMark", "Colon", 
 		"Dot", "PlusPlus", "MinusMinus", "Plus", "Minus", "Not", "Multiply", "Divide", 
 		"Modulus", "LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals", 
-		"Equals_", "NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign", 
+		"EqualsSymbol", "NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign", 
 		"ModulusAssign", "PlusAssign", "MinusAssign", "NullLiteral", "BooleanLiteral", 
 		"DecimalLiteral", "HexIntegerLiteral", "Break", "Case", "Else", "ElseIf", 
 		"New", "Catch", "Return", "Void", "Continue", "For", "Switch", "While", 
