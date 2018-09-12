@@ -132,11 +132,11 @@ ifExpression
     ;
 
 print
-    : Print OpenParent StringLiteral CloseParent
+    : Print OpenParent expression CloseParent SemiColon
     ;
 
 read
-    : Read OpenParent Identifier CloseParent
+    : Read OpenParent Identifier CloseParent SemiColon
     ;
 
 tryExpression
