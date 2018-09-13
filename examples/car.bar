@@ -1,0 +1,25 @@
+chega ai queridao "Placa.bar";
+
+cerva Carro {
+    Placa placa;
+    lager nome;
+    pilsen ano;
+
+    Carro(Placa placa, lager nome, pilsen ano) {
+        tu memo.placa = placa;
+        tu memo.nome = nome;
+        tu memo.ano = ano;
+    }
+
+    traz pra nois aquela Placa getplaca() {
+        desce uma placa;
+    }
+
+    traz pra nois aquela lager getnome() {
+        desce uma nome;
+    }
+
+    traz pra nois aquela pilsen getano() {
+        desce uma ano;
+    }
+}

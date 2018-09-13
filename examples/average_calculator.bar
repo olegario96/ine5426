@@ -1,5 +1,5 @@
 taca-le pau
-    porção<ipa> notas = new porção<ipa>();
+    porção<ipa> notas = nova no mercado porção<ipa>();
     ipa nota = 0;
     ipa soma = 0;
 
@@ -7,18 +7,18 @@ taca-le pau
     encher a cara (true) {
         conta pra gente("Digite uma nota. Digite -1 para sair");
         qual a boa(nota);
-        if (nota == -1) {
+        ta gelada (result)? {
             quebrou o copo;
         }
         notas.push(nota);
     }
 
-    conta pra gente("Notas digitadas:")
-    tomar todas(nota_ de notas) {
+    conta pra gente("Notas digitadas:");
+    tomar todas(ipa nota_ de notas) {
        conta pra gente(nota_ + "\n");
        soma += nota_;
     }
 
     conta pra gente("Média das notas: ");
-    conta pra gente(soma/notas.len);
+    conta pra gente(soma/notas.len());
 fecha conta

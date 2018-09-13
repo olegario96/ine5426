@@ -14,7 +14,17 @@ importExpression
     ;
 
 initClass
-    : Class Identifier OpenBrace command* CloseBrace
+    : Class Identifier OpenBrace method* CloseBrace
+    ;
+
+method
+    : type Identifier SemiColon
+    | function
+    | constructor
+    ;
+
+constructor
+    : Identifier OpenParent parameters CloseParent OpenBrace command* CloseBrace
     ;
 
 begin
@@ -38,7 +48,7 @@ command
 simpleCommand
     : expression SemiColon
     | declaration (Assign expression)? SemiColon
-    | Identifier (Assign | MultiplyAssign | DivideAssign | ModulusAssign | PlusAssign | MinusAssign) expression SemiColon
+    | (This Dot)? Identifier (Assign | MultiplyAssign | DivideAssign | ModulusAssign | PlusAssign | MinusAssign) expression SemiColon
     ;
 
 function
@@ -56,6 +66,7 @@ declaration
 
 newObjectInit
     : New Identifier OpenParent ((Identifier Comma)*Identifier)? CloseParent
+    | New Array LessThan type MoreThan OpenParent CloseParent
     ;
 
 type
@@ -113,10 +124,11 @@ whileExpression
 
 forExpression
     : For OpenParent simpleCommand? SemiColon expression? SemiColon simpleCommand? CloseParent OpenBrace command* CloseBrace
+    | For OpenParent declaration In Identifier CloseParent OpenBrace command* CloseBrace
     ;
 
 switchExpression
-    : Switch OpenParent Identifier CloseParent OpenBrace Case* Default Case* CloseBrace
+    : Switch OpenParent Identifier CloseParent OpenBrace caseExpression* defaultExpression? CloseBrace
     ;
 
 caseExpression
