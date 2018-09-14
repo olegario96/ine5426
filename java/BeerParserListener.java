@@ -157,6 +157,16 @@ public interface BeerParserListener extends ParseTreeListener {
 	 */
 	void exitExpression(BeerParser.ExpressionContext ctx);
 	/**
+	 * Enter a parse tree produced by {@link BeerParser#initArray}.
+	 * @param ctx the parse tree
+	 */
+	void enterInitArray(BeerParser.InitArrayContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BeerParser#initArray}.
+	 * @param ctx the parse tree
+	 */
+	void exitInitArray(BeerParser.InitArrayContext ctx);
+	/**
 	 * Enter a parse tree produced by {@link BeerParser#binary}.
 	 * @param ctx the parse tree
 	 */

@@ -14,6 +14,6 @@ antlr4 BeerParser.g4;
 cd ../java;
 javac Beer*.java;
 cp ../grammars/* ./;
-grun Beer program -gui < ../examples/car.bar
+grun Beer program -gui < ../examples/testes.bar
 rm *.g4 *.interp *.tokens *.class *.ebnf;
 rm ../grammars/*.java ../grammars/*.interp ../grammars/*.tokens;

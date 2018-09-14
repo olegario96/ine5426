@@ -195,6 +195,18 @@ public class BeerParserBaseListener implements BeerParserListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterInitArray(BeerParser.InitArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitInitArray(BeerParser.InitArrayContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterBinary(BeerParser.BinaryContext ctx) { }
 	/**
 	 * {@inheritDoc}

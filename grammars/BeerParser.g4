@@ -52,7 +52,7 @@ simpleCommand
     ;
 
 function
-    :  Function (type | typeArray) Identifier OpenParent parameters CloseParent OpenBrace command*          CloseBrace
+    :  Function (type | typeArray) Identifier OpenParent parameters CloseParent OpenBrace command* CloseBrace
     ;
 
 parameters
@@ -66,7 +66,6 @@ declaration
 
 newObjectInit
     : New Identifier OpenParent ((Identifier Comma)*Identifier)? CloseParent
-    | New Array LessThan type MoreThan OpenParent CloseParent
     ;
 
 type
@@ -78,7 +77,7 @@ type
     ;
 
 typeArray
-    : Array LessThan type MoreThan
+    : Array LessThan Identifier MoreThan
     ;
 
 expression
@@ -89,6 +88,11 @@ expression
     | value
     | Identifier
     | newObjectInit
+    | initArray
+    ;
+
+initArray 
+    : OpenBrace (value Comma)* value? CloseBrace
     ;
 
 binary
@@ -123,7 +127,7 @@ whileExpression
     ;
 
 forExpression
-    : For OpenParent simpleCommand? SemiColon expression? SemiColon simpleCommand? CloseParent OpenBrace command* CloseBrace
+    : For OpenParent simpleCommand? expression? SemiColon simpleCommand? CloseParent OpenBrace command* CloseBrace
     | For OpenParent declaration In Identifier CloseParent OpenBrace command* CloseBrace
     ;
 
