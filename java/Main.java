@@ -7,6 +7,7 @@ import compiler.errors.BeerLexerError;
 
 public class Main {
     public static void main(String[] args) throws Exception {
+        System.out.println("ola");
         ANTLRInputStream input = new ANTLRInputStream(System.in);
         BeerLexer lexer = new BeerLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
