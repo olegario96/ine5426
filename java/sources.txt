@@ -1,8 +1,0 @@
-./Main.java
-./compiler/BeerParserBaseListener.java
-./compiler/BeerBaseLexer.java
-./compiler/BeerLexer.java
-./compiler/BeerParserListener.java
-./compiler/errors/BeerLexerError.java
-./compiler/BeerParser.java
-./compiler/BeerBaseParser.java

@@ -18,7 +18,8 @@ cp ../grammars/*.tokens ./;
 cp ../grammars/*.ebnf ./;
 find -name "*.java" > sources.txt;
 javac @sources.txt
-grun Beer program -gui < ../examples/testes.bar
-rm *.g4 *.interp *.tokens *.class *.ebnf;
-rm ../grammars/*.java ../grammars/*.interp ../grammars/*.tokens sources.txt;
+
+# grun Beer program -gui < ../examples/testes.bar
+rm -rf *.g4 *.interp *.tokens *.class *.ebnf;
+rm -rf ../grammars/*.java ../grammars/*.interp ../grammars/*.tokens sources.txt;
 
