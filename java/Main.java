@@ -13,6 +13,7 @@ public class Main {
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         BeerParser parser = new BeerParser(tokens);
         parser.removeErrorListener(new BeerLexerError());
-        parser.program();
+        ParseTree tree = parser.program();
+        System.out.println(tree.toStringTree(parser));
     }
 }

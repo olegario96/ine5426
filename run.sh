@@ -5,12 +5,12 @@ pwd_=`pwd`
 #mkdir -p ${pwd_}/java/
 #mv antlr-4.7.1-complete.jar ${pwd_}/java/
 alias antlr4='java -jar ${pwd_}/java/antlr-4.7.1-complete.jar'
-export CLASSPATH=":${pwd_}/java/antlr-4.7.1-complete.jar:$CLASSPATH"
+export CLASSPATH=".:${pwd_}/java/antlr-4.7.1-complete.jar:$CLASSPATH"
 alias grun='java org.antlr.v4.gui.TestRig'
 
 cd grammars;
-antlr4 BeerLexer.g4;
-antlr4 BeerParser.g4;
+antlr4 -no-listener -visitor BeerLexer.g4;
+antlr4 -no-listener -visitor BeerParser.g4;
 cd ../java;
 cp ../grammars/*.g4 ./;
 cp ../grammars/*.interp ./;
