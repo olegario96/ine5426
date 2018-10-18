@@ -1,3 +1,5 @@
+package compiler;
+
 import org.antlr.v4.runtime.*;
 
 /**
@@ -36,7 +38,7 @@ public abstract class BeerBaseParser extends Parser
     protected boolean closeBrace() {
         return _input.LT(1).getType() == BeerParser.CloseBrace;
     }
-    
+
     /**
      * Returns {@code true} iff on the current index of the parser's
      * token stream a token of the given {@code type} exists on the
@@ -60,7 +62,7 @@ public abstract class BeerBaseParser extends Parser
         // provided type.
         return (ahead.getChannel() == Lexer.HIDDEN) && (ahead.getType() == type);
     }
-    
+
     /**
      * Returns {@code true} iff on the current index of the parser's
      * token stream a token exists on the {@code HIDDEN} channel which

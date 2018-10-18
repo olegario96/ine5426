@@ -12,8 +12,13 @@ cd grammars;
 antlr4 BeerLexer.g4;
 antlr4 BeerParser.g4;
 cd ../java;
-javac Beer*.java;
-cp ../grammars/* ./;
+cp ../grammars/*.g4 ./;
+cp ../grammars/*.interp ./;
+cp ../grammars/*.tokens ./;
+cp ../grammars/*.ebnf ./;
+find -name "*.java" > sources.txt;
+javac @sources.txt
 grun Beer program -gui < ../examples/testes.bar
 rm *.g4 *.interp *.tokens *.class *.ebnf;
-rm ../grammars/*.java ../grammars/*.interp ../grammars/*.tokens;
+rm ../grammars/*.java ../grammars/*.interp ../grammars/*.tokens sources.txt;
+

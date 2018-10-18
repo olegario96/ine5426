@@ -1,3 +1,5 @@
+package compiler;
+
 // Generated from BeerParser.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
@@ -16,65 +18,65 @@ public class BeerParser extends BeerBaseParser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		MultiLineComment=1, SingleLineComment=2, RegularExpressionLiteral=3, OpenBracket=4, 
-		CloseBracket=5, OpenParent=6, CloseParent=7, OpenBrace=8, CloseBrace=9, 
-		SemiColon=10, Comma=11, Assign=12, QuestionMark=13, Colon=14, Dot=15, 
-		PlusPlus=16, MinusMinus=17, Plus=18, Minus=19, Not=20, Multiply=21, Divide=22, 
-		Modulus=23, LessThan=24, MoreThan=25, LessThanEquals=26, GreaterThanEquals=27, 
-		EqualsSymbol=28, NotEquals=29, And=30, Or=31, MultiplyAssign=32, DivideAssign=33, 
-		ModulusAssign=34, PlusAssign=35, MinusAssign=36, NullLiteral=37, BooleanLiteral=38, 
-		DecimalLiteral=39, HexIntegerLiteral=40, Break=41, Case=42, Else=43, ElseIf=44, 
-		New=45, Catch=46, Return=47, Void=48, Continue=49, For=50, Switch=51, 
-		While=52, Function=53, This=54, Default=55, If=56, Throw=57, In=58, Try=59, 
-		MainInit=60, MainFinish=61, Int=62, Float=63, Boolean=64, String=65, Array=66, 
-		Print=67, Read=68, Class=69, Const=70, Import=71, Static=72, Identifier=73, 
-		StringLiteral=74, TemplateStringLiteral=75, WhiteSpaces=76, LineTerminator=77, 
+		MultiLineComment=1, SingleLineComment=2, RegularExpressionLiteral=3, OpenBracket=4,
+		CloseBracket=5, OpenParent=6, CloseParent=7, OpenBrace=8, CloseBrace=9,
+		SemiColon=10, Comma=11, Assign=12, QuestionMark=13, Colon=14, Dot=15,
+		PlusPlus=16, MinusMinus=17, Plus=18, Minus=19, Not=20, Multiply=21, Divide=22,
+		Modulus=23, LessThan=24, MoreThan=25, LessThanEquals=26, GreaterThanEquals=27,
+		EqualsSymbol=28, NotEquals=29, And=30, Or=31, MultiplyAssign=32, DivideAssign=33,
+		ModulusAssign=34, PlusAssign=35, MinusAssign=36, NullLiteral=37, BooleanLiteral=38,
+		DecimalLiteral=39, HexIntegerLiteral=40, Break=41, Case=42, Else=43, ElseIf=44,
+		New=45, Catch=46, Return=47, Void=48, Continue=49, For=50, Switch=51,
+		While=52, Function=53, This=54, Default=55, If=56, Throw=57, In=58, Try=59,
+		MainInit=60, MainFinish=61, Int=62, Float=63, Boolean=64, String=65, Array=66,
+		Print=67, Read=68, Class=69, Const=70, Import=71, Static=72, Identifier=73,
+		StringLiteral=74, TemplateStringLiteral=75, WhiteSpaces=76, LineTerminator=77,
 		UnexpectedCharacter=78;
 	public static final int
-		RULE_program = 0, RULE_importExpression = 1, RULE_initClass = 2, RULE_method = 3, 
-		RULE_constructor = 4, RULE_begin = 5, RULE_command = 6, RULE_simpleCommand = 7, 
-		RULE_function = 8, RULE_parameters = 9, RULE_declaration = 10, RULE_newObjectInit = 11, 
-		RULE_type = 12, RULE_typeArray = 13, RULE_expression = 14, RULE_initArray = 15, 
-		RULE_binary = 16, RULE_functionCall = 17, RULE_value = 18, RULE_whileExpression = 19, 
-		RULE_forExpression = 20, RULE_switchExpression = 21, RULE_caseExpression = 22, 
-		RULE_defaultExpression = 23, RULE_ifExpression = 24, RULE_print = 25, 
-		RULE_read = 26, RULE_tryExpression = 27, RULE_catchExpression = 28, RULE_throwExpression = 29, 
+		RULE_program = 0, RULE_importExpression = 1, RULE_initClass = 2, RULE_method = 3,
+		RULE_constructor = 4, RULE_begin = 5, RULE_command = 6, RULE_simpleCommand = 7,
+		RULE_function = 8, RULE_parameters = 9, RULE_declaration = 10, RULE_newObjectInit = 11,
+		RULE_type = 12, RULE_typeArray = 13, RULE_expression = 14, RULE_initArray = 15,
+		RULE_binary = 16, RULE_functionCall = 17, RULE_value = 18, RULE_whileExpression = 19,
+		RULE_forExpression = 20, RULE_switchExpression = 21, RULE_caseExpression = 22,
+		RULE_defaultExpression = 23, RULE_ifExpression = 24, RULE_print = 25,
+		RULE_read = 26, RULE_tryExpression = 27, RULE_catchExpression = 28, RULE_throwExpression = 29,
 		RULE_comment = 30;
 	public static final String[] ruleNames = {
-		"program", "importExpression", "initClass", "method", "constructor", "begin", 
-		"command", "simpleCommand", "function", "parameters", "declaration", "newObjectInit", 
-		"type", "typeArray", "expression", "initArray", "binary", "functionCall", 
-		"value", "whileExpression", "forExpression", "switchExpression", "caseExpression", 
-		"defaultExpression", "ifExpression", "print", "read", "tryExpression", 
+		"program", "importExpression", "initClass", "method", "constructor", "begin",
+		"command", "simpleCommand", "function", "parameters", "declaration", "newObjectInit",
+		"type", "typeArray", "expression", "initArray", "binary", "functionCall",
+		"value", "whileExpression", "forExpression", "switchExpression", "caseExpression",
+		"defaultExpression", "ifExpression", "print", "read", "tryExpression",
 		"catchExpression", "throwExpression", "comment"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, null, null, null, "'['", "']'", "'('", "')'", "'{'", "'}'", "';'", 
-		"','", "'='", "'?'", "':'", "'.'", "'++'", "'--'", "'+'", "'-'", "'!'", 
-		"'*'", "'/'", "'%'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'&&'", 
-		"'||'", "'*='", "'/='", "'%='", "'+='", "'-='", "'casco vazio'", null, 
-		null, null, "'quebrou o copo'", "'opcao'", "'ta nao patrao'", "'tem certeza'", 
-		"'nova no mercado'", "'lei seca'", "'desce uma'", "'bar vazio'", "'traz mais uma'", 
-		"'tomar todas'", "'cardapio'", "'encher a cara'", "'traz pra nois aquela'", 
-		"'tu memo'", "'brahma'", "'ta gelada'", "'deu pt'", "'de'", "'to cagano de medo'", 
-		"'taca-le pau'", "'fecha conta'", "'pilsen'", "'ipa'", "'bock'", "'ale'", 
-		"'por\u00E7\u00E3o'", "'conta pra gente'", "'qual a boa'", "'cerva'", 
+		null, null, null, null, "'['", "']'", "'('", "')'", "'{'", "'}'", "';'",
+		"','", "'='", "'?'", "':'", "'.'", "'++'", "'--'", "'+'", "'-'", "'!'",
+		"'*'", "'/'", "'%'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'&&'",
+		"'||'", "'*='", "'/='", "'%='", "'+='", "'-='", "'casco vazio'", null,
+		null, null, "'quebrou o copo'", "'opcao'", "'ta nao patrao'", "'tem certeza'",
+		"'nova no mercado'", "'lei seca'", "'desce uma'", "'bar vazio'", "'traz mais uma'",
+		"'tomar todas'", "'cardapio'", "'encher a cara'", "'traz pra nois aquela'",
+		"'tu memo'", "'brahma'", "'ta gelada'", "'deu pt'", "'de'", "'to cagano de medo'",
+		"'taca-le pau'", "'fecha conta'", "'pilsen'", "'ipa'", "'bock'", "'ale'",
+		"'por\u00E7\u00E3o'", "'conta pra gente'", "'qual a boa'", "'cerva'",
 		"'trincando'", "'chega ai queridao'", "'da galera'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "MultiLineComment", "SingleLineComment", "RegularExpressionLiteral", 
-		"OpenBracket", "CloseBracket", "OpenParent", "CloseParent", "OpenBrace", 
-		"CloseBrace", "SemiColon", "Comma", "Assign", "QuestionMark", "Colon", 
-		"Dot", "PlusPlus", "MinusMinus", "Plus", "Minus", "Not", "Multiply", "Divide", 
-		"Modulus", "LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals", 
-		"EqualsSymbol", "NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign", 
-		"ModulusAssign", "PlusAssign", "MinusAssign", "NullLiteral", "BooleanLiteral", 
-		"DecimalLiteral", "HexIntegerLiteral", "Break", "Case", "Else", "ElseIf", 
-		"New", "Catch", "Return", "Void", "Continue", "For", "Switch", "While", 
-		"Function", "This", "Default", "If", "Throw", "In", "Try", "MainInit", 
-		"MainFinish", "Int", "Float", "Boolean", "String", "Array", "Print", "Read", 
-		"Class", "Const", "Import", "Static", "Identifier", "StringLiteral", "TemplateStringLiteral", 
+		null, "MultiLineComment", "SingleLineComment", "RegularExpressionLiteral",
+		"OpenBracket", "CloseBracket", "OpenParent", "CloseParent", "OpenBrace",
+		"CloseBrace", "SemiColon", "Comma", "Assign", "QuestionMark", "Colon",
+		"Dot", "PlusPlus", "MinusMinus", "Plus", "Minus", "Not", "Multiply", "Divide",
+		"Modulus", "LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals",
+		"EqualsSymbol", "NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign",
+		"ModulusAssign", "PlusAssign", "MinusAssign", "NullLiteral", "BooleanLiteral",
+		"DecimalLiteral", "HexIntegerLiteral", "Break", "Case", "Else", "ElseIf",
+		"New", "Catch", "Return", "Void", "Continue", "For", "Switch", "While",
+		"Function", "This", "Default", "If", "Throw", "In", "Try", "MainInit",
+		"MainFinish", "Int", "Float", "Boolean", "String", "Array", "Print", "Read",
+		"Class", "Const", "Import", "Static", "Identifier", "StringLiteral", "TemplateStringLiteral",
 		"WhiteSpaces", "LineTerminator", "UnexpectedCharacter"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
@@ -982,7 +984,7 @@ public class BeerParser extends BeerBaseParser {
 						setState(177);
 						match(Comma);
 						}
-						} 
+						}
 					}
 					setState(183);
 					_errHandler.sync(this);
@@ -1129,7 +1131,7 @@ public class BeerParser extends BeerBaseParser {
 						setState(199);
 						match(Comma);
 						}
-						} 
+						}
 					}
 					setState(204);
 					_errHandler.sync(this);
@@ -1377,7 +1379,7 @@ public class BeerParser extends BeerBaseParser {
 					setState(233);
 					expression(7);
 					}
-					} 
+					}
 				}
 				setState(239);
 				_errHandler.sync(this);
@@ -1445,7 +1447,7 @@ public class BeerParser extends BeerBaseParser {
 					setState(242);
 					match(Comma);
 					}
-					} 
+					}
 				}
 				setState(248);
 				_errHandler.sync(this);
@@ -1593,7 +1595,7 @@ public class BeerParser extends BeerBaseParser {
 							setState(259);
 							match(Comma);
 							}
-							} 
+							}
 						}
 						setState(264);
 						_errHandler.sync(this);
@@ -1636,7 +1638,7 @@ public class BeerParser extends BeerBaseParser {
 							setState(274);
 							match(Comma);
 							}
-							} 
+							}
 						}
 						setState(279);
 						_errHandler.sync(this);

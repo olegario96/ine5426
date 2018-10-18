@@ -1,3 +1,5 @@
+package compiler;
+
 // Generated from BeerLexer.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.Lexer;
 import org.antlr.v4.runtime.CharStream;
@@ -16,19 +18,19 @@ public class BeerLexer extends BeerBaseLexer {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		MultiLineComment=1, SingleLineComment=2, RegularExpressionLiteral=3, OpenBracket=4, 
-		CloseBracket=5, OpenParent=6, CloseParent=7, OpenBrace=8, CloseBrace=9, 
-		SemiColon=10, Comma=11, Assign=12, QuestionMark=13, Colon=14, Dot=15, 
-		PlusPlus=16, MinusMinus=17, Plus=18, Minus=19, Not=20, Multiply=21, Divide=22, 
-		Modulus=23, LessThan=24, MoreThan=25, LessThanEquals=26, GreaterThanEquals=27, 
-		EqualsSymbol=28, NotEquals=29, And=30, Or=31, MultiplyAssign=32, DivideAssign=33, 
-		ModulusAssign=34, PlusAssign=35, MinusAssign=36, NullLiteral=37, BooleanLiteral=38, 
-		DecimalLiteral=39, HexIntegerLiteral=40, Break=41, Case=42, Else=43, ElseIf=44, 
-		New=45, Catch=46, Return=47, Void=48, Continue=49, For=50, Switch=51, 
-		While=52, Function=53, This=54, Default=55, If=56, Throw=57, In=58, Try=59, 
-		MainInit=60, MainFinish=61, Int=62, Float=63, Boolean=64, String=65, Array=66, 
-		Print=67, Read=68, Class=69, Const=70, Import=71, Static=72, Identifier=73, 
-		StringLiteral=74, TemplateStringLiteral=75, WhiteSpaces=76, LineTerminator=77, 
+		MultiLineComment=1, SingleLineComment=2, RegularExpressionLiteral=3, OpenBracket=4,
+		CloseBracket=5, OpenParent=6, CloseParent=7, OpenBrace=8, CloseBrace=9,
+		SemiColon=10, Comma=11, Assign=12, QuestionMark=13, Colon=14, Dot=15,
+		PlusPlus=16, MinusMinus=17, Plus=18, Minus=19, Not=20, Multiply=21, Divide=22,
+		Modulus=23, LessThan=24, MoreThan=25, LessThanEquals=26, GreaterThanEquals=27,
+		EqualsSymbol=28, NotEquals=29, And=30, Or=31, MultiplyAssign=32, DivideAssign=33,
+		ModulusAssign=34, PlusAssign=35, MinusAssign=36, NullLiteral=37, BooleanLiteral=38,
+		DecimalLiteral=39, HexIntegerLiteral=40, Break=41, Case=42, Else=43, ElseIf=44,
+		New=45, Catch=46, Return=47, Void=48, Continue=49, For=50, Switch=51,
+		While=52, Function=53, This=54, Default=55, If=56, Throw=57, In=58, Try=59,
+		MainInit=60, MainFinish=61, Int=62, Float=63, Boolean=64, String=65, Array=66,
+		Print=67, Read=68, Class=69, Const=70, Import=71, Static=72, Identifier=73,
+		StringLiteral=74, TemplateStringLiteral=75, WhiteSpaces=76, LineTerminator=77,
 		UnexpectedCharacter=78;
 	public static final int
 		ERROR=2;
@@ -41,53 +43,53 @@ public class BeerLexer extends BeerBaseLexer {
 	};
 
 	public static final String[] ruleNames = {
-		"MultiLineComment", "SingleLineComment", "RegularExpressionLiteral", "OpenBracket", 
-		"CloseBracket", "OpenParent", "CloseParent", "OpenBrace", "CloseBrace", 
-		"SemiColon", "Comma", "Assign", "QuestionMark", "Colon", "Dot", "PlusPlus", 
-		"MinusMinus", "Plus", "Minus", "Not", "Multiply", "Divide", "Modulus", 
-		"LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals", "EqualsSymbol", 
-		"NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign", "ModulusAssign", 
-		"PlusAssign", "MinusAssign", "NullLiteral", "BooleanLiteral", "DecimalLiteral", 
-		"HexIntegerLiteral", "Break", "Case", "Else", "ElseIf", "New", "Catch", 
-		"Return", "Void", "Continue", "For", "Switch", "While", "Function", "This", 
-		"Default", "If", "Throw", "In", "Try", "MainInit", "MainFinish", "Int", 
-		"Float", "Boolean", "String", "Array", "Print", "Read", "Class", "Const", 
-		"Import", "Static", "Identifier", "StringLiteral", "TemplateStringLiteral", 
-		"WhiteSpaces", "LineTerminator", "UnexpectedCharacter", "DoubleStringCharacter", 
-		"SingleStringCharacter", "EscapeSequence", "CharacterEscapeSequence", 
-		"UnicodeEscapeSequence", "ExtendedUnicodeEscapeSequence", "SingleEscapeCharacter", 
-		"NonEscapeCharacter", "EscapeCharacter", "LineContinuation", "HexDigit", 
-		"DecimalIntegerLiteral", "ExponentPart", "IdentifierPart", "IdentifierStart", 
-		"UnicodeLetter", "UnicodeCombiningMark", "UnicodeDigit", "UnicodeConnectorPunctuation", 
+		"MultiLineComment", "SingleLineComment", "RegularExpressionLiteral", "OpenBracket",
+		"CloseBracket", "OpenParent", "CloseParent", "OpenBrace", "CloseBrace",
+		"SemiColon", "Comma", "Assign", "QuestionMark", "Colon", "Dot", "PlusPlus",
+		"MinusMinus", "Plus", "Minus", "Not", "Multiply", "Divide", "Modulus",
+		"LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals", "EqualsSymbol",
+		"NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign", "ModulusAssign",
+		"PlusAssign", "MinusAssign", "NullLiteral", "BooleanLiteral", "DecimalLiteral",
+		"HexIntegerLiteral", "Break", "Case", "Else", "ElseIf", "New", "Catch",
+		"Return", "Void", "Continue", "For", "Switch", "While", "Function", "This",
+		"Default", "If", "Throw", "In", "Try", "MainInit", "MainFinish", "Int",
+		"Float", "Boolean", "String", "Array", "Print", "Read", "Class", "Const",
+		"Import", "Static", "Identifier", "StringLiteral", "TemplateStringLiteral",
+		"WhiteSpaces", "LineTerminator", "UnexpectedCharacter", "DoubleStringCharacter",
+		"SingleStringCharacter", "EscapeSequence", "CharacterEscapeSequence",
+		"UnicodeEscapeSequence", "ExtendedUnicodeEscapeSequence", "SingleEscapeCharacter",
+		"NonEscapeCharacter", "EscapeCharacter", "LineContinuation", "HexDigit",
+		"DecimalIntegerLiteral", "ExponentPart", "IdentifierPart", "IdentifierStart",
+		"UnicodeLetter", "UnicodeCombiningMark", "UnicodeDigit", "UnicodeConnectorPunctuation",
 		"RegularExpressionChar", "RegularExpressionClassChar", "RegularExpressionBackslashSequence"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, null, null, null, "'['", "']'", "'('", "')'", "'{'", "'}'", "';'", 
-		"','", "'='", "'?'", "':'", "'.'", "'++'", "'--'", "'+'", "'-'", "'!'", 
-		"'*'", "'/'", "'%'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'&&'", 
-		"'||'", "'*='", "'/='", "'%='", "'+='", "'-='", "'casco vazio'", null, 
-		null, null, "'quebrou o copo'", "'opcao'", "'ta nao patrao'", "'tem certeza'", 
-		"'nova no mercado'", "'lei seca'", "'desce uma'", "'bar vazio'", "'traz mais uma'", 
-		"'tomar todas'", "'cardapio'", "'encher a cara'", "'traz pra nois aquela'", 
-		"'tu memo'", "'brahma'", "'ta gelada'", "'deu pt'", "'de'", "'to cagano de medo'", 
-		"'taca-le pau'", "'fecha conta'", "'pilsen'", "'ipa'", "'bock'", "'ale'", 
-		"'por\u00E7\u00E3o'", "'conta pra gente'", "'qual a boa'", "'cerva'", 
+		null, null, null, null, "'['", "']'", "'('", "')'", "'{'", "'}'", "';'",
+		"','", "'='", "'?'", "':'", "'.'", "'++'", "'--'", "'+'", "'-'", "'!'",
+		"'*'", "'/'", "'%'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'&&'",
+		"'||'", "'*='", "'/='", "'%='", "'+='", "'-='", "'casco vazio'", null,
+		null, null, "'quebrou o copo'", "'opcao'", "'ta nao patrao'", "'tem certeza'",
+		"'nova no mercado'", "'lei seca'", "'desce uma'", "'bar vazio'", "'traz mais uma'",
+		"'tomar todas'", "'cardapio'", "'encher a cara'", "'traz pra nois aquela'",
+		"'tu memo'", "'brahma'", "'ta gelada'", "'deu pt'", "'de'", "'to cagano de medo'",
+		"'taca-le pau'", "'fecha conta'", "'pilsen'", "'ipa'", "'bock'", "'ale'",
+		"'por\u00E7\u00E3o'", "'conta pra gente'", "'qual a boa'", "'cerva'",
 		"'trincando'", "'chega ai queridao'", "'da galera'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "MultiLineComment", "SingleLineComment", "RegularExpressionLiteral", 
-		"OpenBracket", "CloseBracket", "OpenParent", "CloseParent", "OpenBrace", 
-		"CloseBrace", "SemiColon", "Comma", "Assign", "QuestionMark", "Colon", 
-		"Dot", "PlusPlus", "MinusMinus", "Plus", "Minus", "Not", "Multiply", "Divide", 
-		"Modulus", "LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals", 
-		"EqualsSymbol", "NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign", 
-		"ModulusAssign", "PlusAssign", "MinusAssign", "NullLiteral", "BooleanLiteral", 
-		"DecimalLiteral", "HexIntegerLiteral", "Break", "Case", "Else", "ElseIf", 
-		"New", "Catch", "Return", "Void", "Continue", "For", "Switch", "While", 
-		"Function", "This", "Default", "If", "Throw", "In", "Try", "MainInit", 
-		"MainFinish", "Int", "Float", "Boolean", "String", "Array", "Print", "Read", 
-		"Class", "Const", "Import", "Static", "Identifier", "StringLiteral", "TemplateStringLiteral", 
+		null, "MultiLineComment", "SingleLineComment", "RegularExpressionLiteral",
+		"OpenBracket", "CloseBracket", "OpenParent", "CloseParent", "OpenBrace",
+		"CloseBrace", "SemiColon", "Comma", "Assign", "QuestionMark", "Colon",
+		"Dot", "PlusPlus", "MinusMinus", "Plus", "Minus", "Not", "Multiply", "Divide",
+		"Modulus", "LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals",
+		"EqualsSymbol", "NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign",
+		"ModulusAssign", "PlusAssign", "MinusAssign", "NullLiteral", "BooleanLiteral",
+		"DecimalLiteral", "HexIntegerLiteral", "Break", "Case", "Else", "ElseIf",
+		"New", "Catch", "Return", "Void", "Continue", "For", "Switch", "While",
+		"Function", "This", "Default", "If", "Throw", "In", "Try", "MainInit",
+		"MainFinish", "Int", "Float", "Boolean", "String", "Array", "Print", "Read",
+		"Class", "Const", "Import", "Static", "Identifier", "StringLiteral", "TemplateStringLiteral",
 		"WhiteSpaces", "LineTerminator", "UnexpectedCharacter"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
