@@ -1,0 +1,4 @@
+void main() {
+	object a = {int b[2] : 1 , string c : 0.3};
+	object c = {int a: 1 , string b : "b"};
+}

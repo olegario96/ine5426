@@ -1,0 +1,11 @@
+void var() {
+	int a = 1;
+}
+
+void obj() {
+  object b = { int a : 1};
+}
+
+void fun() {
+
+}

@@ -1,0 +1,10 @@
+void main() {
+    int a = 0;
+    int b = 3;
+    int c;
+    int x;
+    c = ((a*b)*x - x) < (a*b);
+    x = -((a-b)%x);
+    int d = 4-8*3/4+-3*(3%8);
+    print(d);
+}

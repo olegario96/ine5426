@@ -1,0 +1,9 @@
+void main() {
+	int i [5] = [1,2,3,4,5.1];
+	int b[3] = [1,2,3];
+	int c[1] = [1];
+	int d = 1;
+	int e = i[3];
+	int f = i[8]; // error
+	int g = e[0]; // error	
+}

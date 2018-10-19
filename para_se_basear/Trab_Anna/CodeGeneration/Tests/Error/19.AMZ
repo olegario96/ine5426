@@ -1,0 +1,11 @@
+void main() {
+	switch("a") {
+    case(1) {}
+    case(["a"]) {}
+    default {}
+  }
+
+  switch([1]) {
+    default {}
+  }
+}

@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+if [ -z "$1" ]
+  then
+    echo "Missing parameter"
+    exit 1
+fi
+cd grammar
+java -Xmx500M -cp "/usr/local/lib/antlr-4.7.1-complete.jar:$CLASSPATH" org.antlr.v4.Tool AMZ_synt.g4 -o ../.generated || exit
+cd ..
+javac .generated/AMZ_synt*.java Main.java -d ./.compiled || exit
+clear
+java -cp "./.compiled:$CLASSPATH" Main "$@"

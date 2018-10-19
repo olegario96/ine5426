@@ -1,0 +1,41 @@
+// ok
+void func1() {
+	int a[2];
+	a = [1, 2];
+	return;
+}
+
+// ok
+void func2() {
+	int a[3] = [1, 2, 3];
+	return;
+}
+
+// ok
+void func3() {
+	int a[2];
+	a[0] = 1;
+	return;
+}
+
+// error
+void func4() {
+	int a[2];
+	a[3] = 1;
+	return;
+}
+
+// error
+void func5() {
+	int a[2] = [1, 2, 3];
+	return;
+}
+void test() {
+int i [5] = [1,2,3,4,5.1];
+    int b[3] = [1,2,3];
+    int c[1] = [1];
+    int d = 1;
+    int e = i[3];
+    int f = i[8]; // error
+    int g = e[0]; // error
+}

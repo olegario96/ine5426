@@ -1,0 +1,13 @@
+// error
+int func1() {
+	int a = 1 + 2;
+	a = 1 + "a"; // error
+	return 1;
+}
+
+// error
+int func2(string s) {
+	int a = false; // error
+	s = 10; // error
+	return 1;
+}

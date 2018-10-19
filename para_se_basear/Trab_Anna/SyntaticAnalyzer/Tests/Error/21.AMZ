@@ -1,0 +1,36 @@
+//test return type
+// ok
+void funcVoid(int p) {
+	int a = 10;
+	return;
+}
+
+// ok
+int funcInt(int p) {
+	return 10 + p;
+}
+
+// error
+string funcString(string p) {
+	return 10.0;
+}
+
+// error
+boolean funcBoolean(int p) {
+	if (p > 10) {
+		return; // wrong
+	}
+	return true;
+}
+
+double funcDouble(int i) {
+  if (i > 10) {
+    return 10.5;
+  }
+}
+
+void funcVoid2(int i) {
+  if (i > 10) {
+    return;
+  }
+}

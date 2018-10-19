@@ -1,0 +1,19 @@
+#import "SYS_OUT";
+import "ERRO"; // Missing #
+
+// Missing ()
+void main {
+	
+	int a = 20;
+	for (int i = 0; i < a; i = i+1) {
+		print(i);
+	}
+
+	erro;
+
+}
+
+void erro() {
+	// Missing ;
+	print ("Error message")
+}

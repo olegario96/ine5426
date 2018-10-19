@@ -1,0 +1,13 @@
+void main() {
+
+
+	int a = 1 + "a";
+	int b = 1 * "oi";
+	string c = 1 + 1.5;
+	int d = [8, 3] + 5;
+	boolean e = "a" > 3;
+	string f [2] = 1;
+	int g = true && false;
+	boolean h = true || 1;
+	boolean i = 1 == [2, 3];
+}

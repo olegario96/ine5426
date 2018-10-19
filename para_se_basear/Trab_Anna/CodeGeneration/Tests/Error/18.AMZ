@@ -1,0 +1,11 @@
+void main() {
+	if (true && false) {
+
+	} else if (false) {
+
+	} else if ([true]) { //ERRO
+
+	} else if (1) { //ERRO
+
+	}
+}

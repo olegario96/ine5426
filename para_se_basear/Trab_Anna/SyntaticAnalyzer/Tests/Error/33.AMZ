@@ -1,0 +1,16 @@
+// ok
+int func1(int a, int b) {
+	return a + b;
+}
+
+// ok
+int func2() {
+	int a = func1(10, 20);
+	return a;
+}
+
+// error
+int func3() {
+	int a = func1(10); // error
+	return a;
+}

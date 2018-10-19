@@ -1,0 +1,4 @@
+#import "24.AMZ";
+int main() {
+	return a();
+}

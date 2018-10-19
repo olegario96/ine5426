@@ -1,0 +1,29 @@
+/*
+* Comment
+*/
+
+void main() {
+	
+	int a = 20;
+	boolean bool = true;
+	int b = 10;
+	while (a > 3) {
+		if (a / 2 != 6) {
+			print (a);
+		} else if (a == 10) {
+			print ("dez");
+		} else {
+			print ("default)";
+		}
+	}
+	
+	if (bool) {
+		bool = false;
+	}
+
+	if ((b % 2 != 0) && (!bool)) {
+		b = a;
+	}
+	
+}
+

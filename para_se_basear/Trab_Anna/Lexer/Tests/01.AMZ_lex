@@ -1,0 +1,26 @@
+void main() {
+    int a = 1;
+    int b = 2;
+    int c = a + b; // 3
+    int d = (a + b) * c; /* 9 */
+    while (d > 0) {
+        print(d);
+        d = d - 1;
+        if (d % 2 == 0) {
+            print ("PAR");
+        } else {
+            print ("IMPAR");
+        }
+    }
+
+    print (six());
+}
+
+
+/*
+ * Return six
+ * @return int six
+ */
+int six() {
+    return (6);
+}

@@ -1,0 +1,11 @@
+void main() {
+	while (1 > 2) { //OK
+		int a = 1; //OK
+	}
+	while (1 + 2) { //ERRO
+		int a = 1; //OK
+	}
+	for (;;) {} //OK
+	for (;false;) {} //OK
+	for (;1;) {} //ERRO
+}

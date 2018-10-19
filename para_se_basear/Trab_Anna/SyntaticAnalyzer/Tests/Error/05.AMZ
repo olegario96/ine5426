@@ -1,0 +1,4 @@
+void _wrong_id() {
+    int 0abz = 2;
+    Az = 3;
+}

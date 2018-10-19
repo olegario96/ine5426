@@ -1,0 +1,32 @@
+// error
+int func1(int a) {
+	int a = 10;
+	return 1;
+}
+
+// error
+int func2() {
+	int b = 1;
+	int c = 2;
+	int b = 3;
+	return 1;
+}
+
+// error
+void func() {
+	int i = 0;
+	while ( i < 10) {
+		while ( i < 5) {
+			i = 1;
+			if (i > 0) {
+				i = 10; // scope ok
+				if ( i == 10 ) {
+					int i = 5; // error (redeclaration)
+				}
+			}
+			break;
+
+		}
+	}
+	return;
+}

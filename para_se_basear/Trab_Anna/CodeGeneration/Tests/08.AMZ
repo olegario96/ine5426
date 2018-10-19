@@ -1,0 +1,20 @@
+/* Object test */
+void main() {
+	object car = {
+		string manufacturer : "Volkswagen",
+		string model : "Beetle",
+		int year : 1970,
+		int owners_cpf[4] : [933919, 671181133, 813787361, 31133562]
+	};
+
+	switch (car.manufacturer) {
+		case ("Volkswagen") {
+			print ("VW");
+		}
+		default {
+			print (car.manufacturer);
+		}
+	}
+
+	print (car.owners_cpf[3]);
+}

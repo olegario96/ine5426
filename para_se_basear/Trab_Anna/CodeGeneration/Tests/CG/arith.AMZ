@@ -1,0 +1,6 @@
+int main() {
+  int b = 2;
+  int var = 42 - b;
+  print(var);
+  return 42;
+}

@@ -1,0 +1,36 @@
+Grammar  ::= Import* Function*
+Import ::= '#import' StringLiteral ';'
+Function ::= Type Identifier ('[' ']')* '(' Parameters ')' '{' Command* '}'
+Type ::= int | string | void | boolean | double | object
+Identifier ::= [a-z]+[a-zA-Z0-9_]*
+Parameters ::= ((Declaration ',')*Declaration)?
+SimpleCommand ::= (Expression | Declaration '=' Expression | Declaration | Identifier ('[' [0-9]+ ']')* /*('.' (Identifier ('[' [0-9]+ ']')*))* */ '=' Expression)
+Command ::= SimpleCommand ';' | While | If | For | Switch | (break | return Expression) ';'
+Declaration ::= Type Identifier ('[' [0-9] ']')*
+Expression ::= Unary Expression | Expression Binary Expression | '('Expression')' | (Value | Identifier | FunctionCall) ('[' [0-9]+ ']')* ('.' (Identifier ('[' [0-9]+ ']')*))*
+
+Number ::= [0-9]+ | [0-9]+ '.' [0-9]* | '.' [0-9]+
+Value ::= Number | true | false | StringLiteral | Array | Object
+Array ::= '[' ((Expression ',')* Expression)? ']'
+ObjectElement ::= Declaration ':' Expression
+Object ::= '{' ((ObjectElement ',')* ObjectElement)? '}'
+
+Unary ::= '!' | Signal
+Binary ::= Signal | '*' | '/' | '%' | '>' | '<' | '>=' | '<=' | '==' | '!=' | '&&' | '||'
+Signal ::= '+' | '-'
+
+FunctionCall ::= Identifier '('Arguments')'
+Arguments ::= ((Expression ',')*Expression)?
+
+Whitespace ::= S | Comment
+S        ::= ' ' | '\r' | '\n' | '\t'
+Comment  ::= '/*' ( [^*] | '*'+ [^*/] )* '*'* '*/' | '/' '/' .* '\n'
+
+StringLiteral ::= '"' (.-('"' | '\\' | '\r' | '\n') | '\\' ('"' | '\\' | 'n' | 'r' | 't'))* '"'
+
+While ::= 'while' '(' Expression ')' '{' Command* '}'
+For ::= 'for' '(' SimpleCommand? ';' Expression? ';' SimpleCommand? ')' '{' Command* '}'
+Switch ::= 'switch' '(' Identifier ('[' [0-9]+ ']')* ')' '{' Case* Default Case* '}'
+Case ::= 'case' '(' Expression ')' '{' Command* '}'
+Default ::= 'default' '{' Command* '}'
+If ::= 'if' '(' Expression ')' '{' Command* '}' ('else' 'if' '(' Expression ')' '{' Command* '}')* ( 'else' '{' Command* '}')?

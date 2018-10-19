@@ -1,0 +1,18 @@
+v	// expression : (value | ID | function_call) array_position? object_id? #ExpExit
+void main() {
+	string c[1] = ["a"];
+  object car = {
+    string manufacturer : "Volkswagen",
+    string model : "Beetle",
+    int year : 1970,
+    int owners_cpf[4] : [933919, 671181133, 813787361, 31133562]
+  };
+  //tipo do array é string e tipo declaro é int
+  int b = c[0];
+
+  //tipo acessado do object é int e tipo declarado é string
+  string cpf = car.owners_cpf[3]
+
+  //falta pegar um objeto dentro de um objeto
+
+}

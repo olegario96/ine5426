@@ -1,0 +1,37 @@
+// ok
+void func1() {
+	for(int i = 0; i < 10; i = i + 1) {
+		if (i == 5) {
+			if (5 < 10) {
+				break;
+			}
+		}
+	}
+	return;
+}
+
+// ok
+void func2() {
+	int i = 0;
+	while (i < 10) {
+		i = i + 1;
+		switch(i) {
+			case(5) {
+				i = i +1;
+			}
+			default {
+				break;
+			}
+		}
+	}
+	return;
+}
+
+// error
+void func3() {
+	int i = 0;
+	if (i < 5) {
+		break;
+	}
+	return;
+}

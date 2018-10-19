@@ -1,0 +1,13 @@
+// ok
+int func1(int a, int b) {
+	return a + b;
+}
+
+// ok
+void func2() {
+	int a = func1(10, 20);
+}
+// error
+int func3() {
+  int a;
+}
