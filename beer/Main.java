@@ -7,11 +7,11 @@ import org.antlr.v4.runtime.tree.ParseTreeWalker;
 
 import java.io.FileInputStream;
 
-import compiler.BeerLexer;
-import compiler.BeerParser;
-import compiler.BeerSemantic;
-import compiler.errors.BeerLexerError;
-import compiler.SymbolTable;
+import beer.compiler.BeerLexer;
+import beer.compiler.BeerParser;
+import beer.compiler.BeerSemantic;
+import beer.compiler.errors.BeerLexerError;
+import beer.compiler.SymbolTable;
 
 public class Main {
     public static void main(String[] args) throws Exception {

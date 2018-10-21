@@ -1,4 +1,4 @@
-package compiler;
+package beer.compiler;
 
 // Generated from BeerParser.g4 by ANTLR 4.7.1
 import org.antlr.v4.runtime.atn.*;

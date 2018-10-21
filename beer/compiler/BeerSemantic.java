@@ -1,4 +1,4 @@
-package compiler;
+package beer.compiler;
 
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.ParserRuleContext;
@@ -10,8 +10,8 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
 
-import compiler.BeerParser;
-import compiler.BeerParserBaseListener;
+import beer.compiler.BeerParser;
+import beer.compiler.BeerParserBaseListener;
 import beer.Main;
 
 public class BeerSemantic extends BeerParserBaseListener {
@@ -79,14 +79,6 @@ public class BeerSemantic extends BeerParserBaseListener {
         return;
     }
 
-    //Entrando no begin
-    @Override public void enterBegin(BeerParser.BeginContext ctx) {
-        //System.out.println("Entrou no begin!");
-        //Controlando escopo
-        table = new SymbolTable(table);
-        ctxNames.put(ctx, "begin_block");
-    }
-
     //Entrando em uma classe
     @Override public void enterInitClass(BeerParser.InitClassContext ctx) {
         //Controlando escopo
@@ -96,6 +88,14 @@ public class BeerSemantic extends BeerParserBaseListener {
         //Adicionando nome da classe a tabela de simbolos
         String id = ctx.Identifier().getText();
         table.add(id, new Symbol(SymbolType.CLASS, true, false));
+    }
+
+    //Entrando no begin
+    @Override public void enterBegin(BeerParser.BeginContext ctx) {
+        //System.out.println("Entrou no begin!");
+        //Controlando escopo
+        table = new SymbolTable(table);
+        ctxNames.put(ctx, "begin_block");
     }
 
     //Entrando em um comando de uma classe

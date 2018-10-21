@@ -1,4 +1,4 @@
-package compiler;
+package beer.compiler;
 
 import org.antlr.v4.runtime.*;
 

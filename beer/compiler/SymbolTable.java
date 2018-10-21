@@ -1,4 +1,4 @@
-package compiler;
+package beer.compiler;
 
 import java.util.HashMap;
 import java.util.Map;

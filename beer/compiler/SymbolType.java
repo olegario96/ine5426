@@ -1,4 +1,4 @@
-package compiler;
+package beer.compiler;
 
 public enum SymbolType {
 	PILSEN,
