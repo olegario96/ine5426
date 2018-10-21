@@ -1,3 +1,5 @@
+package compiler;
+
 public class Symbol {
 
     public SymbolType type;

@@ -1,3 +1,5 @@
+package compiler;
+
 public enum SymbolType {
 	PILSEN,
 	IPA,

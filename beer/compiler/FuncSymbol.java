@@ -1,3 +1,5 @@
+package compiler;
+
 import java.util.ArrayList;
 
 public class FuncSymbol extends Symbol {

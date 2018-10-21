@@ -1,17 +1,20 @@
+package compiler;
+
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.ParserRuleContext;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
-
 import java.util.ArrayList;
 import java.util.List;
 
 import compiler.BeerParser;
-
 import compiler.BeerParserBaseListener;
+import beer.Main;
 
-public class BeerSemanticListener extends BeerParserBaseListener {
+public class BeerSemantic extends BeerParserBaseListener {
 
     //Conjuntos auxiliares
     private ParseTreeProperty<SymbolType> types = new ParseTreeProperty<>();
@@ -19,11 +22,11 @@ public class BeerSemanticListener extends BeerParserBaseListener {
     private ParseTreeProperty<Integer> sizes = new ParseTreeProperty<>();
 
     //Constructor
-	public BeerSemanticListener() {}
+    public BeerSemantic() {}
 
-	//Declarando a tabela de simbolos
-	public SymbolTable table;
-    
+    //Declarando a tabela de simbolos
+    public SymbolTable table = new SymbolTable(null);
+
     //Metodo lookup
     //Procura na tabela de simbolos
     private Symbol lookup(String id) {
@@ -42,19 +45,50 @@ public class BeerSemanticListener extends BeerParserBaseListener {
     //Comecando a analise
     //Primeira regra de BeerParser.g4
     @Override public void enterProgram(BeerParser.ProgramContext ctx) {
-        table = new SymbolTable(null);
+        table = new SymbolTable(table);
+        ctxNames.put(ctx, "enterProgram_block");
+    }
+
+    @Override public void exitProgram(BeerParser.ProgramContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterImportExpression(BeerParser.ImportExpressionContext ctx) {
+        table = new SymbolTable(table);
+        ctxNames.put(ctx, "import_block");
+        return;
+    }
+
+    @Override public void exitImportExpression(BeerParser.ImportExpressionContext ctx) {
+        String path = ctx.StringLiteral().getText();
+        File importFile = new File(path);
+        boolean fileExists = importFile.exists();
+        if (fileExists) {
+            try {
+                String[] args = new String[5];
+                FileInputStream streamFile = new FileInputStream(path);
+                table = new SymbolTable(Main.parse(args, streamFile));
+                return;
+            } catch(Exception e) {
+                System.out.println(e.toString());
+            }
+        } else {
+            System.err.println("O arquivo importado não existe!");
+            return;
+        }
+        return;
     }
 
     //Entrando no begin
-    @Override public void enterBegin(BeerParser.BeginContext ctx) { 
-    	//System.out.println("Entrou no begin!");
-    	//Controlando escopo
+    @Override public void enterBegin(BeerParser.BeginContext ctx) {
+        //System.out.println("Entrou no begin!");
+        //Controlando escopo
         table = new SymbolTable(table);
         ctxNames.put(ctx, "begin_block");
     }
 
     //Entrando em uma classe
-    @Override public void enterInitClass(BeerParser.InitClassContext ctx) {         
+    @Override public void enterInitClass(BeerParser.InitClassContext ctx) {
         //Controlando escopo
         table = new SymbolTable(table);
         ctxNames.put(ctx, "initClass_block");
@@ -66,7 +100,7 @@ public class BeerSemanticListener extends BeerParserBaseListener {
 
     //Entrando em um comando de uma classe
     //Pode ser declaracao de atributo, funcao ou construtor
-    @Override public void enterMethod(BeerParser.MethodContext ctx) { 
+    @Override public void enterMethod(BeerParser.MethodContext ctx) {
         if (ctx.type() != null) {
             String type = ctx.type().getText();
             String id = ctx.Identifier().getText();
@@ -104,14 +138,14 @@ public class BeerSemanticListener extends BeerParserBaseListener {
     ;*/
 
     //Entrando em uma funcao
-    @Override public void enterFunction(BeerParser.FunctionContext ctx) { 
+    @Override public void enterFunction(BeerParser.FunctionContext ctx) {
         //RAUL: parei aqui
     }
 
     //Entrando em uma declaracao de variavel
-    @Override public void enterDeclaration(BeerParser.DeclarationContext ctx) { 
-    	//System.out.println("Entrou na declaracao!");
-    	String type = ctx.type().getText();
+    @Override public void enterDeclaration(BeerParser.DeclarationContext ctx) {
+        //System.out.println("Entrou na declaracao!");
+        String type = ctx.type().getText();
         String id = ctx.Identifier().getText();
         Symbol symbol = lookup(id);
 
@@ -144,14 +178,14 @@ public class BeerSemanticListener extends BeerParserBaseListener {
                 table.add(id, new Symbol(SymbolType.ALE, false, init));
                 break;
         }
-    	
+
     }
 
     //Entrando em um simple command
-	@Override public void enterSimpleCommand(BeerParser.SimpleCommandContext ctx) { 
+    @Override public void enterSimpleCommand(BeerParser.SimpleCommandContext ctx) {
 
         //Declarando contexto (nem todos podem ser uteis)
-        
+
         //Apenas uma expressao
         if (ctx.declaration() != null && ctx.Assign() != null ) {
             ctxNames.put(ctx.declaration(), "cmd_decAssign");
@@ -175,7 +209,7 @@ public class BeerSemanticListener extends BeerParserBaseListener {
                 ctxNames.put(ctx.declaration(), "cmd_plusAssign");
             } else if (ctx.MinusAssign() != null) {
                 ctxNames.put(ctx.declaration(), "cmd_minusAssign");
-            } 
+            }
 
             //Gambiarra
             //Executando forcado a expressao da atribuicao
@@ -199,7 +233,7 @@ public class BeerSemanticListener extends BeerParserBaseListener {
 
     //Saindo de um value
     //Declarando os tipos de acordo com o value
-    @Override public void exitValue(BeerParser.ValueContext ctx) { 
+    @Override public void exitValue(BeerParser.ValueContext ctx) {
         if (ctx.DecimalLiteral() != null) {
             //TODO: ver se eh int ou float(pilsen ou ipa)
             //Soh verificar se na String tem um ponto
@@ -212,7 +246,7 @@ public class BeerSemanticListener extends BeerParserBaseListener {
     }
 
     //Entrando em uma expressao
-    @Override public void enterExpression(BeerParser.ExpressionContext ctx) { 
+    @Override public void enterExpression(BeerParser.ExpressionContext ctx) {
         //Expressao binaria
         //Soh considera expressao com duas variaveis
         //TODO: considerar expressoes com mais variaveis
@@ -250,7 +284,7 @@ public class BeerSemanticListener extends BeerParserBaseListener {
             }
 
             //Setando o tipo da expressao
-            types.put(ctx, symbol1.type); 
+            types.put(ctx, symbol1.type);
         }
     }
 
