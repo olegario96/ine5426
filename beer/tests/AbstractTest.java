@@ -1,3 +1,5 @@
+package beer.tests;
+
 import beer.compiler.BeerLexer;
 import beer.compiler.BeerParser;
 import beer.compiler.BeerSemantic;

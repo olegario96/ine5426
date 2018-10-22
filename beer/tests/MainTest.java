@@ -1,3 +1,5 @@
+package beer.tests;
+
 import beer.compiler.BeerSemantic;
 import org.junit.Test;
 
@@ -17,9 +19,10 @@ public class MainTest extends AbstractTest {
 
         BeerSemantic semantic = this.walkAndGetBeerSemantic(code);
 
-        assertEquals(PILSEN, semantic.table.lookup("a").type);
-        assertEquals(PILSEN, semantic.table.lookup("b").type);
-        assertEquals(PILSEN, semantic.table.lookup("c").type);
+        assertEquals(PILSEN, semantic.lookup("a").type);
+        assertEquals(PILSEN, semantic.lookup("b").type);
+        assertEquals(PILSEN, semantic.lookup("c").type);
         // @todo test values
+        // @todo test the generated source code
     }
 }

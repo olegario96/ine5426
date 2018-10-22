@@ -28,7 +28,7 @@ public class BeerSemantic extends BeerParserBaseListener {
 
     //Metodo lookup
     //Procura na tabela de simbolos
-    private Symbol lookup(String id) {
+    public Symbol lookup(String id) {
         SymbolTable table = this.table;
         while (table.parent != null) {
             Symbol symbol = table.lookup(id);

@@ -4,9 +4,8 @@
     <exclude-output />
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$" isTestSource="false" packagePrefix="beer" />
-      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" />
+      <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="beer.tests" />
     </content>
-    <orderEntry type="inheritedJdk" />
     <orderEntry type="module-library">
       <library name="JUnit4">
         <CLASSES>
@@ -17,6 +16,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="library" name="antlr-4.7.1-complete" level="project" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
