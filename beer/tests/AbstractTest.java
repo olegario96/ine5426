@@ -2,7 +2,8 @@ import beer.compiler.BeerLexer;
 import beer.compiler.BeerParser;
 import beer.compiler.BeerSemantic;
 import beer.compiler.errors.BeerLexerError;
-import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -23,7 +24,7 @@ abstract public class AbstractTest {
 
     protected ParseTree getParseTree(String code) throws IOException {
         InputStream stream = new ByteArrayInputStream(code.getBytes(StandardCharsets.UTF_8));
-        ANTLRInputStream input = new ANTLRInputStream(stream);
+        CharStream input = CharStreams.fromStream(stream, StandardCharsets.UTF_8);
 
         BeerLexer lexer = new BeerLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);

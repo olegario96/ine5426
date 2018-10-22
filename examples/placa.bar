@@ -1,0 +1,15 @@
+cerva Placa {
+    larger id;
+
+    Placa(large id) {
+        tu memo.id = id;
+    }
+
+    traz pra nois aquela large getId() {
+        desce uma id;
+    }
+
+    traz pra nois aquela bar vazio setId(larger id) {
+        tu memo.id = id;
+    }
+}

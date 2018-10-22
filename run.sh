@@ -17,7 +17,7 @@ cp ../grammars/*.interp compiler/;
 cp ../grammars/*.tokens compiler/;
 cp ../grammars/*.ebnf compiler/;
 find -name "*.java" > sources.txt;
-javac @sources.txt
+javac -Xlint @sources.txt
 
 # grun Beer program -gui < ../examples/testes.bar
 rm -rf *.g4 *.interp *.tokens *.ebnf;

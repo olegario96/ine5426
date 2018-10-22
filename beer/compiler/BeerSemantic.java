@@ -4,7 +4,6 @@ import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.ArrayList;
@@ -56,18 +55,17 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void enterImportExpression(BeerParser.ImportExpressionContext ctx) {
         table = new SymbolTable(table);
         ctxNames.put(ctx, "import_block");
-        return;
     }
 
     @Override public void exitImportExpression(BeerParser.ImportExpressionContext ctx) {
         String path = ctx.StringLiteral().getText();
         File importFile = new File(path);
-        boolean fileExists = importFile.exists();
+        System.out.println(Main.basePath);
+        boolean fileExists = importFile.getAbsoluteFile().exists();
         if (fileExists) {
             try {
                 String[] args = new String[5];
-                FileInputStream streamFile = new FileInputStream(path);
-                table = new SymbolTable(Main.parse(args, streamFile));
+                table = new SymbolTable(Main.parse(args, path));
                 return;
             } catch(Exception e) {
                 System.out.println(e.toString());
@@ -84,23 +82,22 @@ public class BeerSemantic extends BeerParserBaseListener {
         //Controlando escopo
         table = new SymbolTable(table);
         ctxNames.put(ctx, "initClass_block");
+    }
 
+    @Override public void exitInitClass(BeerParser.InitClassContext ctx) {
         //Adicionando nome da classe a tabela de simbolos
         String id = ctx.Identifier().getText();
         table.add(id, new Symbol(SymbolType.CLASS, true, false));
     }
 
-    //Entrando no begin
-    @Override public void enterBegin(BeerParser.BeginContext ctx) {
-        //System.out.println("Entrou no begin!");
-        //Controlando escopo
-        table = new SymbolTable(table);
-        ctxNames.put(ctx, "begin_block");
-    }
-
     //Entrando em um comando de uma classe
     //Pode ser declaracao de atributo, funcao ou construtor
     @Override public void enterMethod(BeerParser.MethodContext ctx) {
+        table = new SymbolTable(table);
+        ctxNames.put(ctx, "method_block");
+    }
+
+    @Override public void exitMethod(BeerParser.MethodContext ctx) {
         if (ctx.type() != null) {
             String type = ctx.type().getText();
             String id = ctx.Identifier().getText();
@@ -111,10 +108,8 @@ public class BeerSemantic extends BeerParserBaseListener {
                 return;
             }
 
-            boolean init = false;
-
-            ParserRuleContext c = ctx;
-            String rule = ctxNames.get(c);
+            // ParserRuleContext c = ctx;
+            // String rule = this.ctxNames.getText(c);
 
             switch (type) {
                 case "pilsen":
@@ -133,52 +128,32 @@ public class BeerSemantic extends BeerParserBaseListener {
         }
     }
 
-/*function
-    :  Function (type | typeArray) Identifier OpenParent parameters CloseParent OpenBrace command* CloseBrace
-    ;*/
-
-    //Entrando em uma funcao
-    @Override public void enterFunction(BeerParser.FunctionContext ctx) {
-        //RAUL: parei aqui
+    @Override public void enterConstructor(BeerParser.ConstructorContext ctx) {
+        table = new SymbolTable(table);
+        ctxNames.put(ctx, "constructor_block");
     }
 
-    //Entrando em uma declaracao de variavel
-    @Override public void enterDeclaration(BeerParser.DeclarationContext ctx) {
-        //System.out.println("Entrou na declaracao!");
-        String type = ctx.type().getText();
-        String id = ctx.Identifier().getText();
-        Symbol symbol = lookup(id);
+    @Override public void exitConstructor(BeerParser.ConstructorContext ctx) {
+        // TODO
+    }
 
-        if (symbol != null) {
-            System.err.println("Variavel ja declarada!");
-            return;
-        }
+    //Entrando no begin
+    @Override public void enterBegin(BeerParser.BeginContext ctx) {
+        table = new SymbolTable(table);
+        ctxNames.put(ctx, "begin_block");
+    }
 
-        boolean init = false;
+    @Override public void exitBegin(BeerParser.BeginContext ctx) {
+        // pass
+        return;
+    }
 
-        ParserRuleContext c = ctx;
-        String rule = ctxNames.get(c);
+    @Override public void enterCommand(BeerParser.CommandContext ctx) {
+        // TODO
+    }
 
-        //Verifica se veio de uma declaraco com atribuicao
-        if (rule.equals("cmd_decAssign")) {
-            init = true;
-        }
-
-        switch (type) {
-            case "pilsen":
-                table.add(id, new Symbol(SymbolType.PILSEN, false, init));
-                break;
-            case "ipa":
-                table.add(id, new Symbol(SymbolType.IPA, false, init));
-                break;
-            case "bock":
-                table.add(id, new Symbol(SymbolType.BOCK, false, init));
-                break;
-            case "ale":
-                table.add(id, new Symbol(SymbolType.ALE, false, init));
-                break;
-        }
-
+    @Override public void exitCommand(BeerParser.CommandContext ctx) {
+        // TODO
     }
 
     //Entrando em um simple command
@@ -231,18 +206,92 @@ public class BeerSemantic extends BeerParserBaseListener {
         }
     }
 
-    //Saindo de um value
-    //Declarando os tipos de acordo com o value
-    @Override public void exitValue(BeerParser.ValueContext ctx) {
-        if (ctx.DecimalLiteral() != null) {
-            //TODO: ver se eh int ou float(pilsen ou ipa)
-            //Soh verificar se na String tem um ponto
-            types.put(ctx, SymbolType.PILSEN);
-        } else if (ctx.BooleanLiteral() != null) {
-            types.put(ctx, SymbolType.BOCK);
-        } else if (ctx.StringLiteral() != null) {
-            types.put(ctx, SymbolType.ALE);
+    @Override public void exitSimpleCommand(BeerParser.SimpleCommandContext ctx) {
+        // TODO
+    }
+
+    //Entrando em uma funcao
+    @Override public void enterFunction(BeerParser.FunctionContext ctx) {
+        //TODO
+    }
+
+    @Override public void exitFunction(BeerParser.FunctionContext ctx) {
+        //TODO
+    }
+
+    @Override public void enterParameters(BeerParser.ParametersContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitParameters(BeerParser.ParametersContext ctx) {
+        // TODO
+    }
+
+    //Entrando em uma declaracao de variavel
+    @Override public void enterDeclaration(BeerParser.DeclarationContext ctx) {
+        //System.out.println("Entrou na declaracao!");
+        String type = ctx.type().getText();
+        String id = ctx.Identifier().getText();
+        Symbol symbol = lookup(id);
+
+        if (symbol != null) {
+            System.err.println("Variavel ja declarada!");
+            return;
         }
+
+        boolean init = false;
+
+        ParserRuleContext c = ctx;
+        String rule = ctxNames.get(c);
+
+        //Verifica se veio de uma declaraco com atribuicao
+        if (rule.equals("cmd_decAssign")) {
+            init = true;
+        }
+
+        switch (type) {
+            case "pilsen":
+                table.add(id, new Symbol(SymbolType.PILSEN, false, init));
+                break;
+            case "ipa":
+                table.add(id, new Symbol(SymbolType.IPA, false, init));
+                break;
+            case "bock":
+                table.add(id, new Symbol(SymbolType.BOCK, false, init));
+                break;
+            case "ale":
+                table.add(id, new Symbol(SymbolType.ALE, false, init));
+                break;
+        }
+
+    }
+
+    @Override public void exitDeclaration(BeerParser.DeclarationContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterNewObjectInit(BeerParser.NewObjectInitContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitNewObjectInit(BeerParser.NewObjectInitContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterType(BeerParser.TypeContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitType(BeerParser.TypeContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterTypeArray(BeerParser.TypeArrayContext ctx) {
+
+    }
+
+    @Override public void exitTypeArray(BeerParser.TypeArrayContext ctx) {
+
     }
 
     //Entrando em uma expressao
@@ -288,5 +337,145 @@ public class BeerSemantic extends BeerParserBaseListener {
         }
     }
 
+    @Override public void exitExpression(BeerParser.ExpressionContext ctx) {
+        // TODO
+    }
 
+    @Override public void enterInitArray(BeerParser.InitArrayContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitInitArray(BeerParser.InitArrayContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterBinary(BeerParser.BinaryContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitBinary(BeerParser.BinaryContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterFunctionCall(BeerParser.FunctionCallContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitFunctionCall(BeerParser.FunctionCallContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterValue(BeerParser.ValueContext ctx) {
+        // TODO
+    }
+
+    //Saindo de um value
+    //Declarando os tipos de acordo com o value
+    @Override public void exitValue(BeerParser.ValueContext ctx) {
+        if (ctx.DecimalLiteral() != null) {
+            //TODO: ver se eh int ou float(pilsen ou ipa)
+            //Soh verificar se na String tem um ponto
+            types.put(ctx, SymbolType.PILSEN);
+        } else if (ctx.BooleanLiteral() != null) {
+            types.put(ctx, SymbolType.BOCK);
+        } else if (ctx.StringLiteral() != null) {
+            types.put(ctx, SymbolType.ALE);
+        }
+    }
+
+    @Override public void enterWhileExpression(BeerParser.WhileExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitWhileExpression(BeerParser.WhileExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterForExpression(BeerParser.ForExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitForExpression(BeerParser.ForExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterSwitchExpression(BeerParser.SwitchExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitSwitchExpression(BeerParser.SwitchExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterCaseExpression(BeerParser.CaseExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitCaseExpression(BeerParser.CaseExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterDefaultExpression(BeerParser.DefaultExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitDefaultExpression(BeerParser.DefaultExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterIfExpression(BeerParser.IfExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitIfExpression(BeerParser.IfExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterPrint(BeerParser.PrintContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitPrint(BeerParser.PrintContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterRead(BeerParser.ReadContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitRead(BeerParser.ReadContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterTryExpression(BeerParser.TryExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitTryExpression(BeerParser.TryExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterCatchExpression(BeerParser.CatchExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitCatchExpression(BeerParser.CatchExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterThrowExpression(BeerParser.ThrowExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void exitThrowExpression(BeerParser.ThrowExpressionContext ctx) {
+        // TODO
+    }
+
+    @Override public void enterComment(BeerParser.CommentContext ctx) {
+        return;
+    }
+
+    @Override public void exitComment(BeerParser.CommentContext ctx) {
+        return;
+    }
 }
