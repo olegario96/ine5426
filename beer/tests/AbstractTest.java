@@ -3,6 +3,7 @@ package beer.tests;
 import beer.compiler.BeerLexer;
 import beer.compiler.BeerParser;
 import beer.compiler.BeerSemantic;
+import beer.compiler.errors.BeerErrors;
 import beer.compiler.errors.BeerLexerError;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -19,7 +20,7 @@ abstract public class AbstractTest {
     protected BeerSemantic walkAndGetBeerSemantic(String code) throws IOException {
         ParseTree tree = getParseTree(code);
         ParseTreeWalker walker = new ParseTreeWalker();
-        BeerSemantic semantic = new BeerSemantic();
+        BeerSemantic semantic = new BeerSemantic(new BeerErrors());
         walker.walk(semantic, tree);
         return semantic;
     }

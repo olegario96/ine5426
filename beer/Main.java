@@ -1,5 +1,6 @@
 package beer;
 
+import beer.compiler.errors.BeerErrors;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -61,7 +62,7 @@ public class Main {
         parser.removeErrorListener(new BeerLexerError());
         ParseTree tree = parser.program();
         ParseTreeWalker walker = new ParseTreeWalker();
-        BeerSemantic semantic = new BeerSemantic();
+        BeerSemantic semantic = new BeerSemantic(new BeerErrors(false));
         walker.walk(semantic, tree);
         return semantic.table;
     }

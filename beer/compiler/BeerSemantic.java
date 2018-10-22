@@ -1,5 +1,8 @@
 package beer.compiler;
 
+import beer.compiler.errors.BeerErrors;
+import beer.compiler.errors.BeerSemanticError;
+import beer.compiler.errors.BeerSemanticException;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.ParserRuleContext;
 
@@ -20,8 +23,13 @@ public class BeerSemantic extends BeerParserBaseListener {
     private ParseTreeProperty<String> ctxNames = new ParseTreeProperty<>();
     private ParseTreeProperty<Integer> sizes = new ParseTreeProperty<>();
 
+    protected BeerErrors errorHandler;
+
     //Constructor
     public BeerSemantic() {}
+    public BeerSemantic(BeerErrors errorHandler) {
+        this.errorHandler = errorHandler;
+    }
 
     //Declarando a tabela de simbolos
     public SymbolTable table = new SymbolTable(null);
@@ -67,13 +75,13 @@ public class BeerSemantic extends BeerParserBaseListener {
                 table = new SymbolTable(Main.parse(args, path));
                 return;
             } catch(Exception e) {
-                System.out.println(e.toString());
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError(e.toString(), ctx));
+                return;
             }
         } else {
-            System.err.println("O arquivo importado não existe!");
+            if (errorHandler != null) errorHandler.push(new BeerSemanticError("O arquivo importado não existe!", ctx));
             return;
         }
-        return;
     }
 
     //Entrando em uma classe
@@ -103,7 +111,7 @@ public class BeerSemantic extends BeerParserBaseListener {
             Symbol symbol = lookup(id);
 
             if (symbol != null) {
-                System.err.println("Variavel ja declarada!");
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id+" ja foi declarada!", ctx));
                 return;
             }
 
@@ -196,12 +204,11 @@ public class BeerSemantic extends BeerParserBaseListener {
 
             //Verificando variavel da atribuicao
             if (symbol == null) {
-                System.err.println("Variavel "+ id + " nao foi declarada!");
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id+" não foi declarada!", ctx));
                 return;
             //Verificando tipos entre variavel e expressao
             } else if (symbol.type != types.get(ctx.expression())) {
-                System.err.println("Nao eh possivel atribuir esta expressao a variavel " + id + "!");
-                System.err.println("Tipos incompativeis!");
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Nao eh possivel atribuir esta expressao a variavel " + id + "! Os tipos são incompativeis", ctx));
                 return;
             }
         }
@@ -236,7 +243,7 @@ public class BeerSemantic extends BeerParserBaseListener {
         Symbol symbol = lookup(id);
 
         if (symbol != null) {
-            System.err.println("Variavel ja declarada!");
+            if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id+" ja foi declarada!", ctx));
             return;
         }
 
@@ -308,28 +315,28 @@ public class BeerSemantic extends BeerParserBaseListener {
 
             //Verificando se alguma das variaveis nao foi declarada
             if (symbol1 == null) {
-                System.err.println("Variavel " + id1 + " nao foi declarada!");
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id1+" nao foi declarada!", ctx));
                 return;
             } else if (symbol2 == null) {
-                System.err.println("Variavel " + id2 + " nao foi declarada!");
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id2+" nao foi declarada!", ctx));
                 return;
             }
 
             //Verificando se alguma delas nao foi inicializada
             if (symbol1.initialized == false) {
-                System.err.println("Variavel " + id1 + " nao foi inicializada!");
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id1+" não foi inicializada!", ctx));
                 return;
             } else if (symbol2.initialized == false) {
-                System.err.println("Variavel " + id2 + " nao foi inicializada!");
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id2+" não foi inicializada!", ctx));
                 return;
             }
 
             //Verificando mesmo tipo
             if (symbol1.type != symbol2.type) {
-                System.err.println("Tipos incompativeis!");
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Tipos das variaveis "+id1+" e "+id2+" são incompativeis!", ctx));
                 return;
             } else if (symbol1.type != SymbolType.PILSEN && symbol1.type != SymbolType.IPA && symbol1.type != SymbolType.BOCK) {
-                System.err.println("Nao eh possivel realizar operacoes com " + symbol1.type + "!");
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Nao eh possivel realizar operacoes no tipo "+symbol1.type+" envolvendo as variaveis "+id1+" e "+id2+"!", ctx));
                 return;
             }
 

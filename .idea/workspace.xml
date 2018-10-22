@@ -17,14 +17,89 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/beer/tests/MainTest.java">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beer/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="343">
-              <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+            <state relative-caret-position="583">
+              <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beer/tests/AbstractTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="363">
+              <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeerErrors.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beer/compiler/errors/BeerErrors.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="330">
+              <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+              <folding>
+                <element signature="e#230#231#0" expanded="true" />
+                <element signature="e#255#256#0" expanded="true" />
+                <element signature="e#314#315#0" expanded="true" />
+                <element signature="e#343#344#0" expanded="true" />
+                <element signature="e#319#320#0" expanded="true" />
+                <element signature="e#366#367#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeerSemanticException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beer/compiler/errors/BeerSemanticException.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="22">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+              <folding>
+                <element signature="e#176#177#0" expanded="true" />
+                <element signature="e#196#197#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeerSemantic.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/beer/compiler/BeerSemantic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="329" column="130" lean-forward="true" selection-start-line="329" selection-start-column="16" selection-end-line="329" selection-end-column="130" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeerSemanticError.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beer/compiler/errors/BeerSemanticError.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="88">
+              <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+              <folding>
+                <element signature="e#449#450#0" expanded="true" />
+                <element signature="e#479#480#0" expanded="true" />
+                <element signature="e#507#508#0" expanded="true" />
+                <element signature="e#534#535#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BeerParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/beer/compiler/BeerParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="197">
+              <caret line="678" column="70" selection-start-line="678" selection-start-column="53" selection-end-line="678" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -45,6 +120,8 @@
       <find>Lexe</find>
       <find>BeerLexer</find>
       <find>BeerBaseLexer</find>
+      <find>toString</find>
+      <find>System.out</find>
     </findStrings>
     <replaceStrings>
       <replace>pilsen</replace>
@@ -62,9 +139,13 @@
         <option value="$PROJECT_DIR$/beer/compiler/BeerBaseLexer.java" />
         <option value="$PROJECT_DIR$/beer/compiler/BeerLexer.java" />
         <option value="$PROJECT_DIR$/beer/compiler/SymbolTable.java" />
-        <option value="$PROJECT_DIR$/beer/tests/AbstractTest.java" />
-        <option value="$PROJECT_DIR$/beer/compiler/BeerSemantic.java" />
         <option value="$PROJECT_DIR$/beer/tests/MainTest.java" />
+        <option value="$PROJECT_DIR$/beer/compiler/errors/BeerSemanticException.java" />
+        <option value="$PROJECT_DIR$/beer/tests/AbstractTest.java" />
+        <option value="$PROJECT_DIR$/beer/Main.java" />
+        <option value="$PROJECT_DIR$/beer/compiler/errors/BeerSemanticError.java" />
+        <option value="$PROJECT_DIR$/beer/compiler/errors/BeerErrors.java" />
+        <option value="$PROJECT_DIR$/beer/compiler/BeerSemantic.java" />
       </list>
     </option>
   </component>
@@ -107,11 +188,13 @@
             <path>
               <item name="ine5426" type="b2602c69:ProjectViewProjectNode" />
               <item name="beer" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="compiler" type="462c0819:PsiDirectoryNode" />
+              <item name="errors" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ine5426" type="b2602c69:ProjectViewProjectNode" />
-              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+              <item name="beer" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -132,6 +215,9 @@
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="beer.compiler.errors" />
+    </key>
     <key name="CreateClassDialog.RecentsKey">
       <recent name="" />
     </key>
@@ -264,12 +350,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="MainTest - 2018.10.22 at 11h 27m 22s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="MainTest - 2018.10.22 at 11h 28m 23s.xml">
-      <configuration name="MainTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="MainTest - 2018.10.22 at 11h 28m 27s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
@@ -294,6 +374,12 @@
     <history-entry file="MainTest - 2018.10.22 at 11h 38m 43s.xml">
       <configuration name="MainTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="MainTest - 2018.10.22 at 11h 40m 49s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="MainTest - 2018.10.22 at 12h 25m 30s.xml">
+      <configuration name="MainTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="670000" />
@@ -310,12 +396,12 @@
       <window_info anchor="right" id="Capture Analysis" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.30277187" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.30277187" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" />
       <window_info id="Designer" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1788499" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1788499" />
       <window_info anchor="bottom" id="ANTLR Preview" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -460,27 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beer/compiler/BeerParserBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8303">
-          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beer/tests/AbstractTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="9" column="43" selection-start-line="9" selection-start-column="43" selection-end-line="9" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/beer/compiler/BeerParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-11353">
-          <caret line="129" column="5" lean-forward="true" selection-start-line="129" selection-start-column="5" selection-end-line="129" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/src.zip!/java/util/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="209">
@@ -488,27 +553,48 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beer/compiler/BeerSemantic.java">
+    <entry file="file://$PROJECT_DIR$/run.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/beer/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/ANTLRErrorListener.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="155">
-          <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="132">
+          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beer/compiler/Symbol.java">
+    <entry file="jar://$PROJECT_DIR$/beer/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/BaseErrorListener.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        <state relative-caret-position="132">
+          <caret line="11" column="47" selection-start-line="11" selection-start-column="47" selection-end-line="11" selection-end-column="47" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/beer/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeListener.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/compiler/BeerParserVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="196" column="6" lean-forward="true" selection-start-line="196" selection-start-column="6" selection-end-line="196" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/compiler/errors/BeerLexerError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/beer/compiler/SymbolTable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="211">
-          <caret line="19" column="18" selection-start-line="19" selection-start-column="18" selection-end-line="19" selection-end-column="18" />
+        <state relative-caret-position="220">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
           <folding>
             <element signature="e#266#267#0" expanded="true" />
             <element signature="e#302#303#0" expanded="true" />
@@ -520,17 +606,125 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/beer/Main.java">
+    <entry file="file://$PROJECT_DIR$/beer/compiler/BeerParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="381">
-          <caret line="48" column="31" lean-forward="true" selection-start-line="48" selection-start-column="31" selection-end-line="48" selection-end-column="31" />
+        <state relative-caret-position="197">
+          <caret line="678" column="70" selection-start-line="678" selection-start-column="53" selection-end-line="678" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/src.zip!/java/lang/Throwable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="219">
+          <caret line="477" column="26" selection-start-line="477" selection-start-column="18" selection-end-line="477" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_181.jdk/Contents/Home/src.zip!/java/lang/Exception.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="44" column="36" selection-start-line="44" selection-start-column="36" selection-end-line="44" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/beer/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/ParserRuleContext.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1780">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/compiler/Symbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="44">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/beer/tests/MainTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="343">
-          <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
+        <state relative-caret-position="228">
+          <caret line="13" column="18" selection-start-line="13" selection-start-column="18" selection-end-line="13" selection-end-column="18" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/compiler/BeerParserListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/compiler/BeerParserBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="13" column="55" selection-start-line="13" selection-start-column="55" selection-end-line="13" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="583">
+          <caret line="61" column="52" selection-start-line="61" selection-start-column="52" selection-end-line="61" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/tests/AbstractTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="363">
+          <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/compiler/errors/BeerErrors.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+          <folding>
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#255#256#0" expanded="true" />
+            <element signature="e#314#315#0" expanded="true" />
+            <element signature="e#343#344#0" expanded="true" />
+            <element signature="e#319#320#0" expanded="true" />
+            <element signature="e#366#367#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/compiler/errors/BeerSemanticException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="22">
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+          <folding>
+            <element signature="e#176#177#0" expanded="true" />
+            <element signature="e#196#197#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/compiler/errors/BeerSemanticError.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="32" lean-forward="true" selection-start-line="4" selection-start-column="32" selection-end-line="4" selection-end-column="32" />
+          <folding>
+            <element signature="e#449#450#0" expanded="true" />
+            <element signature="e#479#480#0" expanded="true" />
+            <element signature="e#507#508#0" expanded="true" />
+            <element signature="e#534#535#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/beer/compiler/BeerSemantic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="329" column="130" lean-forward="true" selection-start-line="329" selection-start-column="16" selection-end-line="329" selection-end-column="130" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
