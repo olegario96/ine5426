@@ -22,9 +22,15 @@ public class SymbolTable {
     }
 
     public void print() {
+        System.out.println(toString());
+    }
+
+    public String toString() {
+        String out = "";
         for(String id : symbols.keySet()) {
-            System.out.println(id + " " +  symbols.get(id).type);
+            out = out.concat(id + " " +  symbols.get(id).type+"\n");
         }
+        return out.trim();
     }
 
 }
