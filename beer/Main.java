@@ -33,7 +33,9 @@ public class Main {
         InputStream stream;
         CharStream input;
 
-        if (args.length > 0) {
+        if (path != null) {
+            input = CharStreams.fromFileName(path);
+        } else {
             String currentPath = Paths.get("").toAbsolutePath().toString();
             String[] basePath_ = args[0].split("/");
             for (int i = 0; i < basePath_.length - 1; ++i) {
@@ -44,13 +46,13 @@ public class Main {
             String fileName = basePath_[basePath_.length-1];
             basePath = currentPath + "/" + basePath;
             File file = new File(basePath + "/" + fileName);
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            while ((lines += br.readLine()) != null) {}
+            Scanner sc = new Scanner(file);
+            while (sc.hasNext()) {
+                lines += " " + sc.next();
+            }
 
             stream = new ByteArrayInputStream(lines.getBytes(StandardCharsets.UTF_8));
             input = CharStreams.fromStream(stream, StandardCharsets.UTF_8);
-        } else {
-            input = CharStreams.fromFileName(path);
         }
 
         BeerLexer lexer = new BeerLexer(input);

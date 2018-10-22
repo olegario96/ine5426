@@ -58,9 +58,8 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void exitImportExpression(BeerParser.ImportExpressionContext ctx) {
-        String path = ctx.StringLiteral().getText();
+        String path = Main.basePath + ctx.StringLiteral().getText().replaceAll("\"", "");
         File importFile = new File(path);
-        System.out.println(Main.basePath);
         boolean fileExists = importFile.getAbsoluteFile().exists();
         if (fileExists) {
             try {
@@ -109,22 +108,24 @@ public class BeerSemantic extends BeerParserBaseListener {
             }
 
             // ParserRuleContext c = ctx;
-            // String rule = this.ctxNames.getText(c);
+            // String rule = ctxNames.getText(c);
 
-            switch (type) {
-                case "pilsen":
-                    table.add(id, new Symbol(SymbolType.PILSEN, false, false));
-                    break;
-                case "ipa":
-                    table.add(id, new Symbol(SymbolType.IPA, false, false));
-                    break;
-                case "bock":
-                    table.add(id, new Symbol(SymbolType.BOCK, false, false));
-                    break;
-                case "ale":
-                    table.add(id, new Symbol(SymbolType.ALE, false, false));
-                    break;
-            }
+            // System.out.println(">>>>");
+            // System.out.println(rule);
+            // switch (type) {
+            //     case "pilsen":
+            //         table.add(id, new Symbol(SymbolType.PILSEN, false, false));
+            //         break;
+            //     case "ipa":
+            //         table.add(id, new Symbol(SymbolType.IPA, false, false));
+            //         break;
+            //     case "bock":
+            //         table.add(id, new Symbol(SymbolType.BOCK, false, false));
+            //         break;
+            //     case "ale":
+            //         table.add(id, new Symbol(SymbolType.ALE, false, false));
+            //         break;
+            // }
         }
     }
 
@@ -472,10 +473,12 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterComment(BeerParser.CommentContext ctx) {
+        System.out.println(">>>>>");
         return;
     }
 
     @Override public void exitComment(BeerParser.CommentContext ctx) {
+        System.out.println("<<<<<");
         return;
     }
 }

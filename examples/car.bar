@@ -1,5 +1,6 @@
-chega ai queridao "Placa.bar";
+chega ai queridao "placa.bar";
 
+// testando comentario
 cerva Carro {
     Placa placa;
     lager nome;

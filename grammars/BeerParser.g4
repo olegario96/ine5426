@@ -40,7 +40,7 @@ command
     | print
     | read
     | tryExpression
-    | function
+    | functionCall
     | throwExpression
     | (Break | Return expression) SemiColon
     ;
@@ -52,7 +52,7 @@ simpleCommand
     ;
 
 function
-    :  Function (type | typeArray) Identifier OpenParent parameters CloseParent OpenBrace command* CloseBrace
+    :  Function (typeFunction | typeArray) Identifier OpenParent parameters CloseParent OpenBrace command* CloseBrace
     ;
 
 parameters
@@ -76,6 +76,15 @@ type
     | Identifier
     ;
 
+typeFunction
+    : Int
+    | Float
+    | Boolean
+    | String
+    | Void
+    | Identifier
+;
+
 typeArray
     : Array LessThan Identifier MoreThan
     ;
@@ -91,7 +100,7 @@ expression
     | initArray
     ;
 
-initArray 
+initArray
     : OpenBrace (value Comma)* value? CloseBrace
     ;
 

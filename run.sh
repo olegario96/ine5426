@@ -16,10 +16,16 @@ cp ../grammars/*.g4 compiler/;
 cp ../grammars/*.interp compiler/;
 cp ../grammars/*.tokens compiler/;
 cp ../grammars/*.ebnf compiler/;
+# cp ../grammars/*.java compiler/;
 find -name "*.java" > sources.txt;
 javac -Xlint @sources.txt
 
 # grun Beer program -gui < ../examples/testes.bar
-rm -rf *.g4 *.interp *.tokens *.ebnf;
-rm -rf ../grammars/*.java ../grammars/*.interp ../grammars/*.tokens sources.txt;
-
+find . -name *.g4 -delete;
+find . -name *.interp -delete;
+find . -name *.tokens -delete;
+find . -name *.ebnf -delete;
+rm -rf ../grammars/*.java;
+rm -rf ../grammars/*.interp;
+rm -rf ../grammars/*.tokens;
+rm -f sources.txt;
