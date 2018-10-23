@@ -26,13 +26,14 @@ abstract public class AbstractTest {
     }
 
     protected ParseTree getParseTree(String code) throws IOException {
+        code = code.concat("\u001a");
         InputStream stream = new ByteArrayInputStream(code.getBytes(StandardCharsets.UTF_8));
         CharStream input = CharStreams.fromStream(stream, StandardCharsets.UTF_8);
 
         BeerLexer lexer = new BeerLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         BeerParser parser = new BeerParser(tokens);
-        parser.removeErrorListener(new BeerLexerError());
+//        parser.removeErrorListener(new BeerLexerError());
         ParseTree tree = parser.program();
 
         return tree;

@@ -38,26 +38,27 @@ public class BeerSemantic extends BeerParserBaseListener {
     //Procura na tabela de simbolos
     public Symbol lookup(String id) {
         SymbolTable table = this.table;
-        while (table.parent != null) {
+        do {
             Symbol symbol = table.lookup(id);
-            if (symbol != null) {
+            if (symbol != null)
                 return symbol;
-            } else {
-                table = table.parent;
-            }
-        }
-        return table.lookup(id);
+
+            table = table.parent;
+        } while (table.parent != null);
+
+        return null;
     }
 
     //Comecando a analise
     //Primeira regra de BeerParser.g4
     @Override public void enterProgram(BeerParser.ProgramContext ctx) {
         table = new SymbolTable(table);
+        System.out.println("enterProgram");
         ctxNames.put(ctx, "enterProgram_block");
     }
 
     @Override public void exitProgram(BeerParser.ProgramContext ctx) {
-        // TODO
+        System.out.println("exitProgram");
     }
 
     @Override public void enterImportExpression(BeerParser.ImportExpressionContext ctx) {
@@ -148,12 +149,15 @@ public class BeerSemantic extends BeerParserBaseListener {
 
     //Entrando no begin
     @Override public void enterBegin(BeerParser.BeginContext ctx) {
+        System.out.println("enterBegin");
+
         table = new SymbolTable(table);
         ctxNames.put(ctx, "begin_block");
     }
 
     @Override public void exitBegin(BeerParser.BeginContext ctx) {
         // pass
+        System.out.println("exitBegin");
         return;
     }
 
@@ -237,7 +241,7 @@ public class BeerSemantic extends BeerParserBaseListener {
 
     //Entrando em uma declaracao de variavel
     @Override public void enterDeclaration(BeerParser.DeclarationContext ctx) {
-        //System.out.println("Entrou na declaracao!");
+        System.out.println("Entrou na declaracao!");
         String type = ctx.type().getText();
         String id = ctx.Identifier().getText();
         Symbol symbol = lookup(id);
