@@ -11,10 +11,10 @@ import static org.junit.Assert.assertEquals;
 public class MainTest extends AbstractTest {
     @Test
     public void testBasicVariableDeclarationAndSum() throws IOException {
-        String code = "taca-le pau\n" +
-                "    pilsen a = 1;\n" +
-                "    pilsen b = 1;\n" +
-                "    pilsen c = a + b;\n" +
+        String code = "taca-le pau \r\n" +
+                "    pilsen a = 1; \r\n" +
+                "    pilsen b = 1; \r\n" +
+                "    pilsen c = a + b; \r\n" +
                 "fecha conta";
 
         BeerSemantic semantic = this.walkAndGetBeerSemantic(code);

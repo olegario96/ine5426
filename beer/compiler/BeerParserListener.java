@@ -1,6 +1,5 @@
-package beer.compiler;
-
 // Generated from BeerParser.g4 by ANTLR 4.7.1
+package beer.compiler;
 import org.antlr.v4.runtime.tree.ParseTreeListener;
 
 /**
@@ -138,6 +137,16 @@ public interface BeerParserListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitType(BeerParser.TypeContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link BeerParser#typeFunction}.
+	 * @param ctx the parse tree
+	 */
+	void enterTypeFunction(BeerParser.TypeFunctionContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link BeerParser#typeFunction}.
+	 * @param ctx the parse tree
+	 */
+	void exitTypeFunction(BeerParser.TypeFunctionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link BeerParser#typeArray}.
 	 * @param ctx the parse tree

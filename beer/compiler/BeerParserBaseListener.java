@@ -1,6 +1,5 @@
-package beer.compiler;
-
 // Generated from BeerParser.g4 by ANTLR 4.7.1
+package beer.compiler;
 
 import org.antlr.v4.runtime.ParserRuleContext;
 import org.antlr.v4.runtime.tree.ErrorNode;
@@ -168,6 +167,18 @@ public class BeerParserBaseListener implements BeerParserListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitType(BeerParser.TypeContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTypeFunction(BeerParser.TypeFunctionContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTypeFunction(BeerParser.TypeFunctionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

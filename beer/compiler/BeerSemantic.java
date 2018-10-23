@@ -3,6 +3,7 @@ package beer.compiler;
 import beer.compiler.errors.BeerErrors;
 import beer.compiler.errors.BeerSemanticError;
 import beer.compiler.errors.BeerSemanticException;
+import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.ParserRuleContext;
 
@@ -15,6 +16,7 @@ import java.util.List;
 import beer.compiler.BeerParser;
 import beer.compiler.BeerParserBaseListener;
 import beer.Main;
+import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class BeerSemantic extends BeerParserBaseListener {
 
@@ -149,6 +151,7 @@ public class BeerSemantic extends BeerParserBaseListener {
 
     //Entrando no begin
     @Override public void enterBegin(BeerParser.BeginContext ctx) {
+        super.enterBegin(ctx);
         System.out.println("enterBegin");
 
         table = new SymbolTable(table);

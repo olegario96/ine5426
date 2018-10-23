@@ -9,16 +9,16 @@ export CLASSPATH=".:${pwd_}/beer/antlr-4.7.1-complete.jar:$CLASSPATH"
 alias grun='java org.antlr.v4.gui.TestRig'
 
 cd grammars;
-antlr4 -no-listener -visitor BeerLexer.g4;
-antlr4 -no-listener -visitor BeerParser.g4;
+antlr4 -package beer.compiler BeerLexer.g4;
+antlr4 -package beer.compiler BeerParser.g4;
 cd ../beer/;
 cp ../grammars/*.g4 compiler/;
 cp ../grammars/*.interp compiler/;
 cp ../grammars/*.tokens compiler/;
 cp ../grammars/*.ebnf compiler/;
-# cp ../grammars/*.java compiler/;
+cp ../grammars/*.java compiler/;
 find -name "*.java" > sources.txt;
-javac -Xlint @sources.txt
+#javac -Xlint @sources.txt
 
 # grun Beer program -gui < ../examples/testes.bar
 find . -name *.g4 -delete;

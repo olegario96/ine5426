@@ -1,6 +1,5 @@
-package beer.compiler;
-
 // Generated from BeerParser.g4 by ANTLR 4.7.1
+package beer.compiler;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -18,65 +17,65 @@ public class BeerParser extends BeerBaseParser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		MultiLineComment=1, SingleLineComment=2, RegularExpressionLiteral=3, OpenBracket=4,
-		CloseBracket=5, OpenParent=6, CloseParent=7, OpenBrace=8, CloseBrace=9,
-		SemiColon=10, Comma=11, Assign=12, QuestionMark=13, Colon=14, Dot=15,
-		PlusPlus=16, MinusMinus=17, Plus=18, Minus=19, Not=20, Multiply=21, Divide=22,
-		Modulus=23, LessThan=24, MoreThan=25, LessThanEquals=26, GreaterThanEquals=27,
-		EqualsSymbol=28, NotEquals=29, And=30, Or=31, MultiplyAssign=32, DivideAssign=33,
-		ModulusAssign=34, PlusAssign=35, MinusAssign=36, NullLiteral=37, BooleanLiteral=38,
-		DecimalLiteral=39, HexIntegerLiteral=40, Break=41, Case=42, Else=43, ElseIf=44,
-		New=45, Catch=46, Return=47, Void=48, Continue=49, For=50, Switch=51,
-		While=52, Function=53, This=54, Default=55, If=56, Throw=57, In=58, Try=59,
-		MainInit=60, MainFinish=61, Int=62, Float=63, Boolean=64, String=65, Array=66,
-		Print=67, Read=68, Class=69, Const=70, Import=71, Static=72, Identifier=73,
-		StringLiteral=74, TemplateStringLiteral=75, WhiteSpaces=76, LineTerminator=77,
+		MultiLineComment=1, SingleLineComment=2, RegularExpressionLiteral=3, OpenBracket=4, 
+		CloseBracket=5, OpenParent=6, CloseParent=7, OpenBrace=8, CloseBrace=9, 
+		SemiColon=10, Comma=11, Assign=12, QuestionMark=13, Colon=14, Dot=15, 
+		PlusPlus=16, MinusMinus=17, Plus=18, Minus=19, Not=20, Multiply=21, Divide=22, 
+		Modulus=23, LessThan=24, MoreThan=25, LessThanEquals=26, GreaterThanEquals=27, 
+		EqualsSymbol=28, NotEquals=29, And=30, Or=31, MultiplyAssign=32, DivideAssign=33, 
+		ModulusAssign=34, PlusAssign=35, MinusAssign=36, NullLiteral=37, BooleanLiteral=38, 
+		DecimalLiteral=39, HexIntegerLiteral=40, Break=41, Case=42, Else=43, ElseIf=44, 
+		New=45, Catch=46, Return=47, Void=48, Continue=49, For=50, Switch=51, 
+		While=52, Function=53, This=54, Default=55, If=56, Throw=57, In=58, Try=59, 
+		MainInit=60, MainFinish=61, Int=62, Float=63, Boolean=64, String=65, Array=66, 
+		Print=67, Read=68, Class=69, Const=70, Import=71, Static=72, Identifier=73, 
+		StringLiteral=74, TemplateStringLiteral=75, WhiteSpaces=76, LineTerminator=77, 
 		UnexpectedCharacter=78;
 	public static final int
-		RULE_program = 0, RULE_importExpression = 1, RULE_initClass = 2, RULE_method = 3,
-		RULE_constructor = 4, RULE_begin = 5, RULE_command = 6, RULE_simpleCommand = 7,
-		RULE_function = 8, RULE_parameters = 9, RULE_declaration = 10, RULE_newObjectInit = 11,
-		RULE_type = 12, RULE_typeFunction = 13, RULE_typeArray = 14, RULE_expression = 15,
-		RULE_initArray = 16, RULE_binary = 17, RULE_functionCall = 18, RULE_value = 19,
-		RULE_whileExpression = 20, RULE_forExpression = 21, RULE_switchExpression = 22,
-		RULE_caseExpression = 23, RULE_defaultExpression = 24, RULE_ifExpression = 25,
-		RULE_print = 26, RULE_read = 27, RULE_tryExpression = 28, RULE_catchExpression = 29,
+		RULE_program = 0, RULE_importExpression = 1, RULE_initClass = 2, RULE_method = 3, 
+		RULE_constructor = 4, RULE_begin = 5, RULE_command = 6, RULE_simpleCommand = 7, 
+		RULE_function = 8, RULE_parameters = 9, RULE_declaration = 10, RULE_newObjectInit = 11, 
+		RULE_type = 12, RULE_typeFunction = 13, RULE_typeArray = 14, RULE_expression = 15, 
+		RULE_initArray = 16, RULE_binary = 17, RULE_functionCall = 18, RULE_value = 19, 
+		RULE_whileExpression = 20, RULE_forExpression = 21, RULE_switchExpression = 22, 
+		RULE_caseExpression = 23, RULE_defaultExpression = 24, RULE_ifExpression = 25, 
+		RULE_print = 26, RULE_read = 27, RULE_tryExpression = 28, RULE_catchExpression = 29, 
 		RULE_throwExpression = 30, RULE_comment = 31;
 	public static final String[] ruleNames = {
-		"program", "importExpression", "initClass", "method", "constructor", "begin",
-		"command", "simpleCommand", "function", "parameters", "declaration", "newObjectInit",
-		"type", "typeFunction", "typeArray", "expression", "initArray", "binary",
-		"functionCall", "value", "whileExpression", "forExpression", "switchExpression",
-		"caseExpression", "defaultExpression", "ifExpression", "print", "read",
+		"program", "importExpression", "initClass", "method", "constructor", "begin", 
+		"command", "simpleCommand", "function", "parameters", "declaration", "newObjectInit", 
+		"type", "typeFunction", "typeArray", "expression", "initArray", "binary", 
+		"functionCall", "value", "whileExpression", "forExpression", "switchExpression", 
+		"caseExpression", "defaultExpression", "ifExpression", "print", "read", 
 		"tryExpression", "catchExpression", "throwExpression", "comment"
 	};
 
 	private static final String[] _LITERAL_NAMES = {
-		null, null, null, null, "'['", "']'", "'('", "')'", "'{'", "'}'", "';'",
-		"','", "'='", "'?'", "':'", "'.'", "'++'", "'--'", "'+'", "'-'", "'!'",
-		"'*'", "'/'", "'%'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'&&'",
-		"'||'", "'*='", "'/='", "'%='", "'+='", "'-='", "'casco vazio'", null,
-		null, null, "'quebrou o copo'", "'opcao'", "'ta nao patrao'", "'tem certeza'",
-		"'nova no mercado'", "'lei seca'", "'desce uma'", "'bar vazio'", "'traz mais uma'",
-		"'tomar todas'", "'cardapio'", "'encher a cara'", "'traz pra nois aquela'",
-		"'tu memo'", "'brahma'", "'ta gelada'", "'deu pt'", "'de'", "'to cagano de medo'",
-		"'taca-le pau'", "'fecha conta'", "'pilsen'", "'ipa'", "'bock'", "'ale'",
-		"'por\u00E7\u00E3o'", "'conta pra gente'", "'qual a boa'", "'cerva'",
+		null, null, null, null, "'['", "']'", "'('", "')'", "'{'", "'}'", "';'", 
+		"','", "'='", "'?'", "':'", "'.'", "'++'", "'--'", "'+'", "'-'", "'!'", 
+		"'*'", "'/'", "'%'", "'<'", "'>'", "'<='", "'>='", "'=='", "'!='", "'&&'", 
+		"'||'", "'*='", "'/='", "'%='", "'+='", "'-='", "'casco vazio'", null, 
+		null, null, "'quebrou o copo'", "'opcao'", "'ta nao patrao'", "'tem certeza'", 
+		"'nova no mercado'", "'lei seca'", "'desce uma'", "'bar vazio'", "'traz mais uma'", 
+		"'tomar todas'", "'cardapio'", "'encher a cara'", "'traz pra nois aquela'", 
+		"'tu memo'", "'brahma'", "'ta gelada'", "'deu pt'", "'de'", "'to cagano de medo'", 
+		"'taca-le pau'", "'fecha conta'", "'pilsen'", "'ipa'", "'bock'", "'ale'", 
+		"'por\u00E7\u00E3o'", "'conta pra gente'", "'qual a boa'", "'cerva'", 
 		"'trincando'", "'chega ai queridao'", "'da galera'"
 	};
 	private static final String[] _SYMBOLIC_NAMES = {
-		null, "MultiLineComment", "SingleLineComment", "RegularExpressionLiteral",
-		"OpenBracket", "CloseBracket", "OpenParent", "CloseParent", "OpenBrace",
-		"CloseBrace", "SemiColon", "Comma", "Assign", "QuestionMark", "Colon",
-		"Dot", "PlusPlus", "MinusMinus", "Plus", "Minus", "Not", "Multiply", "Divide",
-		"Modulus", "LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals",
-		"EqualsSymbol", "NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign",
-		"ModulusAssign", "PlusAssign", "MinusAssign", "NullLiteral", "BooleanLiteral",
-		"DecimalLiteral", "HexIntegerLiteral", "Break", "Case", "Else", "ElseIf",
-		"New", "Catch", "Return", "Void", "Continue", "For", "Switch", "While",
-		"Function", "This", "Default", "If", "Throw", "In", "Try", "MainInit",
-		"MainFinish", "Int", "Float", "Boolean", "String", "Array", "Print", "Read",
-		"Class", "Const", "Import", "Static", "Identifier", "StringLiteral", "TemplateStringLiteral",
+		null, "MultiLineComment", "SingleLineComment", "RegularExpressionLiteral", 
+		"OpenBracket", "CloseBracket", "OpenParent", "CloseParent", "OpenBrace", 
+		"CloseBrace", "SemiColon", "Comma", "Assign", "QuestionMark", "Colon", 
+		"Dot", "PlusPlus", "MinusMinus", "Plus", "Minus", "Not", "Multiply", "Divide", 
+		"Modulus", "LessThan", "MoreThan", "LessThanEquals", "GreaterThanEquals", 
+		"EqualsSymbol", "NotEquals", "And", "Or", "MultiplyAssign", "DivideAssign", 
+		"ModulusAssign", "PlusAssign", "MinusAssign", "NullLiteral", "BooleanLiteral", 
+		"DecimalLiteral", "HexIntegerLiteral", "Break", "Case", "Else", "ElseIf", 
+		"New", "Catch", "Return", "Void", "Continue", "For", "Switch", "While", 
+		"Function", "This", "Default", "If", "Throw", "In", "Try", "MainInit", 
+		"MainFinish", "Int", "Float", "Boolean", "String", "Array", "Print", "Read", 
+		"Class", "Const", "Import", "Static", "Identifier", "StringLiteral", "TemplateStringLiteral", 
 		"WhiteSpaces", "LineTerminator", "UnexpectedCharacter"
 	};
 	public static final Vocabulary VOCABULARY = new VocabularyImpl(_LITERAL_NAMES, _SYMBOLIC_NAMES);
@@ -147,9 +146,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_program; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitProgram(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterProgram(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitProgram(this);
 		}
 	}
 
@@ -218,9 +220,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_importExpression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitImportExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterImportExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitImportExpression(this);
 		}
 	}
 
@@ -265,9 +270,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_initClass; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitInitClass(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterInitClass(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitInitClass(this);
 		}
 	}
 
@@ -330,9 +338,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_method; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitMethod(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterMethod(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitMethod(this);
 		}
 	}
 
@@ -401,9 +412,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_constructor; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitConstructor(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterConstructor(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitConstructor(this);
 		}
 	}
 
@@ -467,9 +481,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_begin; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitBegin(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterBegin(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitBegin(this);
 		}
 	}
 
@@ -553,9 +570,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_command; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitCommand(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterCommand(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitCommand(this);
 		}
 	}
 
@@ -698,9 +718,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_simpleCommand; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitSimpleCommand(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterSimpleCommand(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitSimpleCommand(this);
 		}
 	}
 
@@ -815,9 +838,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_function; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitFunction(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitFunction(this);
 		}
 	}
 
@@ -908,9 +934,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_parameters; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitParameters(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterParameters(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitParameters(this);
 		}
 	}
 
@@ -939,7 +968,7 @@ public class BeerParser extends BeerBaseParser {
 						setState(179);
 						match(Comma);
 						}
-						}
+						} 
 					}
 					setState(185);
 					_errHandler.sync(this);
@@ -976,9 +1005,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_declaration; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitDeclaration(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterDeclaration(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitDeclaration(this);
 		}
 	}
 
@@ -1043,9 +1075,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_newObjectInit; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitNewObjectInit(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterNewObjectInit(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitNewObjectInit(this);
 		}
 	}
 
@@ -1080,7 +1115,7 @@ public class BeerParser extends BeerBaseParser {
 						setState(201);
 						match(Comma);
 						}
-						}
+						} 
 					}
 					setState(206);
 					_errHandler.sync(this);
@@ -1117,9 +1152,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_type; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitType(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterType(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitType(this);
 		}
 	}
 
@@ -1165,9 +1203,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_typeFunction; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitTypeFunction(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterTypeFunction(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitTypeFunction(this);
 		}
 	}
 
@@ -1211,9 +1252,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_typeArray; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitTypeArray(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterTypeArray(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitTypeArray(this);
 		}
 	}
 
@@ -1275,9 +1319,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_expression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitExpression(this);
 		}
 	}
 
@@ -1367,7 +1414,7 @@ public class BeerParser extends BeerBaseParser {
 					setState(237);
 					expression(7);
 					}
-					}
+					} 
 				}
 				setState(243);
 				_errHandler.sync(this);
@@ -1404,9 +1451,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_initArray; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitInitArray(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterInitArray(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitInitArray(this);
 		}
 	}
 
@@ -1432,7 +1482,7 @@ public class BeerParser extends BeerBaseParser {
 					setState(246);
 					match(Comma);
 					}
-					}
+					} 
 				}
 				setState(252);
 				_errHandler.sync(this);
@@ -1482,9 +1532,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_binary; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitBinary(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterBinary(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitBinary(this);
 		}
 	}
 
@@ -1535,9 +1588,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_functionCall; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitFunctionCall(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterFunctionCall(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitFunctionCall(this);
 		}
 	}
 
@@ -1574,7 +1630,7 @@ public class BeerParser extends BeerBaseParser {
 							setState(263);
 							match(Comma);
 							}
-							}
+							} 
 						}
 						setState(268);
 						_errHandler.sync(this);
@@ -1617,7 +1673,7 @@ public class BeerParser extends BeerBaseParser {
 							setState(278);
 							match(Comma);
 							}
-							}
+							} 
 						}
 						setState(283);
 						_errHandler.sync(this);
@@ -1654,9 +1710,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_value; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitValue(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterValue(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitValue(this);
 		}
 	}
 
@@ -1710,9 +1769,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_whileExpression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitWhileExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterWhileExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitWhileExpression(this);
 		}
 	}
 
@@ -1794,9 +1856,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_forExpression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitForExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterForExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitForExpression(this);
 		}
 	}
 
@@ -1938,9 +2003,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_switchExpression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitSwitchExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterSwitchExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitSwitchExpression(this);
 		}
 	}
 
@@ -2017,9 +2085,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_caseExpression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitCaseExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterCaseExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitCaseExpression(this);
 		}
 	}
 
@@ -2078,9 +2149,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_defaultExpression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitDefaultExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterDefaultExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitDefaultExpression(this);
 		}
 	}
 
@@ -2168,9 +2242,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_ifExpression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitIfExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterIfExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitIfExpression(this);
 		}
 	}
 
@@ -2303,9 +2380,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_print; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitPrint(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterPrint(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitPrint(this);
 		}
 	}
 
@@ -2349,9 +2429,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_read; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitRead(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterRead(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitRead(this);
 		}
 	}
 
@@ -2402,9 +2485,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_tryExpression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitTryExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterTryExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitTryExpression(this);
 		}
 	}
 
@@ -2468,9 +2554,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_catchExpression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitCatchExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterCatchExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitCatchExpression(this);
 		}
 	}
 
@@ -2531,9 +2620,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_throwExpression; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitThrowExpression(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterThrowExpression(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitThrowExpression(this);
 		}
 	}
 
@@ -2570,9 +2662,12 @@ public class BeerParser extends BeerBaseParser {
 		}
 		@Override public int getRuleIndex() { return RULE_comment; }
 		@Override
-		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof BeerParserVisitor ) return ((BeerParserVisitor<? extends T>)visitor).visitComment(this);
-			else return visitor.visitChildren(this);
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).enterComment(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof BeerParserListener ) ((BeerParserListener)listener).exitComment(this);
 		}
 	}
 
