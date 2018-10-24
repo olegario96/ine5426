@@ -64,6 +64,8 @@ public class Main {
         ParseTreeWalker walker = new ParseTreeWalker();
         BeerSemantic semantic = new BeerSemantic(new BeerErrors(false));
         walker.walk(semantic, tree);
+        //System.out.println(tree.toStringTree(parser));
+
         return semantic.table;
     }
 }

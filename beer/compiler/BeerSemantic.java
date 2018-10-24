@@ -56,22 +56,14 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void enterProgram(BeerParser.ProgramContext ctx) {
         //Controlando escopo
         table = new SymbolTable(table);
-
-        //System.out.println("enterProgram");
-        //ctxNames.put(ctx, "enterProgram_block");
     }
 
     @Override public void exitProgram(BeerParser.ProgramContext ctx) {
-        //System.out.println("exitProgram");
-        
         //Controlando escopo
         table = table.parent;
     }
 
-    @Override public void enterImportExpression(BeerParser.ImportExpressionContext ctx) {
-        //table = new SymbolTable(table);
-        //ctxNames.put(ctx, "import_block");
-    }
+    @Override public void enterImportExpression(BeerParser.ImportExpressionContext ctx) {}
 
     @Override public void exitImportExpression(BeerParser.ImportExpressionContext ctx) {
         String path = Main.basePath + ctx.StringLiteral().getText().replaceAll("\"", "");
@@ -92,7 +84,6 @@ public class BeerSemantic extends BeerParserBaseListener {
         }
     }
 
-    //Entrando em uma classe
     @Override public void enterInitClass(BeerParser.InitClassContext ctx) {
         //Controlando escopo
         table = new SymbolTable(table);
@@ -105,8 +96,6 @@ public class BeerSemantic extends BeerParserBaseListener {
         table = table.parent;
     }
 
-    //Entrando em um comando de uma classe
-    //Pode ser declaracao de atributo, funcao ou construtor
     @Override public void enterMethod(BeerParser.MethodContext ctx) {
         //Controlando escopo
         table = new SymbolTable(table);
@@ -170,10 +159,6 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void exitBegin(BeerParser.BeginContext ctx) {
-        // pass
-        //System.out.println("exitBegin");
-        //return;
-
         //Controlando escopo
         table = table.parent;
     }
@@ -204,7 +189,7 @@ public class BeerSemantic extends BeerParserBaseListener {
         //Atribuicao de varias maneiras
         } else if (ctx.Identifier() != null && ctx.expression() != null) {
             if (ctx.Assign() != null) {
-                ctxNames.put(ctx.expression(), "cmd_assign");
+                ctxNames.put(ctx, "cmd_assign");
             } else if (ctx.MultiplyAssign() != null) {
                 ctxNames.put(ctx.declaration(), "cmd_multiplyAssign");
             } else if (ctx.DivideAssign() != null) {
@@ -216,7 +201,6 @@ public class BeerSemantic extends BeerParserBaseListener {
             } else if (ctx.MinusAssign() != null) {
                 ctxNames.put(ctx.declaration(), "cmd_minusAssign");
             }
-
         }
     }
 
@@ -247,7 +231,6 @@ public class BeerSemantic extends BeerParserBaseListener {
             //Verificando variavel da atribuicao
             if (symbol == null) {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id+" não foi declarada!", ctx));
-                System.out.println("Variavel "+id+" não foi declarada!");
                 return;
             //Verificando tipos entre variavel e expressao
             //Isso nao vai ficar aqui
@@ -256,17 +239,31 @@ public class BeerSemantic extends BeerParserBaseListener {
                 return;
             }
         } else if (rule.equals("cmd_assign")) {
+            String id = ctx.Identifier().getText();
+            Symbol symbol = lookup(id);
+
+            if (symbol == null) {
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id+" não foi declarada!", ctx));
+                return;
+            }
+
+            symbol.initialized = true;
 
         }
-         
     }
 
     //Entrando em uma funcao
     @Override public void enterFunction(BeerParser.FunctionContext ctx) {
+        //Controlando escopo
+        table = new SymbolTable(table);
+
         //TODO
     }
 
     @Override public void exitFunction(BeerParser.FunctionContext ctx) {
+        //Controlando escopo
+        table = table.parent;
+
         //TODO
     }
 
@@ -340,23 +337,12 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterTypeArray(BeerParser.TypeArrayContext ctx) {
-
+        // TODO
     }
 
     @Override public void exitTypeArray(BeerParser.TypeArrayContext ctx) {
-
+        // TODO
     }
-
-/*expression
-    : Not expression
-    | OpenParent expression CloseParent
-    | expression binary expression
-    | functionCall
-    | value
-    | Identifier
-    | newObjectInit
-    | initArray
-    ;*/
 
     //Entrando em uma expressao
     @Override public void enterExpression(BeerParser.ExpressionContext ctx) {
@@ -380,7 +366,6 @@ public class BeerSemantic extends BeerParserBaseListener {
         } else if (ctx.initArray() != null) {
             ctxNames.put(ctx, "exp_initArray");
         }
-
     }
 
     @Override public void exitExpression(BeerParser.ExpressionContext ctx) {
@@ -497,9 +482,12 @@ public class BeerSemantic extends BeerParserBaseListener {
     //Declarando os tipos de acordo com o value
     @Override public void exitValue(BeerParser.ValueContext ctx) {
         if (ctx.DecimalLiteral() != null) {
-            //TODO: ver se eh int ou float(pilsen ou ipa)
-            //Soh verificar se na String tem um ponto
-            types.put(ctx, SymbolType.PILSEN);
+            String valor = ctx.DecimalLiteral().toString();
+            if (valor.contains(".")) {
+                types.put(ctx, SymbolType.IPA);
+            } else {
+                types.put(ctx, SymbolType.PILSEN);
+            }
         } else if (ctx.BooleanLiteral() != null) {
             types.put(ctx, SymbolType.BOCK);
         } else if (ctx.StringLiteral() != null) {
@@ -508,18 +496,30 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterWhileExpression(BeerParser.WhileExpressionContext ctx) {
+        //Controlando escopo
+        table = new SymbolTable(table);
+
         // TODO
     }
 
     @Override public void exitWhileExpression(BeerParser.WhileExpressionContext ctx) {
+        //Controlando escopo
+        table = table.parent;
+
         // TODO
     }
 
     @Override public void enterForExpression(BeerParser.ForExpressionContext ctx) {
+        //Controlando escopo
+        table = new SymbolTable(table);
+
         // TODO
     }
 
     @Override public void exitForExpression(BeerParser.ForExpressionContext ctx) {
+        //Controlando escopo
+        table = table.parent;
+
         // TODO
     }
 
@@ -532,18 +532,30 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterCaseExpression(BeerParser.CaseExpressionContext ctx) {
+        //Controlando escopo
+        table = new SymbolTable(table);
+
         // TODO
     }
 
     @Override public void exitCaseExpression(BeerParser.CaseExpressionContext ctx) {
+        //Controlando escopo
+        table = table.parent;
+
         // TODO
     }
 
     @Override public void enterDefaultExpression(BeerParser.DefaultExpressionContext ctx) {
+        //Controlando escopo
+        table = new SymbolTable(table);
+
         // TODO
     }
 
     @Override public void exitDefaultExpression(BeerParser.DefaultExpressionContext ctx) {
+        //Controlando escopo
+        table = table.parent;
+
         // TODO
     }
 
@@ -574,6 +586,9 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterTryExpression(BeerParser.TryExpressionContext ctx) {
+        //Controlando escopo
+        table = new SymbolTable(table);
+
         // TODO
     }
 
@@ -582,6 +597,9 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterCatchExpression(BeerParser.CatchExpressionContext ctx) {
+        //Controlando escopo
+        table = new SymbolTable(table);
+
         // TODO
     }
 
@@ -607,3 +625,5 @@ public class BeerSemantic extends BeerParserBaseListener {
         return;
     }
 }
+
+

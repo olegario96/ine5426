@@ -1,5 +1,31 @@
 taca-le pau
-    ale b = "oi";
-	pilsen a = 1 + b;
+	/* Dupla declaracao */
+    pilsen a;
+    ale a;
+
+    /* Atribuicao de valor de tipo errado */
+    pilsen b = "erro de tipo";
+
+    /* Atribuir valor sem declarar */
+    c = 1;
+
+    /* Expressao com tipos invalidos */
+    ale d = "bolso";
+    ale e = "naro";
+    ale f = d * e;
+
+    /* Expressao com tipos diferentes */
+    bock g = gelada;
+    a = 1 + g;
+
+    /* Expressao com valor nao inicializado */
+    pilsen h;
+    a = 1 + h;
 	
+	/* Atribuicao com valor fora do escopo */
+	ta gelada (a == 1)? {
+		pilsen i = 1;
+	}
+	i = 2;
+
 fecha conta
