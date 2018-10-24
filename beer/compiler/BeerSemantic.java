@@ -180,6 +180,7 @@ public class BeerSemantic extends BeerParserBaseListener {
         //Apenas uma expressao
         if (ctx.declaration() != null && ctx.Assign() != null ) {
             ctxNames.put(ctx.declaration(), "cmd_decAssign");
+            ctxNames.put(ctx, "cmd_decAssign");
         //Declaracao com atribuicao
         } else if (ctx.expression() != null && ctx.Identifier() == null) {
             ctxNames.put(ctx.expression(), "cmd_expression");
@@ -204,14 +205,39 @@ public class BeerSemantic extends BeerParserBaseListener {
 
             //Gambiarra
             //Executando forcado a expressao da atribuicao
-            enterExpression(ctx.expression());
+            //enterExpression(ctx.expression());
 
-            String id = ctx.Identifier().getText();
+        }
+    }
+
+    @Override public void exitSimpleCommand(BeerParser.SimpleCommandContext ctx) {
+        
+        String rule = ctxNames.get(ctx);
+
+        if (rule == null) {
+            return;
+        }
+
+        if (rule.equals("cmd_decAssign")) {
+            SymbolType type_value = types.get(ctx.expression().value());
+            SymbolType type_var = types.get(ctx.declaration().type());
+
+            String id = ctx.declaration().Identifier().getText();
+            Symbol symbol = lookup(id);
+
+            if (type_var != type_value) {
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Valor inesperado para a variavel " + "'" + id + "'" + "!", ctx));
+                System.out.println("Valor inesperado para a variavel " + "'" + id + "'" + "!");
+                return;
+            }
+        } else if (rule.equals("cmd_declaration")) {
+            String id = ctx.declaration().Identifier().getText();
             Symbol symbol = lookup(id);
 
             //Verificando variavel da atribuicao
             if (symbol == null) {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id+" não foi declarada!", ctx));
+                System.out.println("Variavel "+id+" não foi declarada!");
                 return;
             //Verificando tipos entre variavel e expressao
             } else if (symbol.type != types.get(ctx.expression())) {
@@ -219,10 +245,7 @@ public class BeerSemantic extends BeerParserBaseListener {
                 return;
             }
         }
-    }
-
-    @Override public void exitSimpleCommand(BeerParser.SimpleCommandContext ctx) {
-        // TODO
+         
     }
 
     //Entrando em uma funcao
@@ -244,7 +267,7 @@ public class BeerSemantic extends BeerParserBaseListener {
 
     //Entrando em uma declaracao de variavel
     @Override public void enterDeclaration(BeerParser.DeclarationContext ctx) {
-        System.out.println("Entrou na declaracao!");
+        //System.out.println("Entrou na declaracao!");
         String type = ctx.type().getText();
         String id = ctx.Identifier().getText();
         Symbol symbol = lookup(id);
@@ -260,10 +283,14 @@ public class BeerSemantic extends BeerParserBaseListener {
         String rule = ctxNames.get(c);
 
         //Verifica se veio de uma declaraco com atribuicao
-        if (rule.equals("cmd_decAssign")) {
-            init = true;
+        if (rule != null) {
+            if (rule.equals("cmd_decAssign")) {
+                init = true; 
+            }
         }
+        
 
+        //Adicionando na tabela de simbolos
         switch (type) {
             case "pilsen":
                 table.add(id, new Symbol(SymbolType.PILSEN, false, init));
@@ -278,7 +305,6 @@ public class BeerSemantic extends BeerParserBaseListener {
                 table.add(id, new Symbol(SymbolType.ALE, false, init));
                 break;
         }
-
     }
 
     @Override public void exitDeclaration(BeerParser.DeclarationContext ctx) {
@@ -311,6 +337,20 @@ public class BeerSemantic extends BeerParserBaseListener {
 
     //Entrando em uma expressao
     @Override public void enterExpression(BeerParser.ExpressionContext ctx) {
+        
+        ParserRuleContext c = ctx;
+        String rule = ctxNames.get(c);
+
+        //Verifica se veio de uma declaraco com atribuicao
+        if (rule == null) {
+            return;
+        }
+
+        if (rule.equals("cmd_decAssign")) {
+            SymbolType type_value = types.get(ctx.value());
+            types.put(ctx, type_value);
+        }
+
         //Expressao binaria
         //Soh considera expressao com duas variaveis
         //TODO: considerar expressoes com mais variaveis
