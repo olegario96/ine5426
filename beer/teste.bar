@@ -1,5 +1,5 @@
 taca-le pau
-    pilsen a = 1;
-    pilsen b = 1;
-    pilsen c = a + b;
+    ale b = "oi";
+	pilsen a = 1 + b;
+	
 fecha conta

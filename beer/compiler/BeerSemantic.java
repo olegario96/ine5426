@@ -27,7 +27,7 @@ public class BeerSemantic extends BeerParserBaseListener {
 
     protected BeerErrors errorHandler;
 
-    //Constructor
+    //Construtor
     public BeerSemantic() {}
     public BeerSemantic(BeerErrors errorHandler) {
         this.errorHandler = errorHandler;
@@ -54,18 +54,23 @@ public class BeerSemantic extends BeerParserBaseListener {
     //Comecando a analise
     //Primeira regra de BeerParser.g4
     @Override public void enterProgram(BeerParser.ProgramContext ctx) {
+        //Controlando escopo
         table = new SymbolTable(table);
-        System.out.println("enterProgram");
-        ctxNames.put(ctx, "enterProgram_block");
+
+        //System.out.println("enterProgram");
+        //ctxNames.put(ctx, "enterProgram_block");
     }
 
     @Override public void exitProgram(BeerParser.ProgramContext ctx) {
-        System.out.println("exitProgram");
+        //System.out.println("exitProgram");
+        
+        //Controlando escopo
+        table = table.parent;
     }
 
     @Override public void enterImportExpression(BeerParser.ImportExpressionContext ctx) {
-        table = new SymbolTable(table);
-        ctxNames.put(ctx, "import_block");
+        //table = new SymbolTable(table);
+        //ctxNames.put(ctx, "import_block");
     }
 
     @Override public void exitImportExpression(BeerParser.ImportExpressionContext ctx) {
@@ -91,20 +96,20 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void enterInitClass(BeerParser.InitClassContext ctx) {
         //Controlando escopo
         table = new SymbolTable(table);
-        ctxNames.put(ctx, "initClass_block");
     }
 
     @Override public void exitInitClass(BeerParser.InitClassContext ctx) {
         //Adicionando nome da classe a tabela de simbolos
         String id = ctx.Identifier().getText();
         table.add(id, new Symbol(SymbolType.CLASS, true, false));
+        table = table.parent;
     }
 
     //Entrando em um comando de uma classe
     //Pode ser declaracao de atributo, funcao ou construtor
     @Override public void enterMethod(BeerParser.MethodContext ctx) {
+        //Controlando escopo
         table = new SymbolTable(table);
-        ctxNames.put(ctx, "method_block");
     }
 
     @Override public void exitMethod(BeerParser.MethodContext ctx) {
@@ -118,50 +123,59 @@ public class BeerSemantic extends BeerParserBaseListener {
                 return;
             }
 
-            // ParserRuleContext c = ctx;
-            // String rule = ctxNames.getText(c);
+             /*ParserRuleContext c = ctx;
+             String rule = ctxNames.getText(c);
 
-            // System.out.println(">>>>");
-            // System.out.println(rule);
-            // switch (type) {
-            //     case "pilsen":
-            //         table.add(id, new Symbol(SymbolType.PILSEN, false, false));
-            //         break;
-            //     case "ipa":
-            //         table.add(id, new Symbol(SymbolType.IPA, false, false));
-            //         break;
-            //     case "bock":
-            //         table.add(id, new Symbol(SymbolType.BOCK, false, false));
-            //         break;
-            //     case "ale":
-            //         table.add(id, new Symbol(SymbolType.ALE, false, false));
-            //         break;
-            // }
+             System.out.println(">>>>");
+             System.out.println(rule);
+             switch (type) {
+                 case "pilsen":
+                     table.add(id, new Symbol(SymbolType.PILSEN, false, false));
+                     break;
+                 case "ipa":
+                     table.add(id, new Symbol(SymbolType.IPA, false, false));
+                     break;
+                 case "bock":
+                     table.add(id, new Symbol(SymbolType.BOCK, false, false));
+                     break;
+                 case "ale":
+                     table.add(id, new Symbol(SymbolType.ALE, false, false));
+                     break;
+             }*/
         }
+
+        //Controlando escopo
+        table = table.parent;
     }
 
     @Override public void enterConstructor(BeerParser.ConstructorContext ctx) {
+        //Controlando escopo
         table = new SymbolTable(table);
-        ctxNames.put(ctx, "constructor_block");
+        //ctxNames.put(ctx, "constructor_block");
     }
 
     @Override public void exitConstructor(BeerParser.ConstructorContext ctx) {
-        // TODO
+        //Controlando escopo
+        table = table.parent;
     }
 
     //Entrando no begin
     @Override public void enterBegin(BeerParser.BeginContext ctx) {
-        super.enterBegin(ctx);
-        System.out.println("enterBegin");
+        //super.enterBegin(ctx);
+        //System.out.println("enterBegin");
 
+        //Controlando escopo
         table = new SymbolTable(table);
-        ctxNames.put(ctx, "begin_block");
+        //ctxNames.put(ctx, "begin_block");
     }
 
     @Override public void exitBegin(BeerParser.BeginContext ctx) {
         // pass
-        System.out.println("exitBegin");
-        return;
+        //System.out.println("exitBegin");
+        //return;
+
+        //Controlando escopo
+        table = table.parent;
     }
 
     @Override public void enterCommand(BeerParser.CommandContext ctx) {
@@ -175,13 +189,13 @@ public class BeerSemantic extends BeerParserBaseListener {
     //Entrando em um simple command
     @Override public void enterSimpleCommand(BeerParser.SimpleCommandContext ctx) {
 
-        //Declarando contexto (nem todos podem ser uteis)
+        //Declarando contextos
 
-        //Apenas uma expressao
+        //Declaracao com atribuicao
         if (ctx.declaration() != null && ctx.Assign() != null ) {
             ctxNames.put(ctx.declaration(), "cmd_decAssign");
             ctxNames.put(ctx, "cmd_decAssign");
-        //Declaracao com atribuicao
+        //Apenas uma expressao
         } else if (ctx.expression() != null && ctx.Identifier() == null) {
             ctxNames.put(ctx.expression(), "cmd_expression");
         //Apenas declaracao
@@ -190,7 +204,7 @@ public class BeerSemantic extends BeerParserBaseListener {
         //Atribuicao de varias maneiras
         } else if (ctx.Identifier() != null && ctx.expression() != null) {
             if (ctx.Assign() != null) {
-                ctxNames.put(ctx.declaration(), "cmd_assign");
+                ctxNames.put(ctx.expression(), "cmd_assign");
             } else if (ctx.MultiplyAssign() != null) {
                 ctxNames.put(ctx.declaration(), "cmd_multiplyAssign");
             } else if (ctx.DivideAssign() != null) {
@@ -202,10 +216,6 @@ public class BeerSemantic extends BeerParserBaseListener {
             } else if (ctx.MinusAssign() != null) {
                 ctxNames.put(ctx.declaration(), "cmd_minusAssign");
             }
-
-            //Gambiarra
-            //Executando forcado a expressao da atribuicao
-            //enterExpression(ctx.expression());
 
         }
     }
@@ -219,15 +229,15 @@ public class BeerSemantic extends BeerParserBaseListener {
         }
 
         if (rule.equals("cmd_decAssign")) {
-            SymbolType type_value = types.get(ctx.expression().value());
-            SymbolType type_var = types.get(ctx.declaration().type());
 
             String id = ctx.declaration().Identifier().getText();
             Symbol symbol = lookup(id);
 
-            if (type_var != type_value) {
+            SymbolType type_var = symbol.type;
+            SymbolType type_exp = types.get(ctx.expression());
+
+            if (type_var != type_exp) {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError("Valor inesperado para a variavel " + "'" + id + "'" + "!", ctx));
-                System.out.println("Valor inesperado para a variavel " + "'" + id + "'" + "!");
                 return;
             }
         } else if (rule.equals("cmd_declaration")) {
@@ -240,10 +250,13 @@ public class BeerSemantic extends BeerParserBaseListener {
                 System.out.println("Variavel "+id+" não foi declarada!");
                 return;
             //Verificando tipos entre variavel e expressao
+            //Isso nao vai ficar aqui
             } else if (symbol.type != types.get(ctx.expression())) {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError("Nao eh possivel atribuir esta expressao a variavel " + id + "! Os tipos são incompativeis", ctx));
                 return;
             }
+        } else if (rule.equals("cmd_assign")) {
+
         }
          
     }
@@ -289,7 +302,6 @@ public class BeerSemantic extends BeerParserBaseListener {
             }
         }
         
-
         //Adicionando na tabela de simbolos
         switch (type) {
             case "pilsen":
@@ -335,8 +347,43 @@ public class BeerSemantic extends BeerParserBaseListener {
 
     }
 
+/*expression
+    : Not expression
+    | OpenParent expression CloseParent
+    | expression binary expression
+    | functionCall
+    | value
+    | Identifier
+    | newObjectInit
+    | initArray
+    ;*/
+
     //Entrando em uma expressao
     @Override public void enterExpression(BeerParser.ExpressionContext ctx) {
+        
+        if (ctx.Not() != null) {
+            ctxNames.put(ctx, "exp_not");
+        //Declaracao com atribuicao
+        } else if (ctx.OpenParent() != null) {
+            ctxNames.put(ctx, "exp_parents");
+        //Apenas declaracao
+        } else if (ctx.binary() != null)  {
+            ctxNames.put(ctx, "exp_binary");
+        } else if (ctx.functionCall() != null) {
+            ctxNames.put(ctx, "exp_functionCall");
+        } else if (ctx.value() != null) {
+            ctxNames.put(ctx, "exp_value");
+        } else if (ctx.Identifier() != null) {
+            ctxNames.put(ctx, "exp_id");
+        } else if (ctx.newObjectInit() != null) {
+            ctxNames.put(ctx, "exp_newObjectInit");
+        } else if (ctx.initArray() != null) {
+            ctxNames.put(ctx, "exp_initArray");
+        }
+
+    }
+
+    @Override public void exitExpression(BeerParser.ExpressionContext ctx) {
         
         ParserRuleContext c = ctx;
         String rule = ctxNames.get(c);
@@ -346,54 +393,76 @@ public class BeerSemantic extends BeerParserBaseListener {
             return;
         }
 
-        if (rule.equals("cmd_decAssign")) {
+        if (rule.equals("exp_value")) {
             SymbolType type_value = types.get(ctx.value());
             types.put(ctx, type_value);
-        }
+        //Soh considera expressao com dois valores
+        } else if (rule.equals("exp_binary")) {
 
-        //Expressao binaria
-        //Soh considera expressao com duas variaveis
-        //TODO: considerar expressoes com mais variaveis
-        if (ctx.expression(0) != null && ctx.binary() != null) {
-            String id1 = ctx.expression(0).Identifier().getText();
-            String id2 = ctx.expression(1).Identifier().getText();
-            Symbol symbol1 = lookup(id1);
-            Symbol symbol2 = lookup(id2);
+            SymbolType type1, type2;
+            String id1, id2;
 
-            //Verificando se alguma das variaveis nao foi declarada
-            if (symbol1 == null) {
-                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id1+" nao foi declarada!", ctx));
-                return;
-            } else if (symbol2 == null) {
-                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id2+" nao foi declarada!", ctx));
-                return;
+            //Se o primeiro eh uma variavel
+            if (ctx.expression(0).Identifier() != null) {
+                id1 = ctx.expression(0).Identifier().getText();
+                Symbol symbol1 = lookup(id1);
+                type1 = symbol1.type;
+
+                //Declarada?
+                if (symbol1 == null) {
+                    if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id1+" nao foi declarada!", ctx));
+                    return;
+                }
+
+                //Incializada?
+                if (symbol1.initialized == false) {
+                    if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id1+" não foi inicializada!", ctx));
+                    return;
+                }
+
+            } else {
+                //Detalhe que apenas funciona para decimais!!
+                id1 = "" + ctx.expression(0).value().DecimalLiteral();
+                type1 = types.get(ctx.expression(0).value());
             }
 
-            //Verificando se alguma delas nao foi inicializada
-            if (symbol1.initialized == false) {
-                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id1+" não foi inicializada!", ctx));
-                return;
-            } else if (symbol2.initialized == false) {
-                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id2+" não foi inicializada!", ctx));
-                return;
+            //Se o segundo eh uma variavel
+            if (ctx.expression(1).Identifier() != null) {
+                id2 = ctx.expression(1).Identifier().getText();
+                Symbol symbol2 = lookup(id2);
+                type2 = symbol2.type;
+
+                //Declarada?
+                if (symbol2 == null) {
+                    if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id2+" nao foi declarada!", ctx));
+                    return;
+                }
+
+                //Inicializada?
+                if (symbol2.initialized == false) {
+                    if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id2+" não foi inicializada!", ctx));
+                    return;
+                }
+
+            } else {
+                //Detalhe que apenas funciona para decimais!!
+                id2 = "" + ctx.expression(1).value().DecimalLiteral();
+                type2 = types.get(ctx.expression(1).value());
             }
 
             //Verificando mesmo tipo
-            if (symbol1.type != symbol2.type) {
+            if (type1 != type2) {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError("Tipos das variaveis "+id1+" e "+id2+" são incompativeis!", ctx));
                 return;
-            } else if (symbol1.type != SymbolType.PILSEN && symbol1.type != SymbolType.IPA && symbol1.type != SymbolType.BOCK) {
-                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Nao eh possivel realizar operacoes no tipo "+symbol1.type+" envolvendo as variaveis "+id1+" e "+id2+"!", ctx));
+            } else if (type1 != SymbolType.PILSEN && type1 != SymbolType.IPA && type1 != SymbolType.BOCK) {
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Nao eh possivel realizar operacoes no tipo "+type1+" envolvendo as variaveis "+id1+" e "+id2+"!", ctx));
                 return;
             }
 
             //Setando o tipo da expressao
-            types.put(ctx, symbol1.type);
+            types.put(ctx, type1);
         }
-    }
-
-    @Override public void exitExpression(BeerParser.ExpressionContext ctx) {
-        // TODO
+                
     }
 
     @Override public void enterInitArray(BeerParser.InitArrayContext ctx) {
@@ -479,11 +548,13 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterIfExpression(BeerParser.IfExpressionContext ctx) {
-        // TODO
+        //Controlando escopo
+        table = new SymbolTable(table);
     }
 
     @Override public void exitIfExpression(BeerParser.IfExpressionContext ctx) {
-        // TODO
+        //Controlando escopo
+        table = table.parent;
     }
 
     @Override public void enterPrint(BeerParser.PrintContext ctx) {
