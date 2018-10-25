@@ -105,6 +105,12 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterMethod(BeerParser.MethodContext ctx) {
+
+        //Gambiarra
+        if (ctx.function() != null) {
+            String id = ctx.function().Identifier().getText();
+            table.add(id, new Symbol(SymbolType.FUNCTION, true, true));
+        }
     }
 
     @Override public void exitMethod(BeerParser.MethodContext ctx) {
@@ -114,7 +120,7 @@ public class BeerSemantic extends BeerParserBaseListener {
             table.add(id, new Symbol(SymbolType.CONSTRUCTOR, true, true));
         } else if (ctx.function() != null) {
             id = ctx.function().Identifier().getText();
-            table.add(id, new Symbol(SymbolType.FUNCTION, true, true));
+            //table.add(id, new Symbol(SymbolType.FUNCTION, true, true));
             //Logica do return
             if (!ctx.function().typeFunction().getText().equals("bar vazio")) {
                 ParserRuleContext ultimoComando = ctx.function().command(ctx.function().command().size()-1);
@@ -272,7 +278,21 @@ public class BeerSemantic extends BeerParserBaseListener {
         //Controlando escopo
         table = table.parent;
 
-        //TODO
+        String id = ctx.Identifier().getText();
+        Symbol symbol = lookup(id);
+
+        //Definindo quantidade de parametros
+        if (ctx.parameters().declaration() != null) {
+            if (ctx.parameters().declaration().size() > 0) {
+                symbol.sizeParameters = ctx.parameters().declaration().size();
+            }
+
+        }
+
+
+
+        //Definindo os tipos dos parametros
+
     }
 
     @Override public void enterParameters(BeerParser.ParametersContext ctx) {
@@ -461,6 +481,23 @@ public class BeerSemantic extends BeerParserBaseListener {
 
             //Setando o tipo da expressao
             types.put(ctx, type1);
+        //Quando for chamada de funcao
+        } else if (rule.equals("exp_functionCall")) {
+            if (ctx.functionCall().Dot() == null) {
+                String id = ctx.functionCall().Identifier(0).getText();
+                Symbol symbol = lookup(id);
+
+                if (symbol == null) {
+                    if (errorHandler != null) errorHandler.push(new BeerSemanticError("Funcao " + id + " nao foi declarada!", ctx));
+                    return;
+                }
+
+                if (symbol.sizeParameters != ctx.functionCall().Identifier().size()-1) {
+                    if (errorHandler != null) errorHandler.push(new BeerSemanticError("Numero de parametros da funcao " + id + " eh " + symbol.sizeParameters + "!", ctx));
+                    return;
+                }
+            }
+            
         }
                 
     }
