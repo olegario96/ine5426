@@ -8,10 +8,11 @@ import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import beer.compiler.BeerParser;
 import beer.compiler.BeerParserBaseListener;
@@ -78,8 +79,7 @@ public class BeerSemantic extends BeerParserBaseListener {
         boolean fileExists = importFile.getAbsoluteFile().exists();
         if (fileExists) {
             try {
-                String[] args = new String[5];
-                table = new SymbolTable(Main.parse(args, path));
+                table = new SymbolTable(Main.parse(null, path));
                 return;
             } catch(Exception e) {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError(e.toString(), ctx));
@@ -99,6 +99,7 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void exitInitClass(BeerParser.InitClassContext ctx) {
         //Adicionando nome da classe a tabela de simbolos
         String id = ctx.Identifier().getText();
+        System.out.println(ctx.toStringTree());
         table.add(id, new Symbol(SymbolType.CLASS, true, false));
         table = table.parent;
     }
@@ -579,14 +580,38 @@ public class BeerSemantic extends BeerParserBaseListener {
 
     @Override public void exitPrint(BeerParser.PrintContext ctx) {
         // TODO
+        if (ctx.expression() != null) {
+            if (ctx.expression().value().StringLiteral() != null) {
+                System.out.println(ctx.expression().value().toString())
+            } else {
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("O valor utilizado deve ser do tipo ale!", ctx));                 
+            }
+        } else {
+            System.out.print("");
+        }
     }
 
     @Override public void enterRead(BeerParser.ReadContext ctx) {
         // TODO
+        table = new SymbolTable(table);
     }
 
     @Override public void exitRead(BeerParser.ReadContext ctx) {
         // TODO
+        String id = ctx.Identifier().getText();
+        Symbol symbol = lookup(id);
+        if (symbol != null) {
+            SymbolType type_var = symbol.type;
+            if (type_var.toString() == SymbolType.ALE) {
+                Scanner sc = new Scanner(System.in);
+                String read = sc.nextLine();
+            } else {
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel declarada deve ser do tipo string!", ctx));    
+            }
+        } else {
+            if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel nao declarada!", ctx));
+        }
+        table = table.parent;
     }
 
     @Override public void enterTryExpression(BeerParser.TryExpressionContext ctx) {
@@ -620,12 +645,10 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterComment(BeerParser.CommentContext ctx) {
-        System.out.println(">>>>>");
         return;
     }
 
     @Override public void exitComment(BeerParser.CommentContext ctx) {
-        System.out.println("<<<<<");
         return;
     }
 }
