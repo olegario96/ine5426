@@ -1,0 +1,7 @@
+cerva teste2 {
+	pilsen a;
+
+	traz pra nois aquela pilsen setA(pilsen b) {
+		a = _a;
+	}
+}

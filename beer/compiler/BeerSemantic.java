@@ -99,14 +99,12 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void exitInitClass(BeerParser.InitClassContext ctx) {
         //Adicionando nome da classe a tabela de simbolos
         String id = ctx.Identifier().getText();
-        System.out.println(ctx.toStringTree());
+        //System.out.println(ctx.toStringTree());
         table.add(id, new Symbol(SymbolType.CLASS, true, false));
         table = table.parent;
     }
 
     @Override public void enterMethod(BeerParser.MethodContext ctx) {
-        //Controlando escopo
-        table = new SymbolTable(table);
     }
 
     @Override public void exitMethod(BeerParser.MethodContext ctx) {
@@ -115,8 +113,16 @@ public class BeerSemantic extends BeerParserBaseListener {
             id = ctx.constructor().getText();
             table.add(id, new Symbol(SymbolType.CONSTRUCTOR, true, true));
         } else if (ctx.function() != null) {
-            id = ctx.function().getText();
+            id = ctx.function().Identifier().getText();
             table.add(id, new Symbol(SymbolType.FUNCTION, true, true));
+            //Logica do return
+            //TODO: Finalizar encontrando o tipo da expressao de retorno
+            if (ctx.function().typeFunction().getText() != "bar vazio") {
+                ParserRuleContext ultimoComando = ctx.function().command(ctx.function().command().size()-1);
+                if (ctx.function().command(ctx.function().command().size()-1).Return() == null) {
+                    if (errorHandler != null) errorHandler.push(new BeerSemanticError("A funcao " + id + " nao possui retorno ou nao eh o ultimo comando!", ctx));
+                }
+            }
         } else {
             id = ctx.Identifier().toString();
             if (ctx.type().Boolean() != null) {
@@ -127,13 +133,9 @@ public class BeerSemantic extends BeerParserBaseListener {
                 table.add(id, new Symbol(SymbolType.PILSEN, false, false));
             } else if (ctx.type().String() != null) {
                 table.add(id, new Symbol(SymbolType.ALE, false, false));
-            } else if (ctx.type().Identifier() != null) {
                 table.add(id, new Symbol(SymbolType.VARIABLE, false, false));
             }
         }
-
-        //Controlando escopo
-        table = table.parent;
     }
 
     @Override public void enterConstructor(BeerParser.ConstructorContext ctx) {
@@ -266,14 +268,14 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterParameters(BeerParser.ParametersContext ctx) {
-        table = new SymbolTable(table);
+        
     }
 
     @Override public void exitParameters(BeerParser.ParametersContext ctx) {
         for (BeerParser.DeclarationContext declaration: ctx.declaration()) {
             types.get(declaration);
         }
-        table = table.parent;
+        
     }
 
     //Entrando em uma declaracao de variavel
@@ -582,7 +584,7 @@ public class BeerSemantic extends BeerParserBaseListener {
         // TODO
         if (ctx.expression() != null) {
             if (ctx.expression().value().StringLiteral() != null) {
-                System.out.println(ctx.expression().value().toString())
+                System.out.println(ctx.expression().value().toString());
             } else {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError("O valor utilizado deve ser do tipo ale!", ctx));                 
             }
@@ -601,13 +603,14 @@ public class BeerSemantic extends BeerParserBaseListener {
         String id = ctx.Identifier().getText();
         Symbol symbol = lookup(id);
         if (symbol != null) {
-            SymbolType type_var = symbol.type;
+            //Nao ta funcionando
+            /*SymbolType type_var = symbol.type;
             if (type_var.toString() == SymbolType.ALE) {
                 Scanner sc = new Scanner(System.in);
                 String read = sc.nextLine();
             } else {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel declarada deve ser do tipo string!", ctx));    
-            }
+            }*/
         } else {
             if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel nao declarada!", ctx));
         }
