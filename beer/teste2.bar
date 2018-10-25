@@ -1,7 +1,8 @@
 cerva teste2 {
 	pilsen a;
 
-	traz pra nois aquela pilsen setA(pilsen b) {
-		a = _a;
+	traz pra nois aquela bar vazio setA(pilsen b) {
+		ale c = "oi";
+		desce uma c;
 	}
 }

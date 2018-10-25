@@ -116,11 +116,19 @@ public class BeerSemantic extends BeerParserBaseListener {
             id = ctx.function().Identifier().getText();
             table.add(id, new Symbol(SymbolType.FUNCTION, true, true));
             //Logica do return
-            //TODO: Finalizar encontrando o tipo da expressao de retorno
-            if (ctx.function().typeFunction().getText() != "bar vazio") {
+            if (!ctx.function().typeFunction().getText().equals("bar vazio")) {
                 ParserRuleContext ultimoComando = ctx.function().command(ctx.function().command().size()-1);
                 if (ctx.function().command(ctx.function().command().size()-1).Return() == null) {
                     if (errorHandler != null) errorHandler.push(new BeerSemanticError("A funcao " + id + " nao possui retorno ou nao eh o ultimo comando!", ctx));
+                    return;
+                } else if (ctx.function().typeFunction().getText() != String.valueOf(types.get(ctx.function().command(ctx.function().command().size()-1).expression()))) {
+                    if (errorHandler != null) errorHandler.push(new BeerSemanticError("O tipo da expressao de retorno da funcao "+id+" nao equivale com o especificado!", ctx));
+                    return;
+                }
+            } else {
+                if (ctx.function().command(ctx.function().command().size()-1).Return() != null) {
+                    if (errorHandler != null) errorHandler.push(new BeerSemanticError("A funcao " + id + " possui retorno mas o tipo especificado eh VOID!", ctx));
+                    return;
                 }
             }
         } else {
