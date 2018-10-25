@@ -35,6 +35,7 @@ public class BeerSemantic extends BeerParserBaseListener {
 
     //Declarando a tabela de simbolos
     public SymbolTable table = new SymbolTable(null);
+    public String[] nameRules;
 
     //Metodo lookup
     //Procura na tabela de simbolos
@@ -51,6 +52,10 @@ public class BeerSemantic extends BeerParserBaseListener {
         return null;
     }
 
+    public void loadRules(BeerParser parser) {
+        this.nameRules = parser.getRuleNames();
+    }
+
     //Comecando a analise
     //Primeira regra de BeerParser.g4
     @Override public void enterProgram(BeerParser.ProgramContext ctx) {
@@ -63,7 +68,9 @@ public class BeerSemantic extends BeerParserBaseListener {
         table = table.parent;
     }
 
-    @Override public void enterImportExpression(BeerParser.ImportExpressionContext ctx) {}
+    @Override public void enterImportExpression(BeerParser.ImportExpressionContext ctx) {
+        table = new SymbolTable(table);
+    }
 
     @Override public void exitImportExpression(BeerParser.ImportExpressionContext ctx) {
         String path = Main.basePath + ctx.StringLiteral().getText().replaceAll("\"", "");
@@ -102,35 +109,26 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void exitMethod(BeerParser.MethodContext ctx) {
-        if (ctx.type() != null) {
-            String type = ctx.type().getText();
-            String id = ctx.Identifier().getText();
-            Symbol symbol = lookup(id);
-
-            if (symbol != null) {
-                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id+" ja foi declarada!", ctx));
-                return;
+        String id;
+        if (ctx.constructor() != null) {
+            id = ctx.constructor().getText();
+            table.add(id, new Symbol(SymbolType.CONSTRUCTOR, true, true));
+        } else if (ctx.function() != null) {
+            id = ctx.function().getText();
+            table.add(id, new Symbol(SymbolType.FUNCTION, true, true));
+        } else {
+            id = ctx.Identifier().toString();
+            if (ctx.type().Boolean() != null) {
+                table.add(id, new Symbol(SymbolType.BOCK, false, false));
+            } else if (ctx.type().Float() != null) {
+                table.add(id, new Symbol(SymbolType.IPA, false, false));
+            } else if (ctx.type().Int() != null) {
+                table.add(id, new Symbol(SymbolType.PILSEN, false, false));
+            } else if (ctx.type().String() != null) {
+                table.add(id, new Symbol(SymbolType.ALE, false, false));
+            } else if (ctx.type().Identifier() != null) {
+                table.add(id, new Symbol(SymbolType.VARIABLE, false, false));
             }
-
-             /*ParserRuleContext c = ctx;
-             String rule = ctxNames.getText(c);
-
-             System.out.println(">>>>");
-             System.out.println(rule);
-             switch (type) {
-                 case "pilsen":
-                     table.add(id, new Symbol(SymbolType.PILSEN, false, false));
-                     break;
-                 case "ipa":
-                     table.add(id, new Symbol(SymbolType.IPA, false, false));
-                     break;
-                 case "bock":
-                     table.add(id, new Symbol(SymbolType.BOCK, false, false));
-                     break;
-                 case "ale":
-                     table.add(id, new Symbol(SymbolType.ALE, false, false));
-                     break;
-             }*/
         }
 
         //Controlando escopo
@@ -144,7 +142,6 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void exitConstructor(BeerParser.ConstructorContext ctx) {
-        //Controlando escopo
         table = table.parent;
     }
 
@@ -268,11 +265,14 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterParameters(BeerParser.ParametersContext ctx) {
-        // TODO
+        table = new SymbolTable(table);
     }
 
     @Override public void exitParameters(BeerParser.ParametersContext ctx) {
-        // TODO
+        for (BeerParser.DeclarationContext declaration: ctx.declaration()) {
+            types.get(declaration);
+        }
+        table = table.parent;
     }
 
     //Entrando em uma declaracao de variavel
@@ -337,11 +337,15 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterTypeArray(BeerParser.TypeArrayContext ctx) {
-        // TODO
+
     }
 
     @Override public void exitTypeArray(BeerParser.TypeArrayContext ctx) {
-        // TODO
+        String type = ctx.Identifier().getText();
+        if (type != null) {
+            if (errorHandler != null) errorHandler.push(new BeerSemanticError("Tipo "+type+" nao declarado!", ctx));
+            return;
+        }
     }
 
     //Entrando em uma expressao

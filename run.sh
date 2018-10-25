@@ -18,7 +18,7 @@ cp ../grammars/*.tokens compiler/;
 cp ../grammars/*.ebnf compiler/;
 cp ../grammars/*.java compiler/;
 find -name "*.java" > sources.txt;
-#javac -Xlint @sources.txt
+javac -Xlint @sources.txt
 
 # grun Beer program -gui < ../examples/testes.bar
 find . -name *.g4 -delete;

@@ -5,7 +5,8 @@ import beer.compiler.BeerParser;
 import beer.compiler.BeerSemantic;
 import beer.compiler.errors.BeerErrors;
 import beer.compiler.errors.BeerLexerError;
-import org.antlr.v4.runtime.ANTLRInputStream;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
 import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -14,7 +15,7 @@ import java.io.IOException;
 
 abstract public class AbstractTest {
     protected BeerSemantic walkAndGetBeerSemantic(String code) throws IOException {
-        ANTLRInputStream input = new ANTLRInputStream(code);
+        CharStream input = CharStreams.fromString(code);
         BeerLexer lexer = new BeerLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         BeerParser parser = new BeerParser(tokens);
@@ -23,6 +24,7 @@ abstract public class AbstractTest {
         System.out.println(tree.toStringTree(parser));
         ParseTreeWalker walker = new ParseTreeWalker();
         BeerSemantic semantic = new BeerSemantic(new BeerErrors());
+        semantic.loadRules(parser);
         parser.addParseListener(semantic);
         walker.walk(semantic, tree);
         return semantic;
