@@ -9,5 +9,6 @@ public enum SymbolType {
 	OBJECT,
 	VARIABLE,
 	CLASS,
-	CONSTRUCTOR
+	CONSTRUCTOR,
+	IDENTIFIER
 }

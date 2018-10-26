@@ -116,7 +116,7 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void exitMethod(BeerParser.MethodContext ctx) {
         String id;
         if (ctx.constructor() != null) {
-            id = ctx.constructor().getText();
+            id = ctx.constructor().Identifier().getText();
             table.add(id, new Symbol(SymbolType.CONSTRUCTOR, true, true));
         } else if (ctx.function() != null) {
             id = ctx.function().Identifier().getText();
@@ -286,24 +286,47 @@ public class BeerSemantic extends BeerParserBaseListener {
             if (ctx.parameters().declaration().size() > 0) {
                 symbol.sizeParameters = ctx.parameters().declaration().size();
             }
-
         }
 
 
+        for(BeerParser.DeclarationContext declaration: ctx.parameters().declaration()) {
+            String type = declaration.type().getText();
+            String id_ = declaration.Identifier().getText();
 
+            if (this.lookup(id) == null) {
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Parametro "+id+" ja foi declarado!", ctx));
+                return;
+            }
+
+            switch (type) {
+                case "ale":
+                    table.add(id_, new Symbol(SymbolType.ALE, false, false));
+                    break;
+                case "pilsen":
+                    table.add(id_, new Symbol(SymbolType.PILSEN, false, false));
+                    break;
+                case "ipa":
+                    table.add(id_, new Symbol(SymbolType.IPA, false, false));
+                    break;
+                case "bock":
+                    table.add(id_, new Symbol(SymbolType.BOCK, false, false));
+                    break;
+                default:
+                    table.add(id_, new Symbol(SymbolType.CLASS, false, false));
+                    break;
+            }
+            symbol.typesParameters.add(type.toUpperCase());
+        }
         //Definindo os tipos dos parametros
 
     }
 
     @Override public void enterParameters(BeerParser.ParametersContext ctx) {
-        
+        table = new SymbolTable(table);
     }
 
     @Override public void exitParameters(BeerParser.ParametersContext ctx) {
-        for (BeerParser.DeclarationContext declaration: ctx.declaration()) {
-            types.get(declaration);
-        }
-        
+        table = table.parent;
     }
 
     //Entrando em uma declaracao de variavel
@@ -496,6 +519,20 @@ public class BeerSemantic extends BeerParserBaseListener {
                     if (errorHandler != null) errorHandler.push(new BeerSemanticError("Numero de parametros da funcao " + id + " eh " + symbol.sizeParameters + "!", ctx));
                     return;
                 }
+
+                for (int i = 1; i < ctx.functionCall().Identifier().size(); ++i) {
+                     String id_ = ctx.functionCall().Identifier(i).getText();
+                     Symbol symbol_ = lookup(id_);
+                     if (symbol_ == null) {
+                         if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel " + id + " nao foi declarada!", ctx));
+                         return;
+                     }
+
+                     if (!String.valueOf(symbol_.type).equals(symbol.typesParameters.get(i-1))) {
+                         if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel " + id_ + " nao eh do tipo " + symbol.typesParameters.get(i-1), ctx));
+                         return;
+                     }
+                }
             }
             
         }
@@ -629,7 +666,7 @@ public class BeerSemantic extends BeerParserBaseListener {
         // TODO
         if (ctx.expression() != null) {
             if (ctx.expression().value().StringLiteral() != null) {
-                System.out.println(ctx.expression().value().toString());
+                System.out.println(ctx.expression().value().getText());
             } else {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError("O valor utilizado deve ser do tipo ale!", ctx));                 
             }

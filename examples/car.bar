@@ -1,7 +1,7 @@
-chega ai queridao "placa.bar";
+chega ai queridao "plac.bar";
 
 /*
- * Testando comentario   
+ * Testando comentario
  */
 cerva Carro {
     Placa placa;

@@ -1,14 +1,10 @@
 cerva teste2 {
-	pilsen a;
 
-	traz pra nois aquela bar vazio funcao() {
-		a = 2;
-	}
+  traz pra nois aquela bar vazio funcao(pilsen e) {
+      pilsen f;
+  }
 
-	traz pra nois aquela bar vazio setA(pilsen b) {
-		ale c = "oi";
-		funcao(c);
-		/*desce uma c;*/
-	}
-
+  traz pra nois aquela bar vazio funcao_foo() {
+      f = 1;
+  }
 }
