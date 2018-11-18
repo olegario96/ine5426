@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aec46394-4602-4481-8772-0a559762d190" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/compiler/BeerLexer.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler/BeerLexer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compiler/BeerParser.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler/BeerParser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compiler/BeerParserBaseListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler/BeerParserBaseListener.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compiler/BeerParserListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler/BeerParserListener.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/antlr_4_7_1_complete.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/junit_junit_4_11.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/beer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/beer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/compiler/BeerSemantic.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler/BeerSemantic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/AbstractTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/AbstractTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/MainTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/tests/MainTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teste.bar" beforeDir="false" afterPath="$PROJECT_DIR$/teste.bar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/teste2.bar" beforeDir="false" afterPath="$PROJECT_DIR$/teste2.bar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.idea/beer.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/beer/beer/.idea/beer.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/beer/beer/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/teste.bar" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/beer/beer/teste.bar" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -53,14 +57,141 @@
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages" />
     </session>
+    <session id="1509772417">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.open.time.35" value="1" />
+          <entry key="project.open.time.7" value="1" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="bar" value="3" />
+          <entry key="class" value="3" />
+          <entry key="j" value="1" />
+          <entry key="java" value="10" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="CLASS" value="3" />
+          <entry key="JAVA" value="10" />
+          <entry key="PLAIN_TEXT" value="4" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="bar" value="486" />
+          <entry key="j" value="662" />
+          <entry key="java" value="2486" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JAVA" value="2486" />
+          <entry key="PLAIN_TEXT" value="1148" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compiler/BeerSemantic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="200">
+              <caret line="754" column="30" selection-start-line="754" selection-start-column="30" selection-end-line="754" selection-end-column="30" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Main.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="690">
+              <caret line="67" column="10" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="jar://$PROJECT_DIR$/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/CodeGenerationTest.j">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/compiler/BeerParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30120">
+              <caret line="2209" column="43" selection-start-line="2209" selection-start-column="33" selection-end-line="2209" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/teste2.bar">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="45">
+              <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/teste.bar">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
       <find>enterBegin</find>
       <find>enterEver</find>
+      <find>ExpressionCon</find>
+      <find>BinaryContext</find>
+      <find>declara</find>
+      <find>print</find>
+      <find>InitClassContext</find>
+      <find>PrintContext</find>
+      <find>istore</find>
+      <find>assign</find>
+      <find>expression</find>
+      <find>call</find>
+      <find>enterIf</find>
+      <find>ExpressionContext</find>
+      <find>Command</find>
+      <find>IfExpressionContext</find>
+      <find>ifExpre</find>
+      <find>um</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -70,17 +201,23 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/tests/MainTest.java" />
-        <option value="$PROJECT_DIR$/compiler/BeerSemantic.java" />
         <option value="$PROJECT_DIR$/compiler/BeerParserBaseListener.java" />
         <option value="$PROJECT_DIR$/tests/AbstractTest.java" />
+        <option value="$PROJECT_DIR$/HelloWorld.java" />
+        <option value="$PROJECT_DIR$/HelloWorld.j" />
+        <option value="$PROJECT_DIR$/Main.java" />
+        <option value="$PROJECT_DIR$/teste2.bar" />
+        <option value="$PROJECT_DIR$/teste.bar" />
+        <option value="$PROJECT_DIR$/compiler/BeerSemantic.java" />
+        <option value="$PROJECT_DIR$/CodeGenerationTest.j" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="67" />
-    <option name="y" value="27" />
-    <option name="width" value="1299" />
-    <option name="height" value="741" />
+    <option name="x" value="704" />
+    <option name="y" value="24" />
+    <option name="width" value="656" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -101,11 +238,6 @@
               <item name="beer" type="462c0819:PsiDirectoryNode" />
               <item name="compiler" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="beer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="beer" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -125,10 +257,13 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="Downloaded.Files.Path.Enabled" value="false" />
+    <property name="Repository.Attach.JavaDocs" value="false" />
+    <property name="Repository.Attach.Sources" value="false" />
     <property name="SearchEverywhereHistoryKey" value="semantic&#9;FILE&#9;file:///home/olegario/ine5426/beer/compiler/BeerSemantic.java&#10;breakpo&#9;ACTION&#9;ToggleBreakpointAction" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540314906455" />
-    <property name="last_opened_file_path" value="/usr/share/java/hamcrest-all-1.3.jar!/" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1542569317913" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/antlr-4.7.1-complete.jar!/" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
@@ -145,7 +280,21 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.MainTest">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="beer.Main" />
+      <module name="beer" />
+      <option name="PROGRAM_PARAMETERS" value="teste.bar" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="beer.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="MainTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="beer" />
       <extension name="coverage">
@@ -187,11 +336,13 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.Unnamed" />
+      <item itemvalue="Application.Main" />
       <item itemvalue="JUnit.MainTest.testBasicVariableDeclarationAndSum" />
       <item itemvalue="JUnit.MainTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.MainTest" />
         <item itemvalue="JUnit.MainTest.testBasicVariableDeclarationAndSum" />
       </list>
@@ -243,9 +394,10 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <frame x="48" y="-11" width="1313" height="780" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25778133" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.120158106" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -254,7 +406,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32952693" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26086956" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.32952693" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -262,7 +414,7 @@
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" visible="true" weight="0.4502447" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.27795032" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -301,6 +453,9 @@
       <window_info anchor="right" id="Maven Projects" order="7" />
     </layout-to-restore>
   </component>
+  <component name="UnknownFeatures">
+    <option featureType="com.intellij.fileTypeFactory" implementationName="*.j" />
+  </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
@@ -319,16 +474,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/beer.iml">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="jar://$PROJECT_DIR$/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/tree/ParseTree.class">
       <provider selected="true" editor-type-id="text-editor">
@@ -351,16 +496,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$PROJECT_DIR$/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="25" selection-start-line="25" selection-end-line="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler/BeerLexer.class">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler/BeerLexer.class" />
     <entry file="file://$PROJECT_DIR$/compiler/BeerLexer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-8741">
@@ -389,11 +525,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
           <caret line="104" selection-start-line="104" selection-end-line="104" />
-          <folding>
-            <element signature="e#3563#3564#0" expanded="true" />
-            <element signature="e#5668#5669#0" expanded="true" />
-            <element signature="e#5712#5713#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -408,12 +539,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
           <caret line="232" selection-start-line="232" selection-end-line="232" />
-          <folding>
-            <element signature="e#15776#15777#0" expanded="true" />
-            <element signature="e#15808#15809#0" expanded="true" />
-            <element signature="e#15919#15920#0" expanded="true" />
-            <element signature="e#15965#15966#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -442,10 +567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding>
-            <element signature="e#358#359#0" expanded="true" />
-            <element signature="e#438#439#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -453,12 +574,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="277" selection-start-line="277" selection-end-line="277" />
-          <folding>
-            <element signature="e#1159#1160#0" expanded="true" />
-            <element signature="e#1185#1186#0" expanded="true" />
-            <element signature="e#10056#10057#0" expanded="true" />
-            <element signature="e#10133#10134#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -483,21 +598,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/compiler/BeerParserBaseListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="123">
-          <caret line="392" column="65" selection-start-line="392" selection-start-column="65" selection-end-line="392" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$PROJECT_DIR$/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/ParserRuleContext.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="116">
           <caret line="52" selection-start-line="52" selection-end-line="52" />
-          <folding>
-            <element signature="e#1468#1469#0" expanded="true" />
-            <element signature="e#1518#1519#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -512,18 +616,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="98">
           <caret line="133" selection-start-line="133" selection-end-line="133" />
-          <folding>
-            <element signature="e#3511#3512#0" expanded="true" />
-            <element signature="e#3590#3591#0" expanded="true" />
-            <element signature="e#3615#3616#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/compiler/BeerSemantic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="20" column="47" selection-start-line="20" selection-start-column="47" selection-end-line="20" selection-end-column="47" />
         </state>
       </provider>
     </entry>
@@ -544,14 +636,87 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/compiler/BeerParserBaseListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="392" column="20" lean-forward="true" selection-start-line="392" selection-start-column="20" selection-end-line="392" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler/Symbol.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/HelloWorld.j" />
+    <entry file="file://$PROJECT_DIR$/compiler/SymbolTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="62" lean-forward="true" selection-start-line="8" selection-start-column="4" selection-end-line="8" selection-end-column="62" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.class">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler/SymbolType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="12" selection-start-line="2" selection-start-column="12" selection-end-line="2" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="690">
+          <caret line="67" column="10" selection-start-line="67" selection-start-column="10" selection-end-line="67" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/antlr-4.7.1-complete.jar!/org/antlr/v4/runtime/tree/ParseTreeWalker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/compiler/BeerParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4770">
-          <caret line="165" selection-start-line="165" selection-end-line="165" />
+        <state relative-caret-position="30120">
+          <caret line="2209" column="43" selection-start-line="2209" selection-start-column="33" selection-end-line="2209" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teste2.bar">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="20" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/teste.bar">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/compiler/BeerSemantic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="200">
+          <caret line="754" column="30" selection-start-line="754" selection-start-column="30" selection-end-line="754" selection-end-column="30" />
           <folding>
-            <element signature="e#6681#6682#0" expanded="true" />
-            <element signature="e#6718#6719#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CodeGenerationTest.j">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="11" lean-forward="true" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
         </state>
       </provider>
     </entry>
@@ -621,6 +786,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
+          <last-edited>junit:junit:4.11</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

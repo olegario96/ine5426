@@ -66,6 +66,7 @@ public class Main {
         semantic.loadRules(parser);
         walker.walk(semantic, tree);
         //System.out.println(tree.toStringTree(parser));
+        System.out.println(semantic.code);
 
         return semantic.table;
     }

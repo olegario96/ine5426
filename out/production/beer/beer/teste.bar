@@ -1,5 +1,8 @@
 taca-le pau
     pilsen a = 1;
-    pilsen b = 1;
-    pilsen c = a + b;
+    ta gelada (a == 1) ? {
+        conta pra gente ("Igual a um");
+    } ta nao patrao {
+        conta pra gente ("Diferente a um");
+    }
 fecha conta

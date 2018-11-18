@@ -2,22 +2,13 @@ package beer.compiler;
 
 import beer.compiler.errors.BeerErrors;
 import beer.compiler.errors.BeerSemanticError;
-import beer.compiler.errors.BeerSemanticException;
-import org.antlr.v4.runtime.tree.ErrorNode;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.ParserRuleContext;
 
 import java.io.File;
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-import java.util.List;
-import java.util.Scanner;
 
-import beer.compiler.BeerParser;
-import beer.compiler.BeerParserBaseListener;
 import beer.Main;
-import org.antlr.v4.runtime.tree.TerminalNode;
 
 public class BeerSemantic extends BeerParserBaseListener {
 
@@ -25,6 +16,13 @@ public class BeerSemantic extends BeerParserBaseListener {
     private ParseTreeProperty<SymbolType> types = new ParseTreeProperty<>();
     private ParseTreeProperty<String> ctxNames = new ParseTreeProperty<>();
     private ParseTreeProperty<Integer> sizes = new ParseTreeProperty<>();
+
+    private ParseTreeProperty<Integer> auxGenerationValues = new ParseTreeProperty<>();
+    private HashMap<String, Integer> auxGenerationIds = new HashMap<>();
+
+    public String code = "";
+    private int counterIntGen = 0;
+    private int counterIdGen = 0;
 
     protected BeerErrors errorHandler;
 
@@ -94,6 +92,10 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void enterInitClass(BeerParser.InitClassContext ctx) {
         //Controlando escopo
         table = new SymbolTable(table);
+
+        //Anotando código
+        code += ".class public " + ctx.Identifier().getText() + "\n";
+        code += ".super java/lang/Object \n";
     }
 
     @Override public void exitInitClass(BeerParser.InitClassContext ctx) {
@@ -110,10 +112,18 @@ public class BeerSemantic extends BeerParserBaseListener {
         if (ctx.function() != null) {
             String id = ctx.function().Identifier().getText();
             table.add(id, new Symbol(SymbolType.FUNCTION, true, true));
+
+            //Anotando código
+            code += ".method public " + id + "()V \n";
+            code += ".limit stack 100 \n" + ".limit locals 100 \n";
+            code += "getstatic java/lang/System/out Ljava/io/PrintStream; \n";
         }
     }
 
     @Override public void exitMethod(BeerParser.MethodContext ctx) {
+        code += "return \n";
+        code += ".end method \n";
+
         String id;
         if (ctx.constructor() != null) {
             id = ctx.constructor().Identifier().getText();
@@ -170,19 +180,47 @@ public class BeerSemantic extends BeerParserBaseListener {
         //Controlando escopo
         table = new SymbolTable(table);
         //ctxNames.put(ctx, "begin_block");
+
+        //Anotando código
+        code += ".class public MainTest \n";
+        code += ".super java/lang/Object \n";
+        code += ".method public static main([Ljava/lang/String;)V \n";
+        code += ".limit stack 100 \n" + ".limit locals 100 \n";
+        code += "getstatic java/lang/System/out Ljava/io/PrintStream; \n";
     }
 
     @Override public void exitBegin(BeerParser.BeginContext ctx) {
         //Controlando escopo
         table = table.parent;
+
+        code += "return \n";
+        code += ".end method \n";
     }
 
     @Override public void enterCommand(BeerParser.CommandContext ctx) {
         // TODO
+
+        if(ctx.ifExpression() != null) {
+            ctxNames.put(ctx.ifExpression().expression(0),"command_if");
+        }
+
+        if(ctxNames.get(ctx) != null) {
+            if (ctxNames.get(ctx).equals("second_command")) {
+                code += "else: \n";
+
+            }
+        }
+
     }
 
     @Override public void exitCommand(BeerParser.CommandContext ctx) {
         // TODO
+
+        if(ctxNames.get(ctx) != null) {
+            if (ctxNames.get(ctx).equals("first_command")) {
+                code += "goto end \n";
+            }
+        }
     }
 
     //Entrando em um simple command
@@ -238,6 +276,11 @@ public class BeerSemantic extends BeerParserBaseListener {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError("Valor inesperado para a variavel " + "'" + id + "'" + "!", ctx));
                 return;
             }
+
+            code += "istore " + counterIdGen + "\n";
+            auxGenerationIds.put(id,counterIdGen);
+            counterIdGen++;
+
         } else if (rule.equals("cmd_declaration")) {
             String id = ctx.declaration().Identifier().getText();
             Symbol symbol = lookup(id);
@@ -263,6 +306,10 @@ public class BeerSemantic extends BeerParserBaseListener {
 
             symbol.initialized = true;
 
+            //Anotando código
+            int name = auxGenerationIds.get(id);
+            code += "istore " + name + "\n";
+            auxGenerationIds.put(id, name);
         }
     }
 
@@ -367,6 +414,8 @@ public class BeerSemantic extends BeerParserBaseListener {
             case "ale":
                 table.add(id, new Symbol(SymbolType.ALE, false, init));
                 break;
+            default:
+                table.add(id, new Symbol(SymbolType.CLASS, false, init));
         }
     }
 
@@ -427,7 +476,7 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void exitExpression(BeerParser.ExpressionContext ctx) {
-        
+
         ParserRuleContext c = ctx;
         String rule = ctxNames.get(c);
 
@@ -439,6 +488,7 @@ public class BeerSemantic extends BeerParserBaseListener {
         if (rule.equals("exp_value")) {
             SymbolType type_value = types.get(ctx.value());
             types.put(ctx, type_value);
+
         //Soh considera expressao com dois valores
         } else if (rule.equals("exp_binary")) {
 
@@ -462,6 +512,10 @@ public class BeerSemantic extends BeerParserBaseListener {
                     if (errorHandler != null) errorHandler.push(new BeerSemanticError("Variavel "+id1+" não foi inicializada!", ctx));
                     return;
                 }
+
+                //Anotando código
+                int name = auxGenerationIds.get(id1);
+                code += "iload " + name + "\n";
 
             } else {
                 //Detalhe que apenas funciona para decimais!!
@@ -487,6 +541,10 @@ public class BeerSemantic extends BeerParserBaseListener {
                     return;
                 }
 
+                //Anotando código
+                int name = auxGenerationIds.get(id2);
+                code += "iload " + name + "\n";
+
             } else {
                 //Detalhe que apenas funciona para decimais!!
                 id2 = "" + ctx.expression(1).value().DecimalLiteral();
@@ -504,6 +562,18 @@ public class BeerSemantic extends BeerParserBaseListener {
 
             //Setando o tipo da expressao
             types.put(ctx, type1);
+
+            //Anotando código
+            if(ctx.binary().Plus() != null) {
+                //int op1 = auxGenerationValues.get(ctx.expression(0));
+                //int op2 = auxGenerationValues.get(ctx.expression(1));
+                //code += "iload " + op1 + "\n";
+                //code += "iload " + op2 + "\n";
+                code += "iadd " + "\n";
+            } else if (ctx.binary().EqualsSymbol() != null) {
+                code += "if_acmpne else \n";
+            }
+            
         //Quando for chamada de funcao
         } else if (rule.equals("exp_functionCall")) {
             if (ctx.functionCall().Dot() == null) {
@@ -576,11 +646,21 @@ public class BeerSemantic extends BeerParserBaseListener {
                 types.put(ctx, SymbolType.IPA);
             } else {
                 types.put(ctx, SymbolType.PILSEN);
+
+                //Anotando código
+                code += "ldc " + valor + "\n";
+                //code += "istore " + counterIntGen + "\n";
+
+                //auxGenerationValues.put(ctx,counterIntGen);
+                //counterIntGen++;
             }
         } else if (ctx.BooleanLiteral() != null) {
             types.put(ctx, SymbolType.BOCK);
         } else if (ctx.StringLiteral() != null) {
             types.put(ctx, SymbolType.ALE);
+
+            //Anotando código
+            code += "ldc " + ctx.StringLiteral().toString() + "\n";
         }
     }
 
@@ -651,6 +731,9 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void enterIfExpression(BeerParser.IfExpressionContext ctx) {
         //Controlando escopo
         table = new SymbolTable(table);
+
+        ctxNames.put(ctx.command(0), "first_command");
+        ctxNames.put(ctx.command(1), "second_command");
     }
 
     @Override public void exitIfExpression(BeerParser.IfExpressionContext ctx) {
@@ -663,16 +746,43 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void exitPrint(BeerParser.PrintContext ctx) {
-        // TODO
-        if (ctx.expression() != null) {
+
+        //Anotando código
+
+        if (ctxNames.get(ctx.getParent()).equals("first_command")) {
+            //pass
+        } else if (ctxNames.get(ctx.getParent()).equals("second_command")) {
+            code += "end: \n";
+            code += "invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V \n";
+        }
+
+        else if(ctx.expression().Identifier() != null) {
+                String id = ctx.expression().Identifier().getText();
+                //Symbol symbol = lookup(id);
+                int name = auxGenerationIds.get(id);
+                code += "iload " + name + "\n";
+                code += "invokevirtual java/io/PrintStream/println(I)V \n";
+
+            } else {
+                SymbolType tipo = types.get(ctx.expression().value());
+                if (tipo == SymbolType.PILSEN) {
+                    code += "invokevirtual java/io/PrintStream/println(I)V \n";
+                } else if (tipo == SymbolType.ALE) {
+                    code += "invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V \n";
+                }
+
+
+            }
+
+        /*if (ctx.expression() != null) {
             if (ctx.expression().value().StringLiteral() != null) {
                 System.out.println(ctx.expression().value().getText());
             } else {
                 if (errorHandler != null) errorHandler.push(new BeerSemanticError("O valor utilizado deve ser do tipo ale!", ctx));                 
             }
         } else {
-            System.out.print("");
-        }
+            //System.out.print("");
+        }*/
     }
 
     @Override public void enterRead(BeerParser.ReadContext ctx) {
