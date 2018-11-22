@@ -21,7 +21,6 @@ public class BeerSemantic extends BeerParserBaseListener {
     private HashMap<String, Integer> auxGenerationIds = new HashMap<>();
 
     public String code = "";
-    private int counterIntGen = 0;
     private int counterIdGen = 0;
 
     protected BeerErrors errorHandler;
@@ -198,23 +197,22 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void enterCommand(BeerParser.CommandContext ctx) {
-        // TODO
 
         if(ctx.ifExpression() != null) {
             ctxNames.put(ctx.ifExpression().expression(0),"command_if");
+        } else if (ctx.whileExpression() != null) {
+            ctxNames.put(ctx.whileExpression().expression(),"command_while");
         }
 
         if(ctxNames.get(ctx) != null) {
             if (ctxNames.get(ctx).equals("second_command")) {
                 code += "else: \n";
-
             }
-        }
+        } 
 
     }
 
     @Override public void exitCommand(BeerParser.CommandContext ctx) {
-        // TODO
 
         if(ctxNames.get(ctx) != null) {
             if (ctxNames.get(ctx).equals("first_command")) {
@@ -277,10 +275,15 @@ public class BeerSemantic extends BeerParserBaseListener {
                 return;
             }
 
-            code += "istore " + counterIdGen + "\n";
-            auxGenerationIds.put(id,counterIdGen);
-            counterIdGen++;
-
+            if (type_var == SymbolType.PILSEN) {
+                code += "istore " + counterIdGen + "\n";
+                auxGenerationIds.put(id,counterIdGen);
+                counterIdGen++;
+            } else if (type_var == SymbolType.ALE) {
+                code += "astore " + counterIdGen + "\n";
+                auxGenerationIds.put(id,counterIdGen);
+                counterIdGen++;
+            }
         } else if (rule.equals("cmd_declaration")) {
             String id = ctx.declaration().Identifier().getText();
             Symbol symbol = lookup(id);
@@ -308,8 +311,13 @@ public class BeerSemantic extends BeerParserBaseListener {
 
             //Anotando código
             int name = auxGenerationIds.get(id);
-            code += "istore " + name + "\n";
-            auxGenerationIds.put(id, name);
+            if (symbol.type == SymbolType.PILSEN) {
+                code += "istore " + name + "\n";
+                auxGenerationIds.put(id, name);
+            } else if (symbol.type == SymbolType.ALE) {
+                code += "astore " + name + "\n";
+                auxGenerationIds.put(id, name);
+            }
         }
     }
 
@@ -317,8 +325,6 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void enterFunction(BeerParser.FunctionContext ctx) {
         //Controlando escopo
         table = new SymbolTable(table);
-
-        //TODO
     }
 
     @Override public void exitFunction(BeerParser.FunctionContext ctx) {
@@ -565,13 +571,11 @@ public class BeerSemantic extends BeerParserBaseListener {
 
             //Anotando código
             if(ctx.binary().Plus() != null) {
-                //int op1 = auxGenerationValues.get(ctx.expression(0));
-                //int op2 = auxGenerationValues.get(ctx.expression(1));
-                //code += "iload " + op1 + "\n";
-                //code += "iload " + op2 + "\n";
                 code += "iadd " + "\n";
             } else if (ctx.binary().EqualsSymbol() != null) {
-                code += "if_acmpne else \n";
+                code += "if_icmpne else \n";
+            } else if (ctx.binary().LessThanEquals() != null) {
+                code += "if_icmple else \n";
             }
             
         //Quando for chamada de funcao
@@ -649,10 +653,6 @@ public class BeerSemantic extends BeerParserBaseListener {
 
                 //Anotando código
                 code += "ldc " + valor + "\n";
-                //code += "istore " + counterIntGen + "\n";
-
-                //auxGenerationValues.put(ctx,counterIntGen);
-                //counterIntGen++;
             }
         } else if (ctx.BooleanLiteral() != null) {
             types.put(ctx, SymbolType.BOCK);
@@ -668,12 +668,17 @@ public class BeerSemantic extends BeerParserBaseListener {
         //Controlando escopo
         table = new SymbolTable(table);
 
+        code += "while: \n";
+
         // TODO
     }
 
     @Override public void exitWhileExpression(BeerParser.WhileExpressionContext ctx) {
         //Controlando escopo
         table = table.parent;
+
+        code += "goto while \n";
+        code += "else: \n";
 
         // TODO
     }
@@ -748,31 +753,34 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void exitPrint(BeerParser.PrintContext ctx) {
 
         //Anotando código
-
-        if (ctxNames.get(ctx.getParent()).equals("first_command")) {
+        if (ctxNames.get(ctx.getParent()) != null) {
+            if (ctxNames.get(ctx.getParent()).equals("first_command")) {
             //pass
-        } else if (ctxNames.get(ctx.getParent()).equals("second_command")) {
-            code += "end: \n";
-            code += "invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V \n";
-        }
+            } else if (ctxNames.get(ctx.getParent()).equals("second_command")) {
+                code += "end: \n";
+                code += "invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V \n";
+            }
+        } else if(ctx.expression().Identifier() != null) {
+            String id = ctx.expression().Identifier().getText();
+            Symbol symbol = lookup(id);
 
-        else if(ctx.expression().Identifier() != null) {
-                String id = ctx.expression().Identifier().getText();
-                //Symbol symbol = lookup(id);
-                int name = auxGenerationIds.get(id);
+            int name = auxGenerationIds.get(id);
+
+            if (symbol.type == SymbolType.ALE) {
+                code += "aload " + name + "\n";
+                code += "invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V \n";
+            } else if (symbol.type == SymbolType.PILSEN) {
                 code += "iload " + name + "\n";
                 code += "invokevirtual java/io/PrintStream/println(I)V \n";
-
-            } else {
-                SymbolType tipo = types.get(ctx.expression().value());
-                if (tipo == SymbolType.PILSEN) {
-                    code += "invokevirtual java/io/PrintStream/println(I)V \n";
-                } else if (tipo == SymbolType.ALE) {
-                    code += "invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V \n";
-                }
-
-
             }
+        } else {
+            SymbolType tipo = types.get(ctx.expression().value());
+            if (tipo == SymbolType.PILSEN) {
+                code += "invokevirtual java/io/PrintStream/println(I)V \n";
+            } else if (tipo == SymbolType.ALE) {
+                code += "invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V \n";
+            }
+        }
 
         /*if (ctx.expression() != null) {
             if (ctx.expression().value().StringLiteral() != null) {

@@ -1,0 +1,11 @@
+taca-le pau
+	
+	pilsen a = 0;
+
+	encher a cara (a <= 10) {
+        a = a + 1;
+	}
+
+	conta pra gente(a);
+
+fecha conta
