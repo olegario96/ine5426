@@ -227,29 +227,34 @@ public class BeerSemantic extends BeerParserBaseListener {
         //Declarando contextos
 
         //Declaracao com atribuicao
-        if (ctx.declaration() != null && ctx.Assign() != null ) {
+        if (ctxNames.get(ctx) == "command_for") {
             ctxNames.put(ctx.declaration(), "cmd_decAssign");
-            ctxNames.put(ctx, "cmd_decAssign");
-        //Apenas uma expressao
-        } else if (ctx.expression() != null && ctx.Identifier() == null) {
-            ctxNames.put(ctx.expression(), "cmd_expression");
-        //Apenas declaracao
-        } else if (ctx.declaration() != null && ctx.Assign() == null)  {
-            ctxNames.put(ctx.declaration(), "cmd_declaration");
-        //Atribuicao de varias maneiras
-        } else if (ctx.Identifier() != null && ctx.expression() != null) {
-            if (ctx.Assign() != null) {
-                ctxNames.put(ctx, "cmd_assign");
-            } else if (ctx.MultiplyAssign() != null) {
-                ctxNames.put(ctx.declaration(), "cmd_multiplyAssign");
-            } else if (ctx.DivideAssign() != null) {
-                ctxNames.put(ctx.declaration(), "cmd_divideAssign");
-            } else if (ctx.ModulusAssign() != null) {
-                ctxNames.put(ctx.declaration(), "cmd_modulusAssign");
-            } else if (ctx.PlusAssign() != null) {
-                ctxNames.put(ctx.declaration(), "cmd_plusAssign");
-            } else if (ctx.MinusAssign() != null) {
-                ctxNames.put(ctx.declaration(), "cmd_minusAssign");
+            ctxNames.put(ctx, "command_for");
+        } else {
+            if (ctx.declaration() != null && ctx.Assign() != null ) {
+                ctxNames.put(ctx.declaration(), "cmd_decAssign");
+                ctxNames.put(ctx, "cmd_decAssign");
+                //Apenas uma expressao
+            } else if (ctx.expression() != null && ctx.Identifier() == null) {
+                ctxNames.put(ctx.expression(), "cmd_expression");
+                //Apenas declaracao
+            } else if (ctx.declaration() != null && ctx.Assign() == null)  {
+                ctxNames.put(ctx.declaration(), "cmd_declaration");
+                //Atribuicao de varias maneiras
+            } else if (ctx.Identifier() != null && ctx.expression() != null) {
+                if (ctx.Assign() != null) {
+                    ctxNames.put(ctx, "cmd_assign");
+                } else if (ctx.MultiplyAssign() != null) {
+                    ctxNames.put(ctx.declaration(), "cmd_multiplyAssign");
+                } else if (ctx.DivideAssign() != null) {
+                    ctxNames.put(ctx.declaration(), "cmd_divideAssign");
+                } else if (ctx.ModulusAssign() != null) {
+                    ctxNames.put(ctx.declaration(), "cmd_modulusAssign");
+                } else if (ctx.PlusAssign() != null) {
+                    ctxNames.put(ctx.declaration(), "cmd_plusAssign");
+                } else if (ctx.MinusAssign() != null) {
+                    ctxNames.put(ctx.declaration(), "cmd_minusAssign");
+                }
             }
         }
     }
@@ -259,6 +264,32 @@ public class BeerSemantic extends BeerParserBaseListener {
         String rule = ctxNames.get(ctx);
 
         if (rule == null) {
+            return;
+        }
+
+        if (rule.equals("command_for")) {
+            String id = ctx.declaration().Identifier().getText();
+            Symbol symbol = lookup(id);
+
+            SymbolType type_var = symbol.type;
+            SymbolType type_exp = types.get(ctx.expression());
+
+            if (type_var != type_exp) {
+                if (errorHandler != null) errorHandler.push(new BeerSemanticError("Valor inesperado para a variavel " + "'" + id + "'" + "!", ctx));
+                return;
+            }
+
+            if (type_var == SymbolType.PILSEN) {
+                code += "istore " + counterIdGen + "\n";
+                auxGenerationIds.put(id,counterIdGen);
+                counterIdGen++;
+            } else if (type_var == SymbolType.ALE) {
+                code += "astore " + counterIdGen + "\n";
+                auxGenerationIds.put(id,counterIdGen);
+                counterIdGen++;
+            }
+
+            code += "for: \n";
             return;
         }
 
@@ -426,7 +457,6 @@ public class BeerSemantic extends BeerParserBaseListener {
     }
 
     @Override public void exitDeclaration(BeerParser.DeclarationContext ctx) {
-        // TODO
     }
 
     @Override public void enterNewObjectInit(BeerParser.NewObjectInitContext ctx) {
@@ -686,14 +716,14 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void enterForExpression(BeerParser.ForExpressionContext ctx) {
         //Controlando escopo
         table = new SymbolTable(table);
-
+        ctxNames.put(ctx.simpleCommand(0), "command_for");
         // TODO
     }
 
     @Override public void exitForExpression(BeerParser.ForExpressionContext ctx) {
         //Controlando escopo
         table = table.parent;
-
+        code += "goto for \nelse_for: \n";
         // TODO
     }
 

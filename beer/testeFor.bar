@@ -1,0 +1,14 @@
+taca-le pau
+    pilsen a = 0;
+
+    tomar todas(pilsen i = 0; i <= 100; i = i + 1;) {
+        a = a + i;
+    }
+
+    ta gelada(a == 5050) ? {
+        conta pra gente("arrombase");
+    } ta nao patrao {
+        conta pra gente("fodeu");
+    }
+fecha conta
+
