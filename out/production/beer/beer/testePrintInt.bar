@@ -1,9 +1,12 @@
+
+
 taca-le pau
+	
+	pilsen a = 3;
 
-    pilsen a = 1;
+	a = a + 2;
 
-    a = a + 4;
+	conta pra gente(a);
 
-    conta pra gente(a);
-    
 fecha conta
+

@@ -4,19 +4,9 @@
 .limit stack 100 
 .limit locals 100 
 getstatic java/lang/System/out Ljava/io/PrintStream; 
-ldc 0
-istore 0
-while: 
-ldc 10
-iload 0
-if_icmple else 
-ldc 1
-iload 0
-iadd 
-istore 0
-goto while 
-else: 
-iload 0
-invokevirtual java/io/PrintStream/println(I)V 
+ldc "Ola mundo!"
+astore 0
+aload 0
+invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V 
 return 
 .end method

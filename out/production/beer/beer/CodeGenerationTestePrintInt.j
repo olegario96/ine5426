@@ -4,17 +4,13 @@
 .limit stack 100 
 .limit locals 100 
 getstatic java/lang/System/out Ljava/io/PrintStream; 
-ldc 1
+ldc 3
 istore 0
-ldc 1
+ldc 2
 iload 0
-if_icmpne else 
-ldc "Igual a um"
-goto end 
-else: 
-ldc "Diferente a um"
-end: 
-invokevirtual java/io/PrintStream/println(Ljava/lang/String;)V 
+iadd 
+istore 0
+iload 0
+invokevirtual java/io/PrintStream/println(I)V 
 return 
 .end method 
-

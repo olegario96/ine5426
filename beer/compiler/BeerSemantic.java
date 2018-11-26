@@ -723,7 +723,7 @@ public class BeerSemantic extends BeerParserBaseListener {
     @Override public void exitForExpression(BeerParser.ForExpressionContext ctx) {
         //Controlando escopo
         table = table.parent;
-        code += "goto for \nelse_for: \n";
+        code += "goto for \nelse: \n";
         // TODO
     }
 

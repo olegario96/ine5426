@@ -8,23 +8,17 @@
 getstatic java/lang/System/out Ljava/io/PrintStream; 
 ldc 0
 istore 0
-ldc 0
-istore 1
-for: 
-ldc 100
-iload 1
+while: 
+ldc 10
+iload 0
 if_icmple else 
-ldc 1
-iload 1
-iadd 
-istore 1
 ldc 1
 iload 0
 iadd 
 istore 0
-goto for 
+goto while 
 else: 
 iload 0
 invokevirtual java/io/PrintStream/println(I)V 
 return 
-.end method 
+.end method
