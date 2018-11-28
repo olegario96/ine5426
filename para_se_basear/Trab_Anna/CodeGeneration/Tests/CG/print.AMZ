@@ -1,5 +1,0 @@
-int main() {
-  int var = 42;
-  print(var);
-  return var;
-}

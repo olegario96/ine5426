@@ -1,8 +1,0 @@
-#import "../24.AMZ";
-int main() {
-	return a();
-}
-
-int a() {
-	return 2;
-}

@@ -1,4 +1,0 @@
-void func(){
-  object a = {int d : 1, int b : 2};
-  object a = {int b: 2, int c: 3};
-}

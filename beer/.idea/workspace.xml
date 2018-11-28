@@ -2,19 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aec46394-4602-4481-8772-0a559762d190" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeGenerationPrint.j" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeGenerationTest.j" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CodeGenerationTestFor.j" beforeDir="false" afterPath="$PROJECT_DIR$/CodeGenerationTestFor.j" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compiler/BeerSemantic.java" beforeDir="false" afterPath="$PROJECT_DIR$/compiler/BeerSemantic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testeFor.bar" beforeDir="false" afterPath="$PROJECT_DIR$/testeFor.bar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testeIf.bar" beforeDir="false" afterPath="$PROJECT_DIR$/testeIf.bar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testePrintInt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testePrintInt.bar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/testePrintString.bar" beforeDir="false" afterPath="$PROJECT_DIR$/testePrintString.bar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/testeWhile.bar" beforeDir="false" afterPath="$PROJECT_DIR$/testeWhile.bar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/beer/beer/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/CodeGenerationTest.j" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.attach_pid10546" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.attach_pid13025" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.idea/beer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.idea/libraries/antlr_4_7_1_complete.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.idea/libraries/junit_junit_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/antlr-4.7.1-complete.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/beer.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/beer/beer/jasmin.jar" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +25,9 @@
     <session id="-672140228">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.open.time.15" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -44,12 +44,14 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
+          <entry key="bar" value="1" />
           <entry key="java" value="815" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JAVA" value="815" />
+          <entry key="PLAIN_TEXT" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -89,8 +91,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/compiler/BeerSemantic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11295">
-              <caret line="763" selection-start-line="763" selection-end-line="763" />
+            <state relative-caret-position="-15">
+              <caret line="733" column="16" selection-start-line="733" selection-start-column="16" selection-end-line="733" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -101,8 +103,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/testeFor.bar">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="234">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
             </state>
           </provider>
         </entry>
@@ -172,10 +174,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="704" />
-    <option name="y" value="24" />
-    <option name="width" value="656" />
-    <option name="height" value="744" />
+    <option name="x" value="67" />
+    <option name="y" value="25" />
+    <option name="width" value="1299" />
+    <option name="height" value="743" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -184,6 +186,18 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="beer" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="beer" type="2674bda8:ScopeViewTreeModel$GroupNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -195,18 +209,6 @@
               <item name="beer" type="b2602c69:ProjectViewProjectNode" />
               <item name="beer" type="462c0819:PsiDirectoryNode" />
               <item name="compiler" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="beer" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="beer" type="2674bda8:ScopeViewTreeModel$GroupNode" />
             </path>
           </expand>
           <select />
@@ -352,9 +354,10 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="48" y="-11" width="1313" height="780" extended-state="6" />
+    <frame x="67" y="25" width="1299" height="743" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20474309" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.20830008" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -383,7 +386,7 @@
       <window_info anchor="right" id="Maven" order="8" />
     </layout>
     <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25778133" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20830008" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -392,15 +395,15 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32952693" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.38662317" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.66770184" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.32952693" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="7" weight="0.32899022" />
       <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.4502447" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.27732465" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -409,6 +412,7 @@
       <window_info anchor="right" id="Theme Preview" order="5" />
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="Maven Projects" order="7" />
+      <window_info anchor="right" id="Maven" order="8" />
     </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
@@ -674,8 +678,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/compiler/BeerSemantic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11295">
-          <caret line="763" selection-start-line="763" selection-end-line="763" />
+        <state relative-caret-position="-15">
+          <caret line="733" column="16" selection-start-line="733" selection-start-column="16" selection-end-line="733" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -684,8 +688,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/testeFor.bar">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        <state relative-caret-position="234">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
         </state>
       </provider>
     </entry>
